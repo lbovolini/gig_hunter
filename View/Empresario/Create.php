@@ -120,6 +120,7 @@
     require $root.'/View/Templates/Footer.php'; ?>
   </body>
 </html>
+
 <?php
 /*
  * caso haja o preencimento dos dados e a submissão do formulário, o

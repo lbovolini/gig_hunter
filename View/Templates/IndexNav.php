@@ -15,7 +15,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a href="login.php">Entrar</a>
+          <a href="/View/Login.php">Entrar</a>
         </li>
         <li>
           <a href="/View/Empresario/Create.php">Cadastro</a>

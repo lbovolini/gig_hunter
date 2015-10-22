@@ -1,5 +1,5 @@
 <?php
-set_include_path('/home/lucas/GigHunter/');
+set_include_path('C:/xampp/htdocs/gig_hunter/');
 	require_once 'connection.php';
 	require_once 'validation.php';
 	require_once 'Model/Empresario.php';

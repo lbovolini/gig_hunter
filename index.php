@@ -24,10 +24,10 @@
 							<hr class="intro-divider">
 							<ul class="list-inline intro-social-buttons">
 								<li>
-									<a href="login.php" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-log-in"></i> <span class="network-name">Entrar</span></a>
+									<a href="/View/Login.php" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-log-in"></i> <span class="network-name">Entrar</span></a>
 								</li>
 								<li>
-									<a href="cadastro.php" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-user"></i> <span class="network-name">Cadastro</span></a>
+									<a href="/View/Empresario/Create.php" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-user"></i> <span class="network-name">Cadastro</span></a>
 								</li>
 							</ul>
 						</div>

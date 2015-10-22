@@ -1,4 +1,6 @@
 <?php
+require_once 'connection.php';
+
 class Empresario
 {
 
@@ -26,6 +28,12 @@ class Empresario
 	//Retorna dados de um Empresario
 	public static function getEmpresario($cpf) {
 		$query = "SELECT 1 FROM empresarios WHERE cpf = '" . $cpf . "' LIMIT 1";
+		$resultado = mysql_query($query);
+		return(mysql_fetch_array($resultado));
+	}
+	
+	public static function getEmpresarioLogin($login, $senha) {
+		$query = "SELECT 1 FROM empresarios WHERE `username` = '".$login."' AND `senha` = '".$senha."' LIMIT 1";
 		$resultado = mysql_query($query);
 		return(mysql_fetch_array($resultado));
 	}
