@@ -51,9 +51,7 @@ class EmpresarioController
 			'estado',
 			'cidade'
 		]);
-
-
-
+		
 		if (!$vazioEmp && !$vazioEnd) {
 			if (!Empresario::getEmpresario($cpf)) {	
 				if ($email == $confirmacao_email) {
@@ -63,19 +61,19 @@ class EmpresarioController
 						Empresario::create($nome, $email, $username, $senha, $data_nascimento, $telefone, $rg, $cpf, $idEndereco);
 					}
 					else {
-						echo "<script> alert('Senhas não conferem!'); location.href='cadastro.php'; </script>";
+						echo "<script> alert('Senhas não conferem!'); location.href='/View/Empresario/Create.php'; </script>";
 					}
 				}
 				else {
-					echo "<script> alert('Emails não conferem!'); location.href='cadastro.php'; </script>";
+					echo "<script> alert('Emails não conferem!'); location.href='/View/Empresario/Create.php'; </script>";
 				}
 			}
 			else {
-				echo "<script> alert('Empresário já cadastrado!'); location.href='cadastro.php'; </script>";
+				echo "<script> alert('Empresário já cadastrado!'); location.href='/View/Empresario/Create.php'; </script>";
 			}
 		}
 		else {
-			echo "<script> alert('Todos os campos são de preenchimento obrigatório!'); location.href='cadastro.php'; </script>";
+			echo "<script> alert('Todos os campos são de preenchimento obrigatório!'); location.href='/View/Empresario/Create.php'; </script>";
 		}
 
 		DB::close();
