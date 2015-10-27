@@ -39,7 +39,7 @@ class Empresario
 	//Insere um Empresario
 	public static function create($nome, $email, $username, $senha, $data_nascimento, $telefone, $rg, $cpf, $idEndereco) 
 	{
-		$query = "INSERT INTO empresarios(nome, email, username, senha, data_nascimento, telefone, rg, cpf, status, endereco_id) VALUES ('" . $nome . "', '" . $email . "', '" . $username . "', '" . $senha . "', '" . $data_nascimento . "', '" . $telefone . "', '" . $rg . "', '" . $cpf . "', 'Ativado', '" . $idEndereco . "')";
+		$query = "INSERT INTO empresarios(nome, email, username, senha, data_nascimento, telefone, rg, cpf, status, endereco_id) VALUES ('" . $nome . "', '" . $email . "', '" . $username . "', '" . $senha . "', '" . $data_nascimento . "', '" . $telefone . "', '" . $rg . "', '" . $cpf . "', 'Ativo', '" . $idEndereco . "')";
 		mysql_query($query);
 	}
 
