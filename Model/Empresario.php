@@ -1,9 +1,7 @@
 <?php
-require_once 'connection.php';
 
 class Empresario
 {
-
 	private $nome;
 	private $email;
 	private $username;

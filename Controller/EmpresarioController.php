@@ -1,9 +1,9 @@
 <?php
-set_include_path('C:/xampp/htdocs/gig_hunter/');
-	require_once 'connection.php';
-	require_once 'validation.php';
-	require_once 'Model/Empresario.php';
-	require_once 'Model/Endereco.php';
+$root = $_SERVER['DOCUMENT_ROOT'];
+require_once $root.'/connection.php';
+require_once $root.'/validation.php';
+require_once $root.'/Model/Empresario.php';
+require_once $root.'/Model/Endereco.php';
 
 class EmpresarioController 
 {

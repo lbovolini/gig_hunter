@@ -1,9 +1,7 @@
 <?php
-require_once 'connection.php';
 
 class Endereco
 {
-
 	private $cep;
 	private $rua;
 	private $bairro;
