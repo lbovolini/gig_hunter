@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+<nav class="navbar navbar-default navbar-top topnav" role="navigation">
   <div class="container topnav">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -18,7 +18,7 @@
           <a href="/View/Login.php">Entrar</a>
         </li>
         <li>
-          <a href="/View/Empresario/Create.php">Cadastro</a>
+          <a href="/View/Cadastrar.php">Cadastro</a>
         </li>
         <li>
           <a href="sobre.php">Sobre</a>
