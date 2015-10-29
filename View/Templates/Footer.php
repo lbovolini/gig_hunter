@@ -4,7 +4,7 @@
       <div class="col-lg-12">
         <ul class="list-inline">
           <li>
-            <a href="index.php">Início</a>
+            <a href="../../index.php">Início</a>
           </li>
           <li class="footer-menu-divider">&sdot;</li>
           <li>

@@ -26,10 +26,10 @@
 								<form class="form-login" action="" method="POST">
 									<h3>Login</h3>
 									<p class="field">
-										<input type="text" name="login" placeholder="Username">
+										<input type="text" style="color:black;" name="login" placeholder="Username">
 									</p>
 									<p class="field">
-										<input type="password" name="senha" placeholder="Senha">
+										<input type="password" style="color:black;" name="senha" placeholder="Senha">
 									</p>
 									<button type="submit" class="btn btn-default">Entrar</button>
 								</form>
