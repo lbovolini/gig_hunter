@@ -26,12 +26,6 @@
                 <span class="error" for="password" generated="true"></span>
               </div>
             </div>
-
-            <div class="checkbox">
-              <label>
-                <input type="checkbox"> Lembrar
-              </label>
-            </div> 
           </div> 
 
           <div class="modal-footer text-left">
@@ -44,6 +38,7 @@
             </div>
           </div> 
         </form>
+        
       </div>
     </div>
   </div>
