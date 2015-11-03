@@ -1,5 +1,7 @@
 <?php
+
 $root = $_SERVER['DOCUMENT_ROOT'];
+
 require_once $root.'/connection.php';
 require_once $root.'/validation.php';
 require_once $root.'/Model/Empresario.php';
@@ -7,13 +9,13 @@ require_once $root.'/Model/Endereco.php';
 
 class EmpresarioController 
 {
-
+	/* Cria Empresario */
 	public function criar()
 	{
+		/* Abre a conexao com o banco de dados */
 		DB::connect();
 
-		$nome = $email = $username = $senha = $data_nascimento = $telefone = $rg = $cpf = $cep = $rua = $bairro = $estado = $cidade = '';
-
+		/* Remove caracteres especias */
 		$nome = test_input($_POST['nome']);
 		$email = test_input($_POST['email']);
 		$confirmacao_email = test_input($_POST['confirmacao_email']);
@@ -21,6 +23,8 @@ class EmpresarioController
 		$senha = test_input($_POST['senha']);
 		$confirmacao_senha = test_input($_POST['confirmacao_senha']);
 		$data_nascimento = test_input($_POST['data_nascimento']);
+		/* Converte data para o formato YYYY/DD/MM */
+		$data_nascimento = implode("-",array_reverse(explode("/",$data_nascimento)));
 		$telefone = test_input($_POST['telefone']);
 		$rg = test_input($_POST['rg']);
 		$cpf = test_input($_POST['cpf']);
@@ -30,52 +34,12 @@ class EmpresarioController
 		$estado = test_input($_POST['estado']);
 		$cidade = test_input($_POST['cidade']);
 
+		/* Insere Endereco no banco de dados */
+		$idEndereco = Endereco::create($cep, $rua, $bairro, $estado, $cidade);
+		/* Insere Empresario no banco de dados */
+		Empresario::create($nome, $email, $username, $senha, $data_nascimento, $telefone, $rg, $cpf, $idEndereco);
 
-		$vazioEmp = Empresario::validate([
-			'nome',
-			'email',
-			'confirmacao_email',
-			'username',
-			'senha',
-			'confirmacao_senha',
-			'data_nascimento',
-			'telefone',
-			'rg',
-			'cpf'
-		]);
-
-		$vazioEnd = Endereco::validate([
-			'cep',
-			'rua',
-			'bairro',
-			'estado',
-			'cidade'
-		]);
-		
-		if (!$vazioEmp && !$vazioEnd) {
-			if (!Empresario::getEmpresario($cpf)) {	
-				if ($email == $confirmacao_email) {
-					if ($senha == $confirmacao_senha) {
-						$idEndereco = Endereco::create($cep, $rua, $bairro, $estado, $cidade);
-						
-						Empresario::create($nome, $email, $username, $senha, $data_nascimento, $telefone, $rg, $cpf, $idEndereco);
-					}
-					else {
-						echo "<script> alert('Senhas não conferem!'); location.href='/View/Empresario/Create.php'; </script>";
-					}
-				}
-				else {
-					echo "<script> alert('Emails não conferem!'); location.href='/View/Empresario/Create.php'; </script>";
-				}
-			}
-			else {
-				echo "<script> alert('Empresário já cadastrado!'); location.href='/View/Empresario/Create.php'; </script>";
-			}
-		}
-		else {
-			echo "<script> alert('Todos os campos são de preenchimento obrigatório!'); location.href='/View/Empresario/Create.php'; </script>";
-		}
-
+		/* Fecha a conexao com o banco de dados */
 		DB::close();
 	}
 }

@@ -27,22 +27,8 @@ class Endereco
 		    //echo "New record created successfully. Last inserted ID is: " . $last_id;
 		    return $last_id;
 		} else {
-		    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+		    echo "Error: " . $sql . "<br>" . mysql_error($conn);
 		}
-	}
-
-	public static function validate($data)
-	{
-		foreach ($data as $field) {
-			  $field = trim($field);
-			  $field = stripslashes($field);
-			  $field = htmlspecialchars($field);
-
-			  //echo $field . '<br>';
-			  if (empty($field)) 
-			  	return true;
-		}
-		return false;
 	}
 }
 ?>

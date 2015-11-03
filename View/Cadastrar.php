@@ -39,7 +39,6 @@
       </table>
       
     </div>
-
     <!-- Footer, jQuery, Bootstrap -->
     <?php
     $root = $_SERVER['DOCUMENT_ROOT']; 
