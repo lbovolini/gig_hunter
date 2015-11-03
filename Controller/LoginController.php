@@ -5,12 +5,8 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 require_once $root.'/connection.php';
 require_once $root.'/validation.php';
 require_once $root.'/Model/Empresario.php';
-<<<<<<< HEAD
 require_once $root.'/Model/Academico.php';
 require_once $root.'/Model/Freelancer.php';
-require_once $root.'/Model/Endereco.php';
-=======
->>>>>>> origin/master
 require_once $root.'/Model/Login.php';
 
 class LoginController 
