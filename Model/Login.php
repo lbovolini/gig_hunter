@@ -13,9 +13,19 @@ class Login
 	}
 	
 	//Realiza Login
-	public static function login() 
+	public static function loginEmp() 
 	{
-		header("Location: Testando.php");// O usuário e a senha digitados foram validados, manda pra página interna
+		header("Location: TestandoEmp.php");// O usuário e a senha digitados foram validados, manda pra página interna
+	}
+	
+	public static function loginAcad() 
+	{
+		header("Location: TestandoAcad.php");// O usuário e a senha digitados foram validados, manda pra página interna
+	}
+	
+	public static function loginFree() 
+	{
+		header("Location: TestandoFree.php");// O usuário e a senha digitados foram validados, manda pra página interna
 	}
 
 	public static function validate($data)

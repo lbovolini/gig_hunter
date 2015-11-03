@@ -76,7 +76,7 @@ class AcademicoController
 				}
 			}
 			else {
-				echo "<script> alert('Acadêmico já cadastrado!'); location.href='/View/Academico/Create.php'; </script>";
+				echo "<script> alert('CPF já cadastrado!'); location.href='/View/Academico/Create.php'; </script>";
 			}
 		}
 		else {

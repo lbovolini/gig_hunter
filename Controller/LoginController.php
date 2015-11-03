@@ -5,6 +5,8 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 require_once $root.'/connection.php';
 require_once $root.'/validation.php';
 require_once $root.'/Model/Empresario.php';
+require_once $root.'/Model/Academico.php';
+require_once $root.'/Model/Freelancer.php';
 require_once $root.'/Model/Login.php';
 
 class LoginController 
@@ -20,9 +22,18 @@ class LoginController
 		$senha = test_input($_POST['password']);
 
 
-		if (Empresario::getEmpresarioLogin($login, $senha)) {	
-					Login::login();
-		}
+			if (Empresario::getEmpresarioLogin($login, $senha)) {	
+				Login::loginEmp();
+			}
+			else if (Academico::getAcademicoLogin($login, $senha)) {
+				Login::loginAcad();
+			}
+			else if (Freelancer::getFreelancerLogin($login, $senha)) {
+				Login::loginFree();
+			}
+			else {
+				echo "<script> alert('Login e Senha não conferem!'); location.href='/View/Login.php'; </script>";
+			}
 
 		/* Fecha a conexao com o banco de dados */
 		DB::close();

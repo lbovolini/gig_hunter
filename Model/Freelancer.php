@@ -39,7 +39,7 @@ class Freelancer
 	}
 	
 	public static function getFreelancerLogin($login, $senha) {
-		$query = "SELECT 1 FROM usuarios WHERE `username` = '".$login."' AND `senha` = '".$senha."' LIMIT 1";
+		$query = "SELECT 1 FROM usuarios WHERE `tipo` = 'Freelancer' AND `username` = '".$login."' AND `senha` = '".$senha."' LIMIT 1";
 		$resultado = mysql_query($query);
 		return(mysql_fetch_array($resultado));
 	}

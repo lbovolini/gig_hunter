@@ -76,7 +76,7 @@ class FreelancerController
 				}
 			}
 			else {
-				echo "<script> alert('Freelancer já cadastrado!'); location.href='/View/Freelancer/Create.php'; </script>";
+				echo "<script> alert('CPF já cadastrado!'); location.href='/View/Freelancer/Create.php'; </script>";
 			}
 		}
 		else {
