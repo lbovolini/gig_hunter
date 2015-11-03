@@ -8,20 +8,17 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="index.php"><i class="navbar-brand topnav fa fa-briefcase fa-2x"></i></a>
+      <a href="/index.php"><i class="navbar-brand topnav fa fa-briefcase fa-2x"></i></a>
       <a class="navbar-brand topnav" href="/index.php">Gig Hunter</a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a href="/View/Login.php">Entrar</a>
+          <a><?php echo date("d/m/Y") ?></a>
         </li>
         <li>
-          <a href="/View/Cadastrar.php">Cadastro</a>
-        </li>
-        <li>
-          <a href="sobre.php">Sobre</a>
+          <a href="sobre.php">Sair</a>
         </li>
       </ul>
     </div>
