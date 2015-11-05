@@ -16,14 +16,17 @@
               <div class="input-group">
                 <input type="text" class="form-control" id="username" name="username" placeholder="Username">
                 <label for="username" class="input-group-addon glyphicon glyphicon-user"></label>
+				<span class="error" for="username" generated="true"></span>
               </div>
             </div>
 
             <div class="form-group">
               <div class="input-group">
-                <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha">
-                <label class="input-group-addon glyphicon glyphicon-lock"></label>
-                <span class="error" for="senha" generated="true"></span>
+
+					<input type="password" class="form-control" id="senha" name="senha" placeholder="Senha">
+					
+					<span class="input-group-addon glyphicon glyphicon-lock" ></span>
+					
               </div>
             </div>
           </div> 
