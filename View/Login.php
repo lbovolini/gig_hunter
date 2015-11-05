@@ -14,16 +14,16 @@
           <div class="modal-body">
             <div class="form-group">
               <div class="input-group">
-                <input type="text" class="form-control" id="email" name="email" placeholder="Username">
-                <label for="email" class="input-group-addon glyphicon glyphicon-user"></label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                <label for="username" class="input-group-addon glyphicon glyphicon-user"></label>
               </div>
             </div>
 
             <div class="form-group">
               <div class="input-group">
-                <input type="password" class="form-control" id="password" name="password" placeholder="Senha">
+                <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha">
                 <label class="input-group-addon glyphicon glyphicon-lock"></label>
-                <span class="error" for="password" generated="true"></span>
+                <span class="error" for="senha" generated="true"></span>
               </div>
             </div>
           </div> 

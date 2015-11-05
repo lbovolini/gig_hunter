@@ -1,25 +1,29 @@
- $(function() {
+// somente letras, numeros e hifen
+$.validator.addMethod("loginRegex", function(value, element) {
+    return this.optional(element) || /^[a-z0-9]+$/i.test(value);
+}, "Deve conter somente letras e números.");
+
+
+$(function() {
 	$("#login-form").validate({
 		rules: {
-			email: {
+			username: {
 				required: true,
-				email: true
+				loginRegex: true
 			},
-			password: {
+			senha: {
 				required: true,
 				minlength: 8
-			}
+			},
 		},
-        messages: {
-            password: {
-                required: "Senha nao informada",
-                minlength: "Sua senha deve ter no minimo 8 caracteres"
-            },
-            email: "Endereco de email invalido"
-        },
 
 		submitHandler: function(form) {
 			form.submit();
 		}
 	});
+});
+
+// carrega script de mensagens do validator traduzidas
+$.getScript("/public/js/validate/validator.messages.js", function(){
+
 });

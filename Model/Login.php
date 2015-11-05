@@ -3,12 +3,12 @@
 class Login
 {
 
-	private $login;
+	private $username;
 	private $senha;
 
-	public function __construct($login, $senha)
+	public function __construct($username, $senha)
 	{
-		$this->login = $login;
+		$this->username = $username;
 		$this->senha = $senha;
 	}
 	
@@ -26,20 +26,6 @@ class Login
 	public static function loginFree() 
 	{
 		header("Location: TestandoFree.php");// O usuário e a senha digitados foram validados, manda pra página interna
-	}
-
-	public static function validate($data)
-	{
-		foreach ($data as $field) {
-			  $field = trim($field);
-			  $field = stripslashes($field);
-			  $field = htmlspecialchars($field);
-
-			  //echo $field . '<br>';
-			  if (empty($field)) 
-			  	return true;
-		}
-		return false;
 	}
 }
 ?>

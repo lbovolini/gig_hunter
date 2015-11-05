@@ -18,21 +18,21 @@ class LoginController
 		DB::connect();
 
 		/* Remove caracteres especias */
-		$login = test_input($_POST['email']);
-		$senha = test_input($_POST['password']);
+		$username = test_input($_POST['username']);
+		$senha = test_input($_POST['senha']);
 
 
-			if (Empresario::getEmpresarioLogin($login, $senha)) {	
+			if (Empresario::getEmpresarioLogin($username, $senha)) {	
 				Login::loginEmp();
 			}
-			else if (Academico::getAcademicoLogin($login, $senha)) {
+			else if (Academico::getAcademicoLogin($username, $senha)) {
 				Login::loginAcad();
 			}
-			else if (Freelancer::getFreelancerLogin($login, $senha)) {
+			else if (Freelancer::getFreelancerLogin($username, $senha)) {
 				Login::loginFree();
 			}
 			else {
-				echo "<script> alert('Login e Senha não conferem!'); location.href='/View/Login.php'; </script>";
+				echo "<script> alert('Login e Senha não conferem!'); </script>";
 			}
 
 		/* Fecha a conexao com o banco de dados */
