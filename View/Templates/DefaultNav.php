@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="/index.php"><i class="navbar-brand topnav fa fa-briefcase fa-2x"></i></a>
+      <a href="../../index.php"><i class="navbar-brand topnav fa fa-briefcase fa-2x"></i></a>
       <a class="navbar-brand topnav" href="/index.php">Gig Hunter</a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -18,7 +18,7 @@
           <a><?php echo date("d/m/Y") ?></a>
         </li>
         <li>
-          <a href="sobre.php">Sair</a>
+          <a href="../../View/Templates/About.php">Sair</a>
         </li>
       </ul>
     </div>
