@@ -13,15 +13,6 @@ class Empresario
 
 	public function __construct() {}
 
-	// retorna id
-	public function getId() {
-		return $this->id;
-	}
-
-	// salva id
-	public function setId($id) {
-		$this->id = $id;
-	}
 
 	//Retorna dados de um Empresario
 	public static function getEmpresario($cpf) {
