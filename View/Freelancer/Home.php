@@ -1,20 +1,3 @@
-<?php 
-
-session_start();
-
-$root = $_SERVER['DOCUMENT_ROOT'];
-require_once $root.'/Model/Autentica.php';
- 
-$aut = Autenticador::instanciar();
- 
-$usuario = null;
-if ($aut->esta_logado()) {
-    $usuario = $aut->pegar_usuario();
-}
-else {
-    $aut->expulsar();
-}
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -26,7 +9,7 @@ else {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Empresario</title>
+    <title>Freelancer</title>
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/public/img/favicon-suitcase.ico" type="image/x-icon">
@@ -46,30 +29,22 @@ else {
     $root = $_SERVER['DOCUMENT_ROOT'];
     require $root.'/View/Templates/DefaultNav.php'; ?>
 
+
     <div id="wrapper">
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="/View/Empresario/Home.php">
-                        Empresário
+                    <a href="/View/Freelancer/Home.php">
+                        Freelancer
                     </a>
                 </li>
                 <li>
-                    <a href="/View/Empresario/Conta.php">Conta</a>
-                </li>
-                <li>
-                    <a href="/View/Empresario/Empresa.php">Empresa</a>
+                    <a href="/View/Freelancer/Conta.php">Conta</a>
                 </li>
                 <li>
                     <a href="#">Vaga</a>
-                </li>
-                <li>
-                    <a href="#">Oferecer Vaga</a>
-                </li>
-                <li>
-                    <a href="#">Confirmar Vaga</a>
                 </li>
             </ul>
         </div>
@@ -80,7 +55,7 @@ else {
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1>Simple Sidebar</h1>
+                        <h1>Freelancer</h1>
                         <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
                         <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
                         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>

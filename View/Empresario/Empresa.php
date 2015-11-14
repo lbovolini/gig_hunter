@@ -1,20 +1,3 @@
-<?php 
-
-session_start();
-
-$root = $_SERVER['DOCUMENT_ROOT'];
-require_once $root.'/Model/Autentica.php';
- 
-$aut = Autenticador::instanciar();
- 
-$usuario = null;
-if ($aut->esta_logado()) {
-    $usuario = $aut->pegar_usuario();
-}
-else {
-    $aut->expulsar();
-}
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -46,6 +29,7 @@ else {
     $root = $_SERVER['DOCUMENT_ROOT'];
     require $root.'/View/Templates/DefaultNav.php'; ?>
 
+
     <div id="wrapper">
 
         <!-- Sidebar -->
@@ -53,7 +37,7 @@ else {
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="/View/Empresario/Home.php">
-                        Empresário
+                        Empresario
                     </a>
                 </li>
                 <li>
@@ -76,21 +60,18 @@ else {
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1>Simple Sidebar</h1>
-                        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+		<div class="container">
+		  <div class="matshead">
+			<h2 class="text-muted">Empresa
+				<input type="button" class="btn btn-primary pull-center" value="Cadastrar Nova" onclick="javascript: location.href='/View/Empresario/CadastrarEmpresa.php';" />
+			</h2>
+		  </div>
+		  <hr class="featurette-divider">
+		</div>
         <!-- /#page-content-wrapper -->
 
     </div>
-
+    <!-- Lista de cidades e estados -->
+    <script src="/public/js/cidades-estados-v0.2.js"></script>
   </body>
 </html>
