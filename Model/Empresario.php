@@ -11,16 +11,16 @@ class Empresario
 	private $rg;
 	private $cpf;
 
-	public function __construct($nome, $email, $username, $senha, $data_nascimento, $telefone, $rg, $cpf)
-	{
-		$this->nome = $nome;
-		$this->email = $email;
-		$this->username = $username;
-		$this->senha = $senha;
-		$this->data_nascimento = $data_nascimento;
-		$this->telefone = $telefone;
-		$this->rg = $rg;
-		$this->cpf = $cpf;
+	public function __construct() {}
+
+	// retorna id
+	public function getId() {
+		return $this->id;
+	}
+
+	// salva id
+	public function setId($id) {
+		$this->id = $id;
 	}
 
 	//Retorna dados de um Empresario
@@ -76,12 +76,6 @@ class Empresario
 	        return false;  //nao registrado
 	    }
         return true; //registrado
-	}
-	
-	public static function getEmpresarioLogin($login, $senha) {
-		$query = "SELECT 1 FROM empresarios WHERE `username` = '".$login."' AND `senha` = '".$senha."' LIMIT 1";
-		$resultado = mysql_query($query);
-		return(mysql_fetch_array($resultado));
 	}
 	
 	//Insere um Empresario

@@ -11,7 +11,7 @@
     <?php
     $root = $_SERVER['DOCUMENT_ROOT']; 
     require $root.'/View/Templates/IndexNav.php';
-    require $root.'/View/Login.php'; ?>
+    require $root.'/View/Login.php';?>
     
     <!-- Header -->
     <a name="about"></a>

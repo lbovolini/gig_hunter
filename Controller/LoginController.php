@@ -1,13 +1,12 @@
 <?php
 
-$root = $_SERVER['DOCUMENT_ROOT'];
+session_start();
 
+$root = $_SERVER['DOCUMENT_ROOT'];
 require_once $root.'/connection.php';
 require_once $root.'/validation.php';
-require_once $root.'/Model/Empresario.php';
-require_once $root.'/Model/Academico.php';
-require_once $root.'/Model/Freelancer.php';
-require_once $root.'/Model/Login.php';
+require_once $root.'/Model/Autentica.php';
+
 
 class LoginController 
 {
@@ -21,22 +20,35 @@ class LoginController
 		$username = test_input($_POST['username']);
 		$senha = test_input($_POST['senha']);
 
+        # Uso do singleton para instanciar
+        # apenas um objeto de autenticação
+        # e esconder a classe real de autenticação
+        $aut = Autenticador::instanciar();
 
-			if (Empresario::getEmpresarioLogin($username, $senha)) {	
-				Login::loginEmp();
-			}
-			else if (Academico::getAcademicoLogin($username, $senha)) {
-				Login::loginAcad();
-			}
-			else if (Freelancer::getFreelancerLogin($username, $senha)) {
-				Login::loginFree();
-			}
-			else {
-				echo "<script> alert('Login e Senha não conferem!'); </script>";
-			}
+        # efetua o processo de autenticação
+        if ($aut->logar($username, $senha)) {
+            # redireciona o usuário para dentro do sistema
+            header('location: View/Empresario/Home.php');
+        }
+        else {
+            # envia o usuário de volta para 
+            # o form de login
+            header('location: index.php');
+        }
 
 		/* Fecha a conexao com o banco de dados */
 		DB::close();
+	}
+
+	public function sair()
+	{
+        // remove todas as variaveis de sessao
+        session_unset();
+
+        // destroi a sessao
+        session_destroy();
+
+        header('location: /index.php');
 	}
 }
 ?>

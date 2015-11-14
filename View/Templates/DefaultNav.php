@@ -15,7 +15,10 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a><?php echo date("d/m/Y") ?></a>
+          <a><?php echo $_SESSION['nome']; ?></a>
+        </li>
+        <li>
+          <a><?php echo date("d/m/Y"); ?></a>
         </li>
         <li>
           <a href="../../View/Templates/About.php">Sair</a>

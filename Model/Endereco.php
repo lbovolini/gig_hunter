@@ -8,14 +8,7 @@ class Endereco
 	private $estado;
 	private $cidade;
 
-	public function __construct($cep, $rua, $bairro, $estado, $cidade)
-	{
-		$this->$cep = $cep;
-		$this->$rua = $rua;
-		$this->$bairro = $bairro;
-		$this->$estado = $estado;
-		$this->$cidade = $cidade;
-	}
+	public function __construct() {}
 
 	//Insere um Endereço
 	public static function create($cep, $rua, $bairro, $estado, $cidade) 
