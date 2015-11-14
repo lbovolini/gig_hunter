@@ -23,6 +23,7 @@ $(function() {
 	});
 });
 
+
 // carrega script de mensagens do validator traduzidas
 $.getScript("/public/js/validate/validator.messages.js", function(){
 

@@ -59,7 +59,7 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Data de Nascimento</label>
               <div class="col-md-3">
-                <input class="form-control" type="date" id="data_nascimento" name="data_nascimento" placeholder="Ex. 01/01/1999">
+                <input class="form-control" type="text" id="data_nascimento" name="data_nascimento" placeholder="Ex. 01/01/1999">
               </div>
               <label class="col-sm-2 control-label">Número de Telefone</label>
                 <div class="col-md-3">
@@ -117,6 +117,8 @@
     <?php
     $root = $_SERVER['DOCUMENT_ROOT']; 
     require $root.'/View/Templates/Footer.php'; ?>
+    <!-- Bootstrap datepicker -->
+    <script src="/public/js/bootstrap-datepicker.min.js"></script>
     <!-- Lista de cidades e estados -->
     <script src="/public/js/cidades-estados-v0.2.js"></script>
     <!-- jQuery validate -->
@@ -125,6 +127,7 @@
     <script src="/public/js/validate/empresario.validate.js"></script>
     <!-- masked input -->
     <script src="/public/js/jquery.maskedinput.min.js"></script>
+
   </body>
 </html>
 

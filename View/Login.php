@@ -16,29 +16,19 @@
               <div class="input-group">
                 <input type="text" class="form-control" id="username" name="username" placeholder="Username">
                 <label for="username" class="input-group-addon glyphicon glyphicon-user"></label>
-				<span class="error" for="username" generated="true"></span>
               </div>
             </div>
 
             <div class="form-group">
               <div class="input-group">
-
-					<input type="password" class="form-control" id="senha" name="senha" placeholder="Senha">
-					
-					<span class="input-group-addon glyphicon glyphicon-lock" ></span>
-					
+      					<input type="password" class="form-control" id="senha" name="senha" placeholder="Senha">
+			       		<label for="password" class="input-group-addon glyphicon glyphicon-lock"></label>					
               </div>
             </div>
           </div> 
 
           <div class="modal-footer text-left">
             <button type="submit" class="pull-left btn btn-success">Entrar</button>
-
-            <div class="progress">
-              <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="100" style="width: 0%;">
-                <span class="sr-only">progress</span>
-              </div>
-            </div>
           </div> 
         </form>
         

@@ -53,11 +53,10 @@ $(document).ready(function(){
             }  
         });
     $("#data_nascimento").mask("99/99/9999");
-    //$("#rg").mask("99.999.999-*");
+    $("#rg").mask("99.999.999-*");
     $("#cpf").mask("999.999.999-99", {reverse: true});
     $("#cep").mask("99999-999");
-});
-
+})
 
 
 // valida campos
@@ -112,7 +111,6 @@ $(function() {
 				required: true,
 				equalTo: "#senha"
 			},
-
 			data_nascimento: {
 				required: true,
 				date: true

@@ -7,13 +7,13 @@ require_once $root.'/Model/Endereco.php';
 
 class FreelancerController 
 {
-
+	/* Cria Freelancer */
 	public function criar()
 	{
+		/* Abre a conexao com o banco de dados */
 		DB::connect();
 
-		$nome = $email = $username = $senha = $data_nascimento = $telefone = $rg = $cpf = $cep = $rua = $bairro = $estado = $cidade = $instituicao = $matricula = $lattes = $linkedin = '';
-
+		/* Remove caracteres especias */
 		$nome = test_input($_POST['nome']);
 		$email = test_input($_POST['email']);
 		$confirmacao_email = test_input($_POST['confirmacao_email']);
@@ -21,6 +21,8 @@ class FreelancerController
 		$senha = test_input($_POST['senha']);
 		$confirmacao_senha = test_input($_POST['confirmacao_senha']);
 		$data_nascimento = test_input($_POST['data_nascimento']);
+		/* Converte data para o formato YYYY/DD/MM */
+		$data_nascimento = implode("-",array_reverse(explode("/",$data_nascimento)));
 		$telefone = test_input($_POST['telefone']);
 		$rg = test_input($_POST['rg']);
 		$cpf = test_input($_POST['cpf']);
@@ -34,55 +36,12 @@ class FreelancerController
 		$lattes = test_input($_POST['lattes']);
 		$linkedin = test_input($_POST['linkedin']);
 
-		$vazioAcad = Freelancer::validate([
-			'nome',
-			'email',
-			'confirmacao_email',
-			'username',
-			'senha',
-			'confirmacao_senha',
-			'data_nascimento',
-			'telefone',
-			'rg',
-			'cpf',
-			'instituicao',
-			'matricula',
-			'lattes',
-			'linkedin'
-		]);
+		/* Insere Endereco no banco de dados */
+		$idEndereco = Endereco::create($cep, $rua, $bairro, $estado, $cidade);
+		/* Insere Freelancer no banco de dados */
+		Freelancer::create($nome, $email, $username, $senha, $data_nascimento, $telefone, $rg, $cpf, $instituicao, $matricula, $lattes, $linkedin, $idEndereco);
 
-		$vazioEnd = Endereco::validate([
-			'cep',
-			'rua',
-			'bairro',
-			'estado',
-			'cidade'
-		]);
-		
-		if (!$vazioAcad && !$vazioEnd) {
-			if (!Freelancer::getFreelancer($cpf)) {	
-				if ($email == $confirmacao_email) {
-					if ($senha == $confirmacao_senha) {
-						$idEndereco = Endereco::create($cep, $rua, $bairro, $estado, $cidade);
-						
-						Freelancer::create($nome, $email, $username, $senha, $data_nascimento, $telefone, $rg, $cpf, $instituicao, $matricula, $lattes, $linkedin, $idEndereco);
-					}
-					else {
-						echo "<script> alert('Senhas não conferem!'); location.href='/View/Freelancer/Create.php'; </script>";
-					}
-				}
-				else {
-					echo "<script> alert('Emails não conferem!'); location.href='/View/Freelancer/Create.php'; </script>";
-				}
-			}
-			else {
-				echo "<script> alert('CPF já cadastrado!'); location.href='/View/Freelancer/Create.php'; </script>";
-			}
-		}
-		else {
-			echo "<script> alert('Todos os campos são de preenchimento obrigatório!'); location.href='/View/Freelancer/Create.php'; </script>";
-		}
-
+		/* Fecha a conexao com o banco de dados */
 		DB::close();
 	}
 }
