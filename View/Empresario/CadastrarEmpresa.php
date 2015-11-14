@@ -62,7 +62,7 @@
         <!-- Page Content -->
 		<div class="container">
 		  <div class="matshead">
-			<h2 class="text-muted">Conta Empresário</h2>
+			<h2 class="text-muted">Cadastrar Empresa</h2>
 		  </div>
 		  <hr class="featurette-divider">
 		  <div class="row">
@@ -71,58 +71,30 @@
 				<div class="form-group">
 				  <label class="col-sm-2 control-label">Nome</label>
 				  <div class="col-md-8">
-					<input class="form-control" type="text" id="nome" name="nome" placeholder="Ex. João da Silva">
+					<input class="form-control" type="text" id="nome" name="nome" placeholder="Ex. Xpto Sistemas">
+				  </div>
+				</div>
+				<div class="form-group">
+				  <label class="col-sm-2 control-label">Razão Social</label>
+				  <div class="col-md-8">
+					<input class="form-control" type="text" id="razao_social" name="razao_social" placeholder="Ex. Xpto Desenvolvimento de Software LTDA">
 				  </div>
 				</div>
 				<div class="form-group">
 				  <label class="col-sm-2 control-label">Email</label>
 				  <div class="col-md-8">
-					<input class="form-control" type="email" id="email" name="email" placeholder="Ex. joao@mail.com">
+					<input class="form-control" type="email" id="email" name="email" placeholder="Ex. xpto@mail.com">
 				  </div>
 				</div>            
 				<div class="form-group">
-				  <label class="col-sm-2 control-label">Confirmação de Email</label>
-				  <div class="col-md-8">
-					<input class="form-control" type="email" id="confirmacao_email" name="confirmacao_email" placeholder="Ex. joao@mail.com">
-				  </div>
-				</div>
-				<div class="form-group">
-				  <label class="col-sm-2 control-label">Nome de Usuário</label>
-				  <div class="col-md-8">
-					<input class="form-control" type="text" id="username" name="username" placeholder="Ex. jsilva">
-				  </div>
-				</div>
-				<div class="form-group">
-				  <label class="col-sm-2 control-label">Senha</label>
-				  <div class="col-md-8">
-					<input class="form-control" type="password" id="senha" name="senha" placeholder="Min. 8 Caracteres">
-				  </div>
-				</div>
-				<div class="form-group">
-				  <label class="col-sm-2 control-label">Confirmação de Senha</label>
-				  <div class="col-md-8">
-					<input class="form-control" type="password" id="confirmacao_senha" name="confirmacao_senha" placeholder="Min. 8 Caracteres">
-				  </div>
-				</div>
-				<div class="form-group">
-				  <label class="col-sm-2 control-label">Data de Nascimento</label>
+				  <label class="col-sm-2 control-label">CNPJ</label>
 				  <div class="col-md-3">
-					<input class="form-control" type="date" id="data_nascimento" name="data_nascimento" placeholder="Ex. 01/01/1999">
+					<input class="form-control" type="text" id="cnpj" name="cnpj" placeholder="Ex. 27.868.536/0001-80">
 				  </div>
 				  <label class="col-sm-2 control-label">Número de Telefone</label>
 					<div class="col-md-3">
 					  <input class="form-control" type="tel" id="telefone" name="telefone" placeholder="Ex. (55) 9988-7766">
 					</div>
-				</div>
-				<div class="form-group">
-				  <label class="col-sm-2 control-label">RG</label>
-				  <div class="col-md-3">
-					<input class="form-control" type="text" id="rg" name="rg" placeholder="Ex. 66.777.888.99">
-				  </div>
-				  <label class="col-sm-2 control-label">CPF</label>
-				  <div class="col-md-3">
-					<input class="form-control" type="text" id="cpf" name="cpf" placeholder="Ex. 999.888.777-66">
-				  </div>
 				</div>
 				<div class="form-group">
 				  <label class="col-sm-2 control-label">CEP</label>
@@ -154,7 +126,7 @@
 				</div>
 				<div class="form-group">
 				  <div class="col-sm-offset-8 col-sm-12">
-					<button type="submit" class="btn btn-success btn-lg">Editar</button>
+					<button type="submit" class="btn btn-success btn-lg">Cadastrar</button>
 				  </div>
 				</div>
 			  </form>
@@ -164,6 +136,7 @@
         <!-- /#page-content-wrapper -->
 
     </div>
-
+    <!-- Lista de cidades e estados -->
+    <script src="/public/js/cidades-estados-v0.2.js"></script>
   </body>
 </html>
