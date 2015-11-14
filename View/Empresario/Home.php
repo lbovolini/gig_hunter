@@ -1,20 +1,7 @@
-<?php 
-
-session_start();
-
+<?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require_once $root.'/Model/Autentica.php';
- 
-$aut = Autenticador::instanciar();
- 
-$usuario = null;
-if ($aut->esta_logado()) {
-    $usuario = $aut->pegar_usuario();
-}
-else {
-    $aut->expulsar();
-}
-?>
+require $root.'/Controller/Auth.php'; ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 

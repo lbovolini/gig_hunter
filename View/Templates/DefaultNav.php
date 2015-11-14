@@ -3,8 +3,7 @@
   
     <?php
     $root = $_SERVER['DOCUMENT_ROOT']; 
-    require $root.'/View/Login.php';
-	?>
+    //require $root.'/View/Login.php'; ?>
 	
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
