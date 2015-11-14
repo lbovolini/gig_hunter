@@ -20,7 +20,10 @@ class LoginController
 		$username = test_input($_POST['username']);
 		$senha = test_input($_POST['senha']);
 
-        $aut = new AutenticadorDB();
+        # Uso do singleton para instanciar
+        # apenas um objeto de autenticação
+        # e esconder a classe real de autenticação
+        $aut = Autenticador::instanciar();
 
         # efetua o processo de autenticação
         if ($aut->entrar($username, $senha)) {

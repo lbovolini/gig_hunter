@@ -1,12 +1,5 @@
 <?php
 
-$root = $_SERVER['DOCUMENT_ROOT'];
-require_once $root.'/connection.php';
-require_once $root.'/validation.php';
-//require_once $root.'/Model/Empresario.php';
-//require_once $root.'/Model/Academico.php';
-//require_once $root.'/Model/Freelancer.php';
-
  
 abstract class Autenticador {
  
@@ -28,7 +21,7 @@ abstract class Autenticador {
  
     }
  
-    public abstract function logar($username, $senha);
+    public abstract function entrar($username, $senha);
     public abstract function esta_logado();
     public abstract function pegar_usuario();
     public abstract function expulsar();
