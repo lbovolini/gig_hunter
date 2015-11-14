@@ -26,7 +26,7 @@ class LoginController
         $aut = Autenticador::instanciar();
 
         # efetua o processo de autenticação
-        if ($aut->logar($username, $senha)) {
+        if ($aut->entrar($username, $senha)) {
             # redireciona o usuário para dentro do sistema
             header('location: View/Empresario/Home.php');
         }

@@ -1,10 +1,5 @@
 <nav class="navbar-default navbar-top topnav" role="navigation">
   <div class="container topnav">
-  
-    <?php
-    $root = $_SERVER['DOCUMENT_ROOT']; 
-    require $root.'/View/Login.php'; ?>
-	
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
