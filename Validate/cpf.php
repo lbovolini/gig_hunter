@@ -30,6 +30,6 @@ else
 }
 
 // fecha a conexao com o banco de dados
-DB::connect();
+DB::close();
 
 ?>
