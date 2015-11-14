@@ -59,7 +59,7 @@
             <div class="form-group">
             <label class="col-sm-2 control-label">Data de Nascimento</label>
             <div class="col-md-3">
-              <input class="form-control" type="date" name="data_nascimento" placeholder="Ex. 01/01/1999">
+              <input class="form-control" type="text" name="data_nascimento" placeholder="Ex. 01/01/1999">
             </div>
             <label class="col-sm-2 control-label">Número de Telefone</label>
             <div class="col-md-3">

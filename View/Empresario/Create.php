@@ -117,8 +117,6 @@
     <?php
     $root = $_SERVER['DOCUMENT_ROOT']; 
     require $root.'/View/Templates/Footer.php'; ?>
-    <!-- Bootstrap datepicker -->
-    <script src="/public/js/bootstrap-datepicker.min.js"></script>
     <!-- Lista de cidades e estados -->
     <script src="/public/js/cidades-estados-v0.2.js"></script>
     <!-- jQuery validate -->
