@@ -1,3 +1,7 @@
+<?php
+$root = $_SERVER['DOCUMENT_ROOT'];
+require $root.'/Controller/Auth.php'; ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
