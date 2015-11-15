@@ -107,8 +107,7 @@ $(function() {
 			cidade: "required",
 			instituicao: "required",
 			matricula : "required",
-			lattes: "required",
-			linkedin: "required"
+			lattes: "required"
 		},
 		messages: {
 			email: {
