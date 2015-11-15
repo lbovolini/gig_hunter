@@ -63,7 +63,7 @@ class Freelancer
 
 	/* verifica se o CPF ja esta registrado */
 	public static function cpfRegistrado($cpf) {
-	    $query = "SELECT 1 FROM usuarios WHERE cpf = '{$cpf}' LIMIT 1;";
+	    $query = "SELECT id FROM usuarios WHERE cpf = '{$cpf}' LIMIT 1;";
 	    $resultado = mysql_query($query);
 
 	    if(mysql_fetch_array($resultado) == 0)
