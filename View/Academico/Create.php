@@ -146,7 +146,7 @@
     <!-- jQuery validate -->
     <script src="/public/js/jquery.validate.min.js"></script>
     <!-- Valida cadastro -->
-    <script src="/public/js/validate/empresario.validate.js"></script>
+    <script src="/public/js/validate/academico.validate.js"></script>
     <!-- masked input -->
     <script src="/public/js/jquery.maskedinput.min.js"></script>
   </body>
