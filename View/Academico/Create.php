@@ -141,9 +141,16 @@
     <?php
     $root = $_SERVER['DOCUMENT_ROOT']; 
     require $root.'/View/Templates/Footer.php'; ?>
+    <!-- Lista de cidades e estados -->
+    <script src="/public/js/cidades-estados-v0.2.js"></script>
+    <!-- jQuery validate -->
+    <script src="/public/js/jquery.validate.min.js"></script>
+    <!-- Valida cadastro -->
+    <script src="/public/js/validate/empresario.validate.js"></script>
+    <!-- masked input -->
+    <script src="/public/js/jquery.maskedinput.min.js"></script>
   </body>
 </html>
-
 <?php
 /*
  * caso haja o preencimento dos dados e a submissão do formulário, o

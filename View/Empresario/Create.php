@@ -63,7 +63,7 @@
               </div>
               <label class="col-sm-2 control-label">Número de Telefone</label>
                 <div class="col-md-3">
-                  <input class="form-control" type="tel" id="telefone" name="telefone" placeholder="Ex. (55) 9988-7766">
+                  <input class="form-control" type="text" id="telefone" name="telefone" placeholder="Ex. (55) 9988-7766">
                 </div>
             </div>
             <div class="form-group">
@@ -125,10 +125,8 @@
     <script src="/public/js/validate/empresario.validate.js"></script>
     <!-- masked input -->
     <script src="/public/js/jquery.maskedinput.min.js"></script>
-
   </body>
 </html>
-
 <?php
 /*
  * caso haja o preencimento dos dados e a submissão do formulário, o

@@ -101,13 +101,14 @@ $(function() {
                 }
 			},
 			cep: "required",
-			rua: {
-				required: true
-			},
+			rua: "required",
 			bairro: "required",
 			estado: "required",
-			cidade: "required"
-
+			cidade: "required",
+			instituicao: "required",
+			matricula : "required",
+			lattes: "required",
+			linkedin: "required"
 		},
 		messages: {
 			email: {
