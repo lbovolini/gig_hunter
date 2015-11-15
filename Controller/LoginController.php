@@ -27,8 +27,19 @@ class LoginController
 
         # efetua o processo de autenticação
         if ($aut->entrar($username, $senha)) {
-            # redireciona o usuário para dentro do sistema
-            header('location: View/Empresario/Home.php');
+            if($_SESSION['tipo'] == 'Empresario') {
+                # redireciona o usuário para dentro do sistema
+                header('location: View/Empresario/Home.php');
+            }
+            elseif ($_SESSION['tipo'] == 'Academico') {
+                # redireciona o usuário para dentro do sistema
+                header('location: View/Academico/Home.php');
+            }
+            elseif ($_SESSION['tipo'] == 'Freelancer') {
+                # redireciona o usuário para dentro do sistema
+                header('location: View/Freelancer/Home.php');
+            }
+
         }
         else {
             # envia o usuário de volta para 

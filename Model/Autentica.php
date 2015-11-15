@@ -44,7 +44,7 @@ class AutenticadorDB extends Autenticador {
     public function entrar($username, $senha) 
     {
         // procura login de empresario
-        $query = "SELECT id, nome, username, 'empresario' AS tipo 
+        $query = "SELECT id, nome, username, 'Empresario' AS tipo 
                   FROM empresarios 
                   WHERE `username` = '{$username}' 
                   AND `senha` = '{$senha}' 
