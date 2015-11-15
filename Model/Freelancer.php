@@ -75,10 +75,10 @@ class Freelancer
 
 
 	//Insere um Freelancer
-	public static function create($nome, $email, $username, $senha, $data_nascimento, $telefone, $rg, $cpf, $instituicao, $matricula, $lattes, $linkedin, $idEndereco) 
+	public static function create($nome, $email, $username, $senha, $data_nascimento, $telefone, $rg, $cpf, $lattes, $linkedin, $idEndereco) 
 	{
-		$query = "INSERT INTO usuarios(nome, email, username, senha, data_nascimento, telefone, rg, cpf, status, tempo_bloqueada, tipo, instituicao, matricula, lattes, linkedin, endereco_id) 
-		   		  VALUES ('{$nome}', '{$email}', '{$username}', '{$senha}', '{$data_nascimento}', '{$telefone}', '{$rg}', '{$cpf}', 'Ativo', '0', 'Freelancer', '{$instituicao}', '{$matricula}', '{$lattes}', '{$linkedin}', '{$idEndereco}')";
+		$query = "INSERT INTO usuarios(nome, email, username, senha, data_nascimento, telefone, rg, cpf, status, tempo_bloqueada, tipo, lattes, linkedin, endereco_id) 
+		   		  VALUES ('{$nome}', '{$email}', '{$username}', '{$senha}', '{$data_nascimento}', '{$telefone}', '{$rg}', '{$cpf}', 'Ativo', '0', 'Freelancer', '{$lattes}', '{$linkedin}', '{$idEndereco}')";
 		mysql_query($query);
 	}
 }

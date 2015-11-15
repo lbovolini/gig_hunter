@@ -31,15 +31,13 @@ class FreelancerController
 		$bairro = test_input($_POST['bairro']);
 		$estado = test_input($_POST['estado']);
 		$cidade = test_input($_POST['cidade']);
-		$instituicao = test_input($_POST['instituicao']);
-		$matricula = test_input($_POST['matricula']);
 		$lattes = test_input($_POST['lattes']);
 		$linkedin = test_input($_POST['linkedin']);
 
 		/* Insere Endereco no banco de dados */
 		$idEndereco = Endereco::create($cep, $rua, $bairro, $estado, $cidade);
 		/* Insere Freelancer no banco de dados */
-		Freelancer::create($nome, $email, $username, $senha, $data_nascimento, $telefone, $rg, $cpf, $instituicao, $matricula, $lattes, $linkedin, $idEndereco);
+		Freelancer::create($nome, $email, $username, $senha, $data_nascimento, $telefone, $rg, $cpf, $lattes, $linkedin, $idEndereco);
 
 		/* Fecha a conexao com o banco de dados */
 		DB::close();

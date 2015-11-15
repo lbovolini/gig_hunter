@@ -105,18 +105,6 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-2 control-label">Instituição de Ensino</label>
-              <div class="col-md-8">
-                <input class="form-control" type="text" id="instituicao" name="instituicao" placeholder="Ex. Universidade de São Paulo">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Matrícula</label>
-              <div class="col-md-4">
-                <input class="form-control" type="text" id="matricula" name="matricula" placeholder="Ex. 200020209">
-              </div>
-            </div>
-            <div class="form-group">
               <label class="col-sm-2 control-label">Lattes</label>
               <div class="col-md-8">
                 <input class="form-control" type="text" id="lattes" name="lattes" placeholder="Ex. ">
@@ -146,7 +134,7 @@
     <!-- jQuery validate -->
     <script src="/public/js/jquery.validate.min.js"></script>
     <!-- Valida cadastro -->
-    <script src="/public/js/validate/usuario.validate.js"></script>
+    <script src="/public/js/validate/freelancer.validate.js"></script>
     <!-- masked input -->
     <script src="/public/js/jquery.maskedinput.min.js"></script>
   </body>
