@@ -97,7 +97,7 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Estado</label>
               <div class="col-md-2">
-                <input class="form-control" type="text" id="rua" name="estado" name="estado">
+                <input class="form-control" type="text" id="estado" name="estado" name="estado">
               </div>
               <label class="col-sm-2 control-label">Cidade</label>
               <div class="col-md-4">
