@@ -91,7 +91,7 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Bairro</label>
               <div class="col-md-8">
-                <input class="form-control" type="text" id="rua" name="bairro" placeholder="Ex. Jardim São Paulo">
+                <input class="form-control" type="text" id="bairro" name="bairro" placeholder="Ex. Jardim São Paulo">
               </div>
             </div>
             <div class="form-group">
