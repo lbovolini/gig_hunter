@@ -130,7 +130,7 @@
             </div>
             <div class="form-group">
               <div class="col-sm-offset-8 col-sm-12">
-                <button type="submit" class="btn btn-primary btn-lg">Cadastrar</button>
+                <button type="submit" class="btn btn-success btn-lg">Cadastrar</button>
               </div>
             </div>
           </form>
