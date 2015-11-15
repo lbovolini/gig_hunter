@@ -104,25 +104,25 @@
                 <select type="text" class="form-control" id="cidade" name="cidade"></select>
               </div>
             </div>
-			      <div class="form-group">
+            <div class="form-group">
               <label class="col-sm-2 control-label">Instituição de Ensino</label>
               <div class="col-md-8">
                 <input class="form-control" type="text" id="instituicao" name="instituicao" placeholder="Ex. Universidade de São Paulo">
               </div>
             </div>
-			      <div class="form-group">
+            <div class="form-group">
               <label class="col-sm-2 control-label">Matrícula</label>
               <div class="col-md-4">
                 <input class="form-control" type="text" id="matricula" name="matricula" placeholder="Ex. 200020209">
               </div>
             </div>
-			      <div class="form-group">
+            <div class="form-group">
               <label class="col-sm-2 control-label">Lattes</label>
               <div class="col-md-8">
                 <input class="form-control" type="text" id="lattes" name="lattes" placeholder="Ex. ">
               </div>
             </div>
-			      <div class="form-group">
+            <div class="form-group">
               <label class="col-sm-2 control-label">Linkedin</label>
               <div class="col-md-8">
                 <input class="form-control" type="text" id="linkedin" name="linkedin" placeholder="Ex. ">
