@@ -1,3 +1,8 @@
+<?php
+$root = $_SERVER['DOCUMENT_ROOT'];
+require $root.'/Controller/Auth.php'; 
+require_once $root.'/connection.php'; ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -51,6 +56,13 @@
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
+		<?php
+			DB::connect();
+			$result = mysql_query("SELECT * FROM usuarios WHERE id = '" . $_SESSION['id'] . "'");
+			$row = mysql_fetch_array($result);
+			$result2 = mysql_query("SELECT * FROM enderecos WHERE id = '" . $row["endereco_id"] . "'");
+			$row2 = mysql_fetch_array($result2);
+		?>
 		<div class="container">
 		  <div class="matshead">
 			<h2 class="text-muted">Conta Freelancer</h2>
@@ -62,13 +74,13 @@
 				<div class="form-group">
 				<label class="col-sm-2 control-label">Nome</label>
 				<div class="col-md-8">
-				  <input class="form-control" type="text" name="nome" placeholder="Ex. João da Silva">
+				  <input class="form-control" type="text" name="nome" placeholder="Ex. João da Silva" value="<?php echo $row["nome"] ?>">
 				</div>
 				</div>
 				<div class="form-group">
 				<label class="col-sm-2 control-label">Email</label>
 				<div class="col-md-8">
-				  <input class="form-control" type="email" name="email" placeholder="Ex. joao@mail.com">
+				  <input class="form-control" type="email" name="email" placeholder="Ex. joao@mail.com" value="<?php echo $row["email"] ?>">
 				</div>
 				</div>            
 				<div class="form-group">
@@ -80,7 +92,7 @@
 				<div class="form-group">
 				<label class="col-sm-2 control-label">Nome de Usuário</label>
 				<div class="col-md-8">
-				  <input class="form-control" type="text" name="username" placeholder="Ex. jsilva">
+				  <input class="form-control" type="text" name="username" placeholder="Ex. jsilva" value="<?php echo $row["username"] ?>">
 				</div>
 				</div>
 				<div class="form-group">
@@ -98,61 +110,61 @@
 				<div class="form-group">
 				<label class="col-sm-2 control-label">Data de Nascimento</label>
 				<div class="col-md-3">
-				  <input class="form-control" type="date" name="data_nascimento" placeholder="Ex. 01/01/1999">
+				  <input class="form-control" type="date" name="data_nascimento" placeholder="Ex. 01/01/1999" value="<?php echo $row["data_nascimento"] ?>">
 				</div>
 				<label class="col-sm-2 control-label">Número de Telefone</label>
 				<div class="col-md-3">
-				  <input class="form-control" type="tel" name="telefone" placeholder="Ex. 5599887766">
+				  <input class="form-control" type="tel" name="telefone" placeholder="Ex. 5599887766" value="<?php echo $row["telefone"] ?>">
 				</div>
 				</div>
 				<div class="form-group">
 				<label class="col-sm-2 control-label">RG</label>
 				<div class="col-md-3">
-				  <input class="form-control" type="text" name="rg" placeholder="Ex. 6677788899">
+				  <input class="form-control" type="text" name="rg" placeholder="Ex. 6677788899" value="<?php echo $row["rg"] ?>">
 				</div>
 				<label class="col-sm-2 control-label">CPF</label>
 				<div class="col-md-3">
-				  <input class="form-control" type="text" name="cpf" placeholder="Ex. 999.888.777-66">
+				  <input class="form-control" type="text" name="cpf" placeholder="Ex. 999.888.777-66" value="<?php echo $row["cpf"] ?>">
 				</div>
 				</div>
 				<div class="form-group">
 				<label class="col-sm-2 control-label">CEP</label>
 				<div class="col-md-4">
-				  <input class="form-control" type="text" name="cep" placeholder="Ex. 01000-099">
+				  <input class="form-control" type="text" name="cep" placeholder="Ex. 01000-099" value="<?php echo $row2["cep"] ?>">
 				</div>
 				</div>
 				<div class="form-group">
 				<label class="col-sm-2 control-label">Rua</label>
 				<div class="col-md-8">
-				  <input class="form-control" type="text" name="rua" placeholder="Ex. R. São Paulo">
+				  <input class="form-control" type="text" name="rua" placeholder="Ex. R. São Paulo" value="<?php echo $row2["rua"] ?>">
 				</div>
 				</div>
 				<div class="form-group">
 				<label class="col-sm-2 control-label">Bairro</label>
 				<div class="col-md-8">
-				  <input class="form-control" type="text" name="bairro" placeholder="Ex. Jardim São Paulo">
+				  <input class="form-control" type="text" name="bairro" placeholder="Ex. Jardim São Paulo" value="<?php echo $row2["bairro"] ?>">
 				</div>
 				</div>
 				<div class="form-group">
 				<label class="col-sm-2 control-label">Estado</label>
 				<div class="col-md-2">
-				  <input class="form-control" type="text" name="estado" name="estado">
+				  <input class="form-control" type="text" name="estado" name="estado" value="<?php echo $row2["estado"] ?>">
 				</div>
 				<label class="col-sm-2 control-label">Cidade</label>
 				<div class="col-md-4">
-				  <input class="form-control" type="text" name="cidade" name="cidade">
+				  <input class="form-control" type="text" name="cidade" name="cidade" value="<?php echo $row2["cidade"] ?>">
 				</div>
 				</div>
 				<div class="form-group">
 				<label class="col-sm-2 control-label">Lattes</label>
 				<div class="col-md-8">
-				  <input class="form-control" type="text" name="lattes" placeholder="Ex. ">
+				  <input class="form-control" type="text" name="lattes" placeholder="Ex. " value="<?php echo $row["lattes"] ?>">
 				</div>
 				</div>
 				<div class="form-group">
 				<label class="col-sm-2 control-label">Linkedin</label>
 				<div class="col-md-8">
-				  <input class="form-control" type="text" name="linkedin" placeholder="Ex. ">
+				  <input class="form-control" type="text" name="linkedin" placeholder="Ex. " value="<?php echo $row["linkedin"] ?>">
 				</div>
 				</div>
 				<div class="form-group">
@@ -170,3 +182,16 @@
 
   </body>
 </html>
+<?php
+/*
+ * caso haja o preencimento dos dados e a submissão do formulário, o
+ * controlador, será chamado para interpretar a ação
+ */
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  $root = $_SERVER['DOCUMENT_ROOT'];
+  require_once $root.'/Controller/FreelancerController.php';
+
+  $freelancer = new FreelancerController();
+  $freelancer->editar();
+}
+?>
