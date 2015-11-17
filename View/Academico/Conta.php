@@ -86,7 +86,7 @@ require_once $root.'/connection.php'; ?>
 				<div class="form-group">
 				<label class="col-sm-2 control-label">Confirmação de Email</label>
 				<div class="col-md-8">
-				  <input class="form-control" type="email" name="confirmacao_email" placeholder="Ex. joao@mail.com">
+				  <input class="form-control" type="email" name="confirmacao_email" placeholder="Ex. joao@mail.com" value="<?php echo $row["email"] ?>">
 				</div>
 				</div>
 				<div class="form-group">
@@ -181,7 +181,7 @@ require_once $root.'/connection.php'; ?>
 				</div>
 				<div class="form-group">
 				  <div class="col-sm-offset-8 col-sm-12">
-					<button type="submit" class="btn btn-primary btn-lg">Editar</button>
+					<button type="submit" class="btn btn-primary btn-lg">Salvar</button>
 				  </div>
 				</div>
 			  </form>

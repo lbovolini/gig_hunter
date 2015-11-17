@@ -76,5 +76,12 @@ class Empresario
 			VALUES ('" . $nome . "', '" . $email . "', '" . $username . "', '" . $senha . "', '" . $data_nascimento . "', '" . $telefone . "', '" . $rg . "', '" . $cpf . "', 'Ativado', '" . $idEndereco . "')";
 		mysql_query($query);
 	}
+	
+	//Edita um Empresario
+	public static function edit($nome, $email, $username, $senha, $data_nascimento, $telefone, $rg, $cpf) 
+	{
+		$query = "UPDATE empresarios SET nome = '" . $nome . "', email = '" . $email . "', username = '" . $username . "', senha = '" . $senha . "', data_nascimento = '" . $data_nascimento . "', telefone = '" . $telefone . "', rg = '" . $rg . "', cpf = '" . $cpf . "' WHERE id = '" . $_SESSION['id'] . "'";
+		mysql_query($query);
+	}
 }
 ?>

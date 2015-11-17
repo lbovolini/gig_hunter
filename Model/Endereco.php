@@ -26,10 +26,16 @@ class Endereco
 	
 	public static function edit($cep, $rua, $bairro, $estado, $cidade) 
 	{
-		$result = mysql_query("SELECT * FROM usuarios WHERE id = '" . $_SESSION['id'] . "'");
+		if ($_SESSION['tipo'] == 'Empresario') {
+			$result = mysql_query("SELECT * FROM empresarios WHERE id = '" . $_SESSION['id'] . "'");
+		}
+		else {
+			$result = mysql_query("SELECT * FROM usuarios WHERE id = '" . $_SESSION['id'] . "'");
+		}
 		$row = mysql_fetch_array($result);
 		
 		$query = "UPDATE enderecos SET cep = '" . $cep . "', rua = '" . $rua . "', bairro = '" . $bairro . "', estado = '" . $estado . "', cidade = '" . $cidade . "' WHERE id = '" . $row['endereco_id'] . "'";
+		mysql_query($query);
 	}
 }
 ?>
