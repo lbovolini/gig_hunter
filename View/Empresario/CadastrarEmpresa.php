@@ -144,3 +144,16 @@ require $root.'/Controller/Auth.php'; ?>
     <script src="/public/js/cidades-estados-v0.2.js"></script>
   </body>
 </html>
+<?php
+/*
+ * caso haja o preencimento dos dados e a submissão do formulário, o
+ * controlador, será chamado para interpretar a ação
+ */
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  $root = $_SERVER['DOCUMENT_ROOT'];
+  require_once $root.'/Controller/EmpresaController.php';
+
+  $empresa = new EmpresaController();
+  $empresa->criar();
+}
+?>
