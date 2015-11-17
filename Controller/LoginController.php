@@ -39,6 +39,10 @@ class LoginController
                 # redireciona o usuário para dentro do sistema
                 header('location: View/Freelancer/Home.php');
             }
+            elseif ($_SESSION['tipo'] == 'Admin') {
+                # redireciona o usuário para dentro do sistema
+                header('location: View/Admin/Home.php');                
+            }
 
         }
         else {
