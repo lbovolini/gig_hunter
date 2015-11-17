@@ -51,7 +51,7 @@ require $root.'/Controller/Auth.php'; ?>
                     <a href="/View/Empresario/Empresa.php">Empresa</a>
                 </li>
                 <li>
-                    <a href="#">Vaga</a>
+                    <a href="/View/Empresario/Vaga.php">Vaga</a>
                 </li>
                 <li>
                     <a href="#">Oferecer Vaga</a>
