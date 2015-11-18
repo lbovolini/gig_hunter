@@ -45,19 +45,16 @@ require $root.'/Controller/Auth.php'; ?>
                     </a>
                 </li>
                 <li>
+                    <a href="#">Publicar Avaliações</a>
+                </li>
+                <li>
                     <a href="#">Bloquear Usuários</a>
                 </li>
                 <li>
-                    <a href="#">Avaliações</a>
+                    <a href="#">Editar/Excluir Empresas</a>
                 </li>
-                <li>
+				<li>
                     <a href="/View/Admin/Requisito.php">Área de interesse</a>
-                </li>
-				<li>
-                    <a href="#">Excluir Empresa</a>
-                </li>
-				<li>
-                    <a href="#">Excluir Usuário</a>
                 </li>
             </ul>
         </div>

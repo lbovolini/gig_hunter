@@ -21,7 +21,7 @@ class Empresa
 	//Edita uma Empresa
 	public static function edit($nome, $razao_social, $email, $telefone, $cnpj)
 	{
-		$query = "UPDATE empresas SET nome = '" . $nome . "', razao_social = '" . $razao_social . "', email = '" . $email . "', telefone = '" . $telefone . "', cnpj = '" . $cnpj . "' WHERE id = '1'";
+		$query = "UPDATE empresas SET nome = '" . $nome . "', razao_social = '" . $razao_social . "', email = '" . $email . "', telefone = '" . $telefone . "', cnpj = '" . $cnpj . "' WHERE id = '" . $_SESSION['idEmpresa'] . "'";
 		mysql_query($query);
 	}
 }

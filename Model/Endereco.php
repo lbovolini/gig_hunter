@@ -42,7 +42,10 @@ class Endereco
 	//Edita um Endereço da Empresa
 	public static function editEmp($cep, $rua, $bairro, $estado, $cidade) 
 	{
-		$query = "UPDATE enderecos SET cep = '" . $cep . "', rua = '" . $rua . "', bairro = '" . $bairro . "', estado = '" . $estado . "', cidade = '" . $cidade . "' WHERE id = '9'";
+		$result = mysql_query("SELECT * FROM empresas WHERE id = '" . $_SESSION['idEmpresa'] . "'");
+		$row = mysql_fetch_array($result);
+		
+		$query = "UPDATE enderecos SET cep = '" . $cep . "', rua = '" . $rua . "', bairro = '" . $bairro . "', estado = '" . $estado . "', cidade = '" . $cidade . "' WHERE id = '" . $row['endereco_id'] . "'";
 		mysql_query($query);
 	}
 }

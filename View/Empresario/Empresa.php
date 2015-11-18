@@ -89,14 +89,17 @@ require_once $root.'/connection.php'; ?>
 							$result = mysql_query("SELECT * FROM empresas WHERE empresario_id = '" . $_SESSION['id'] . "'");
 							if ($result) {
 								while ($row = mysql_fetch_array($result)) {
+									$idEmpresa = $row['id'];
 									echo "<tr>
 											<td>" . $row['id'] . "</td>
 											<td>" . $row['nome'] . "</td>
 											<td>" . $row['cnpj'] . "</td>
 											<td>" . $row['email'] . "</td>
 											<td>" . $row['telefone'] . "</td>
-											<td>"?>	<input type="button" class="btn btn-warning" value="Editar" onclick="javascript: location.href='/View/Empresario/EditarEmpresa.php';" /><?php "</td>
-											<td>"?>	<input type="button" class="btn btn-danger" value="Excluir" onclick="javascript: location.href='/View/Empresario/CadastrarEmpresa.php';" /><?php "</td>
+											<td>
+												<a href='/View/Empresario/EditarEmpresa.php?idEmpresa=$idEmpresa' title='Editar Empresa'><u>Editar</u></a>&nbsp&nbsp&nbsp&nbsp
+											    <a href='/View/Empresario/EditarEmpresa.php?idEmpresa=$idEmpresa' title='Excluir Empresa'><u>Excluir</u></a>
+											</td>										
 										  </tr>";
 								}
 							}

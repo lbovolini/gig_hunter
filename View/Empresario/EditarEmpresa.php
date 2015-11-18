@@ -67,7 +67,11 @@ require_once $root.'/connection.php'; ?>
         <!-- Page Content -->
 		<?php
 			DB::connect();
-			$result = mysql_query("SELECT * FROM empresas WHERE id = '1'");
+			if (isset($_GET['idEmpresa'])) {
+				$idEmpresa = $_GET['idEmpresa'];
+				$_SESSION['idEmpresa'] = $idEmpresa;
+			}
+			$result = mysql_query("SELECT * FROM empresas WHERE id = '" . $_SESSION['idEmpresa'] . "'");
 			$row = mysql_fetch_array($result);
 			$result2 = mysql_query("SELECT * FROM enderecos WHERE id = '" . $row["endereco_id"] . "'");
 			$row2 = mysql_fetch_array($result2);
