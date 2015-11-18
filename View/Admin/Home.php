@@ -40,7 +40,7 @@ require $root.'/Controller/Auth.php'; ?>
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
+                    <a href="/View/Admin/Home.php">
                         Administrador
                     </a>
                 </li>
@@ -48,13 +48,13 @@ require $root.'/Controller/Auth.php'; ?>
                     <a href="#">Bloquear Usuários</a>
                 </li>
                 <li>
-                    <a href="#">Avaliar Avaliações</a>
+                    <a href="#">Avaliações</a>
                 </li>
                 <li>
-                    <a href="#">Cadastrar área de interesse</a>
+                    <a href="/View/Admin/Requisito.php">Área de interesse</a>
                 </li>
 				<li>
-                    <a href="#">Excluir Empresas</a>
+                    <a href="#">Excluir Empresa</a>
                 </li>
 				<li>
                     <a href="#">Excluir Usuário</a>

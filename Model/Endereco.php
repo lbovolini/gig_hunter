@@ -24,6 +24,7 @@ class Endereco
 		}
 	}
 	
+	//Edita um Endereço
 	public static function edit($cep, $rua, $bairro, $estado, $cidade) 
 	{
 		if ($_SESSION['tipo'] == 'Empresario') {
@@ -35,6 +36,13 @@ class Endereco
 		$row = mysql_fetch_array($result);
 		
 		$query = "UPDATE enderecos SET cep = '" . $cep . "', rua = '" . $rua . "', bairro = '" . $bairro . "', estado = '" . $estado . "', cidade = '" . $cidade . "' WHERE id = '" . $row['endereco_id'] . "'";
+		mysql_query($query);
+	}
+	
+	//Edita um Endereço da Empresa
+	public static function editEmp($cep, $rua, $bairro, $estado, $cidade) 
+	{
+		$query = "UPDATE enderecos SET cep = '" . $cep . "', rua = '" . $rua . "', bairro = '" . $bairro . "', estado = '" . $estado . "', cidade = '" . $cidade . "' WHERE id = '9'";
 		mysql_query($query);
 	}
 }

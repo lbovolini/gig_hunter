@@ -41,7 +41,7 @@ require $root.'/Controller/Auth.php'; ?>
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="/View/Empresario/Home.php">
-                        Empresario
+                        Empresário
                     </a>
                 </li>
                 <li>

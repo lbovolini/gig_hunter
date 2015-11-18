@@ -13,7 +13,7 @@ require $root.'/Controller/Auth.php'; ?>
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Empresario</title>
+    <title>Administrador</title>
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/public/img/favicon-suitcase.ico" type="image/x-icon">
@@ -40,24 +40,24 @@ require $root.'/Controller/Auth.php'; ?>
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="/View/Empresario/Home.php">
-                        Empresário
+                    <a href="/View/Admin/Home.php">
+                        Administrador
                     </a>
                 </li>
                 <li>
-                    <a href="/View/Empresario/Conta.php">Conta</a>
+                    <a href="#">Bloquear Usuários</a>
                 </li>
                 <li>
-                    <a href="/View/Empresario/Empresa.php">Empresa</a>
+                    <a href="#">Avaliações</a>
                 </li>
                 <li>
-                    <a href="/View/Empresario/Vaga.php">Vaga</a>
+                    <a href="/View/Admin/Requisito.php">Área de interesse</a>
                 </li>
-                <li>
-                    <a href="#">Oferecer Vaga</a>
+				<li>
+                    <a href="#">Excluir Empresa</a>
                 </li>
-                <li>
-                    <a href="#">Confirmar Vaga</a>
+				<li>
+                    <a href="#">Excluir Usuário</a>
                 </li>
             </ul>
         </div>
@@ -66,15 +66,43 @@ require $root.'/Controller/Auth.php'; ?>
         <!-- Page Content -->
 		<div class="container">
 		  <div class="matshead">
-			<h2 class="text-muted">Vaga
-			</h2>
+			<h2 class="text-muted">Cadastrar Área de Interesse</h2>
 		  </div>
 		  <hr class="featurette-divider">
+		  <div class="row">
+			<div class="col-xs-12 col-md-8">
+			  <form class="form-horizontal" id="register-form" action="" method="POST">
+				<div class="form-group">
+				  <label class="col-sm-2 control-label">Área de Interesse</label>
+				  <div class="col-md-8">
+					<input class="form-control" type="text" id="requisito" name="requisito" placeholder="Ex. Redes de Computadores">
+				  </div>
+				</div>
+				<div class="form-group">
+				  <div class="col-sm-offset-8 col-sm-12">
+					<button type="submit" class="btn btn-success btn-lg">Cadastrar</button>
+				  </div>
+				</div>
+			  </form>
+			</div>
+		  </div>
 		</div>
         <!-- /#page-content-wrapper -->
 
     </div>
-    <!-- Lista de cidades e estados -->
-    <script src="/public/js/cidades-estados-v0.2.js"></script>
+
   </body>
 </html>
+<?php
+/*
+ * caso haja o preencimento dos dados e a submissão do formulário, o
+ * controlador, será chamado para interpretar a ação
+ */
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  $root = $_SERVER['DOCUMENT_ROOT'];
+  require_once $root.'/Controller/AdminController.php';
+
+  $requisito = new AdminController();
+  $requisito->criarRequisito();
+}
+?>

@@ -35,5 +35,32 @@ class EmpresaController
 		/* Fecha a conexao com o banco de dados */
 		DB::close();
 	}
+	
+	/* Edita Empresa */
+	public function editar()
+	{
+		/* Abre a conexao com o banco de dados */
+		DB::connect();
+
+		/* Remove caracteres especias */
+		$nome = test_input($_POST['nome']);
+		$razao_social = test_input($_POST['razao_social']);
+		$email = test_input($_POST['email']);
+		$cnpj = test_input($_POST['cnpj']);
+		$telefone = test_input($_POST['telefone']);
+		$cep = test_input($_POST['cep']);
+		$rua = test_input($_POST['rua']);
+		$bairro = test_input($_POST['bairro']);
+		$estado = test_input($_POST['estado']);
+		$cidade = test_input($_POST['cidade']);
+
+		/* Edita Endereco no banco de dados */
+		Endereco::editEmp($cep, $rua, $bairro, $estado, $cidade);
+		/* Edita Empresa no banco de dados */
+		Empresa::edit($nome, $razao_social, $email, $telefone, $cnpj);
+
+		/* Fecha a conexao com o banco de dados */
+		DB::close();
+	}
 }
 ?>

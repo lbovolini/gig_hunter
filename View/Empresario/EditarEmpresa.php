@@ -67,14 +67,14 @@ require_once $root.'/connection.php'; ?>
         <!-- Page Content -->
 		<?php
 			DB::connect();
-			$result = mysql_query("SELECT * FROM empresarios WHERE id = '" . $_SESSION['id'] . "'");
+			$result = mysql_query("SELECT * FROM empresas WHERE id = '1'");
 			$row = mysql_fetch_array($result);
 			$result2 = mysql_query("SELECT * FROM enderecos WHERE id = '" . $row["endereco_id"] . "'");
 			$row2 = mysql_fetch_array($result2);
 		?>
 		<div class="container">
 		  <div class="matshead">
-			<h2 class="text-muted">Conta Empresário</h2>
+			<h2 class="text-muted">Editar Empresa</h2>
 		  </div>
 		  <hr class="featurette-divider">
 		  <div class="row">
@@ -83,58 +83,30 @@ require_once $root.'/connection.php'; ?>
 				<div class="form-group">
 				  <label class="col-sm-2 control-label">Nome</label>
 				  <div class="col-md-8">
-					<input class="form-control" type="text" id="nome" name="nome" placeholder="Ex. João da Silva"  value="<?php echo $row["nome"] ?>">
+					<input class="form-control" type="text" id="nome" name="nome" placeholder="Ex. Xpto Sistemas" value="<?php echo $row["nome"] ?>">
+				  </div>
+				</div>
+				<div class="form-group">
+				  <label class="col-sm-2 control-label">Razão Social</label>
+				  <div class="col-md-8">
+					<input class="form-control" type="text" id="razao_social" name="razao_social" placeholder="Ex. Xpto Desenvolvimento de Software LTDA" value="<?php echo $row["razao_social"] ?>">
 				  </div>
 				</div>
 				<div class="form-group">
 				  <label class="col-sm-2 control-label">Email</label>
 				  <div class="col-md-8">
-					<input class="form-control" type="email" id="email" name="email" placeholder="Ex. joao@mail.com" value="<?php echo $row["email"] ?>">
+					<input class="form-control" type="email" id="email" name="email" placeholder="Ex. xpto@mail.com" value="<?php echo $row["email"] ?>">
 				  </div>
 				</div>            
 				<div class="form-group">
-				  <label class="col-sm-2 control-label">Confirmação de Email</label>
-				  <div class="col-md-8">
-					<input class="form-control" type="email" id="confirmacao_email" name="confirmacao_email" placeholder="Ex. joao@mail.com" value="<?php echo $row["email"] ?>">
-				  </div>
-				</div>
-				<div class="form-group">
-				  <label class="col-sm-2 control-label">Nome de Usuário</label>
-				  <div class="col-md-8">
-					<input class="form-control" type="text" id="username" name="username" placeholder="Ex. jsilva" value="<?php echo $row["username"] ?>">
-				  </div>
-				</div>
-				<div class="form-group">
-				  <label class="col-sm-2 control-label">Senha</label>
-				  <div class="col-md-8">
-					<input class="form-control" type="password" id="senha" name="senha" placeholder="Min. 8 Caracteres">
-				  </div>
-				</div>
-				<div class="form-group">
-				  <label class="col-sm-2 control-label">Confirmação de Senha</label>
-				  <div class="col-md-8">
-					<input class="form-control" type="password" id="confirmacao_senha" name="confirmacao_senha" placeholder="Min. 8 Caracteres">
-				  </div>
-				</div>
-				<div class="form-group">
-				  <label class="col-sm-2 control-label">Data de Nascimento</label>
+				  <label class="col-sm-2 control-label">CNPJ</label>
 				  <div class="col-md-3">
-					<input class="form-control" type="date" id="data_nascimento" name="data_nascimento" placeholder="Ex. 01/01/1999" value="<?php echo $row["data_nascimento"] ?>">
+					<input class="form-control" type="text" id="cnpj" name="cnpj" placeholder="Ex. 27.868.536/0001-80" value="<?php echo $row["cnpj"] ?>">
 				  </div>
 				  <label class="col-sm-2 control-label">Número de Telefone</label>
 					<div class="col-md-3">
-					  <input class="form-control" type="tel" id="telefone" name="telefone" placeholder="Ex. (55) 9988-7766"  value="<?php echo $row["telefone"] ?>">
+					  <input class="form-control" type="tel" id="telefone" name="telefone" placeholder="Ex. (55) 9988-7766" value="<?php echo $row["telefone"] ?>">
 					</div>
-				</div>
-				<div class="form-group">
-				  <label class="col-sm-2 control-label">RG</label>
-				  <div class="col-md-3">
-					<input class="form-control" type="text" id="rg" name="rg" placeholder="Ex. 66.777.888.99" value="<?php echo $row["rg"] ?>">
-				  </div>
-				  <label class="col-sm-2 control-label">CPF</label>
-				  <div class="col-md-3">
-					<input class="form-control" type="text" id="cpf" name="cpf" placeholder="Ex. 999.888.777-66" value="<?php echo $row["cpf"] ?>">
-				  </div>
 				</div>
 				<div class="form-group">
 				  <label class="col-sm-2 control-label">CEP</label>
@@ -157,11 +129,11 @@ require_once $root.'/connection.php'; ?>
 				<div class="form-group">
 				  <label class="col-sm-2 control-label">Estado</label>
 				  <div class="col-md-3">
-					<input class="form-control" type="text" name="estado" name="estado" value="<?php echo $row2["estado"] ?>">
+					<input class="form-control" type="text" id="estado" name="estado" value="<?php echo $row2["estado"] ?>">
 				  </div>
 				  <label class="col-sm-2 control-label">Cidade</label>
 				  <div class="col-md-3">
-					<input class="form-control" type="text" name="cidade" name="cidade" value="<?php echo $row2["cidade"] ?>">
+					<input class="form-control" type="text" id="cidade" name="cidade" value="<?php echo $row2["cidade"] ?>">
 				  </div>
 				</div>
 				<div class="form-group">
@@ -176,7 +148,8 @@ require_once $root.'/connection.php'; ?>
         <!-- /#page-content-wrapper -->
 
     </div>
-
+    <!-- Lista de cidades e estados -->
+    <script src="/public/js/cidades-estados-v0.2.js"></script>
   </body>
 </html>
 <?php
@@ -186,9 +159,9 @@ require_once $root.'/connection.php'; ?>
  */
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require_once $root.'/Controller/EmpresarioController.php';
+  require_once $root.'/Controller/EmpresaController.php';
 
-  $empresario = new EmpresarioController();
-  $empresario->editar();
+  $empresa = new EmpresaController();
+  $empresa->editar();
 }
 ?>
