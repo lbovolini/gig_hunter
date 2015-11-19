@@ -51,7 +51,7 @@ require $root.'/Controller/Auth.php'; ?>
                     <a href="#">Bloquear Usuários</a>
                 </li>
                 <li>
-                    <a href="#">Editar/Excluir Empresas</a>
+                    <a href="/View/Admin/Empresa.php">Editar/Excluir Empresas</a>
                 </li>
 				<li>
                     <a href="/View/Admin/Requisito.php">Área de interesse</a>

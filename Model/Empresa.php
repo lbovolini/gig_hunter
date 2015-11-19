@@ -24,5 +24,12 @@ class Empresa
 		$query = "UPDATE empresas SET nome = '" . $nome . "', razao_social = '" . $razao_social . "', email = '" . $email . "', telefone = '" . $telefone . "', cnpj = '" . $cnpj . "' WHERE id = '" . $_SESSION['idEmpresa'] . "'";
 		mysql_query($query);
 	}
+
+	//Exclui uma Empresa
+	public static function drop()
+	{
+		$query = "DELETE FROM empresas WHERE id = '" . $_SESSION['idEmpresa'] . "'";
+		mysql_query($query);
+	}
 }
 ?>

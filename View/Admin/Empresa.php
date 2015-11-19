@@ -1,6 +1,7 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root.'/Controller/Auth.php'; ?>
+require $root.'/Controller/Auth.php'; 
+require_once $root.'/connection.php'; ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -59,47 +60,57 @@ require $root.'/Controller/Auth.php'; ?>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
-
+		
         <!-- Page Content -->
 		<div class="container">
 		  <div class="matshead">
-			<h2 class="text-muted">Cadastrar Área de Interesse</h2>
+			<h2 class="text-muted">Empresa</h2>
 		  </div>
 		  <hr class="featurette-divider">
-		  <div class="row">
-			<div class="col-xs-12 col-md-8">
-			  <form class="form-horizontal" id="register-form" action="" method="POST">
-				<div class="form-group">
-				  <label class="col-sm-2 control-label">Área de Interesse</label>
-				  <div class="col-md-8">
-					<input class="form-control" type="text" id="requisito" name="requisito" placeholder="Ex. Redes de Computadores">
-				  </div>
+		  <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Empresa</th>
+								<th>CNPJ</th>
+                                <th>Email</th>
+                                <th>Telefone</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+						<?php
+							DB::connect();
+							$result = mysql_query("SELECT * FROM empresas");
+							if ($result) {
+								while ($row = mysql_fetch_array($result)) {
+									$idEmpresa = $row['id'];
+									echo "<tr>
+											<td>" . $row['id'] . "</td>
+											<td>" . $row['nome'] . "</td>
+											<td>" . $row['cnpj'] . "</td>
+											<td>" . $row['email'] . "</td>
+											<td>" . $row['telefone'] . "</td>
+											<td>
+												<a href='/View/Admin/EditarEmpresa.php?idEmpresa=$idEmpresa' title='Editar Empresa'><u>Editar</u></a>&nbsp&nbsp&nbsp&nbsp
+											    <a href='/View/Admin/ExcluirEmpresa.php?idEmpresa=$idEmpresa' title='Excluir Empresa'><u>Excluir</u></a>
+											</td>										
+										  </tr>";
+								}
+							}
+						?>
+                        </tbody>
+                    </table>
 				</div>
-				<div class="form-group">
-				  <div class="col-sm-offset-8 col-sm-12">
-					<button type="submit" class="btn btn-success btn-lg">Cadastrar</button>
-				  </div>
-				</div>
-			  </form>
-			</div>
-		  </div>
+            </div>
+          </div>
 		</div>
         <!-- /#page-content-wrapper -->
 
     </div>
-
+    <!-- Lista de cidades e estados -->
+    <script src="/public/js/cidades-estados-v0.2.js"></script>
   </body>
 </html>
-<?php
-/*
- * caso haja o preencimento dos dados e a submissão do formulário, o
- * controlador, será chamado para interpretar a ação
- */
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $root = $_SERVER['DOCUMENT_ROOT'];
-  require_once $root.'/Controller/AdminController.php';
-
-  $requisito = new AdminController();
-  $requisito->criarRequisito();
-}
-?>

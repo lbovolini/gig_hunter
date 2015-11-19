@@ -98,7 +98,7 @@ require_once $root.'/connection.php'; ?>
 											<td>" . $row['telefone'] . "</td>
 											<td>
 												<a href='/View/Empresario/EditarEmpresa.php?idEmpresa=$idEmpresa' title='Editar Empresa'><u>Editar</u></a>&nbsp&nbsp&nbsp&nbsp
-											    <a href='/View/Empresario/EditarEmpresa.php?idEmpresa=$idEmpresa' title='Excluir Empresa'><u>Excluir</u></a>
+											    <a href='/View/Empresario/ExcluirEmpresa.php?idEmpresa=$idEmpresa' title='Excluir Empresa'><u>Excluir</u></a>
 											</td>										
 										  </tr>";
 								}

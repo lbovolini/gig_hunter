@@ -62,5 +62,18 @@ class EmpresaController
 		/* Fecha a conexao com o banco de dados */
 		DB::close();
 	}
+
+	/* Exclui Empresa */
+	public function excluir()
+	{
+		/* Abre a conexao com o banco de dados */
+		DB::connect();
+
+		/* Exclui Empresa no banco de dados */
+		Empresa::drop();
+
+		/* Fecha a conexao com o banco de dados */
+		DB::close();
+	}
 }
 ?>
