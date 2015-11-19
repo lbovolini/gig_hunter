@@ -12,8 +12,10 @@ class Vaga
 	//Insere uma Vaga
 	public static function create($descricao, $cargo, $usuario_alvo)
 	{
+		$q="SET FOREIGN_KEY_CHECKS=0";
+		mysql_query($q);
 		$query = "INSERT INTO vagas(descricao, cargo, usuario_alvo, status, empresa_id, usuario_id)
-			VALUES ('" . $descricao . "', '" . $cargo . "', '" . $usuario_alvo . "', 'Aberta', '" . $_SESSION['idEmpresa'] . "', '4')";
+			VALUES ('" . $descricao . "', '" . $cargo . "', '" . $usuario_alvo . "', 'Aberta', '" . $_SESSION['idEmpresa'] . "', 'NULL')";
 		mysql_query($query);
 	}
 	

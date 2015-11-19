@@ -87,7 +87,11 @@ require_once $root.'/connection.php'; ?>
                         <tbody>
 						<?php
 							DB::connect();
-							$result = mysql_query("SELECT * FROM vagas");
+							if (isset($_GET['idEmpresa'])) {
+								$idEmpresa = $_GET['idEmpresa'];
+								$_SESSION['idEmpresa'] = $idEmpresa;
+							}
+							$result = mysql_query("SELECT * FROM vagas WHERE empresa_id = '" . $_SESSION['idEmpresa'] . "'");
 							if ($result) {
 								while ($row = mysql_fetch_array($result)) {
 									$idVaga = $row['id'];

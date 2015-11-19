@@ -92,7 +92,7 @@ require_once $root.'/connection.php'; ?>
 									$idEmpresa = $row['id'];
 									echo "<tr>
 											<td>" . $row['id'] . "</td>
-											<td>" . $row['nome'] . "</td>
+											<td><a href='/View/Empresario/Vaga.php?idEmpresa=$idEmpresa'>". $row['nome'] ."</a></td>
 											<td>" . $row['cnpj'] . "</td>
 											<td>" . $row['email'] . "</td>
 											<td>" . $row['telefone'] . "</td>
