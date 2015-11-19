@@ -1,4 +1,4 @@
-<nav class="navbar-default navbar-top topnav" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container topnav">
 
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="../../index.php"><i class="navbar-brand topnav fa fa-briefcase fa-2x"></i></a>
+      <a href="/index.php"><i class="navbar-brand topnav fa fa-briefcase fa-2x"></i></a>
       <a class="navbar-brand topnav" href="/index.php">Gig Hunter</a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -19,10 +19,10 @@
           <a href="#loginModal" data-toggle="modal" >Entrar</a>
         </li>
         <li>
-          <a href="../../View/Cadastrar.php">Cadastro</a>
+          <a href="/View/Cadastrar.php">Cadastro</a>
         </li>
         <li>
-          <a href="../../View/Templates/About.php">Sobre</a>
+          <a href="/View/Templates/About.php">Sobre</a>
         </li>
       </ul>
     </div>

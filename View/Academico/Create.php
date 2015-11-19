@@ -96,12 +96,12 @@
             </div>
             <div class="form-group">
               <label class="col-sm-2 control-label">Estado</label>
-              <div class="col-md-2">
-                <input class="form-control" type="text" id="estado" name="estado" name="estado">
+              <div class="col-md-3">
+                <select type="text" class="form-control" id="estado" name="estado"></select>
               </div>
               <label class="col-sm-2 control-label">Cidade</label>
-              <div class="col-md-4">
-                <input class="form-control" type="text" id="cidade" name="cidade" name="cidade">
+              <div class="col-md-3">
+                <select type="text" class="form-control" id="cidade" name="cidade"></select>
               </div>
             </div>
             <div class="form-group">
