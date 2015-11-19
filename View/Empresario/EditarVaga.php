@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root.'/Controller/Auth.php'; 
+require $root.'/Controller/Auth.php';
 require_once $root.'/connection.php'; ?>
 
 <!DOCTYPE html>
@@ -65,52 +65,53 @@ require_once $root.'/connection.php'; ?>
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
+		<?php
+			DB::connect();
+			if (isset($_GET['idVaga'])) {
+				$idVaga = $_GET['idVaga'];
+				$_SESSION['idVaga'] = $idVaga;
+			}
+			$result = mysql_query("SELECT * FROM vagas WHERE id = '" . $_SESSION['idVaga'] . "'");
+			$row = mysql_fetch_array($result);
+		?>
 		<div class="container">
 		  <div class="matshead">
-			<h2 class="text-muted">Vaga
-			</h2>
+			<h2 class="text-muted">Editar Vaga</h2>
 		  </div>
 		  <hr class="featurette-divider">
-		  <div class="container">
-            <div class="row">
-                <div class="col-md-10">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Descrição</th>
-								<th>Cargo</th>
-                                <th>Usuário Alvo</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-						<?php
-							DB::connect();
-							$result = mysql_query("SELECT * FROM vagas");
-							if ($result) {
-								while ($row = mysql_fetch_array($result)) {
-									$idVaga = $row['id'];
-									echo "<tr>
-											<td>" . $row['id'] . "</td>
-											<td>" . $row['descricao'] . "</td>
-											<td>" . $row['cargo'] . "</td>
-											<td>" . $row['usuario_alvo'] . "</td>
-											<td>" . $row['status'] . "</td>
-											<td>
-												<a href='/View/Empresario/EditarVaga.php?idVaga=$idVaga' title='Editar Vaga'><u>Editar</u></a>&nbsp&nbsp&nbsp&nbsp
-											    <a href='/View/Empresario/ExcluirVaga.php?idVaga=$idVaga' title='Excluir Vaga'><u>Excluir</u></a>
-											</td>										
-										  </tr>";
-								}
-							}
-						?>
-                        </tbody>
-                    </table>
-				<input type="button" class="btn btn-primary pull-center" value="Cadastrar Nova" onclick="javascript: location.href='/View/Empresario/CadastrarVaga.php';" />
+		  <div class="row">
+			<div class="col-xs-12 col-md-8">
+			  <form class="form-horizontal" id="register-form" action="" method="POST">
+				<div class="form-group">
+				  <label class="col-sm-2 control-label">Descrição</label>
+				  <div class="col-md-8">
+					<textarea class="form-control" type="text" id="descricao" name="descricao" cols=8 rows=3 placeholder="Ex. "><?php echo $row["descricao"] ?></textarea>
+				  </div>
 				</div>
-            </div>
-          </div>
+				<div class="form-group">
+				  <label class="col-sm-2 control-label">Cargo</label>
+				  <div class="col-md-8">
+					<input class="form-control" type="text" id="cargo" name="cargo" placeholder="Ex. " value="<?php echo $row["cargo"] ?>">
+				  </div>
+				</div>
+				<div class="form-group">
+				  <label class="col-sm-2 control-label">Usuário Alvo</label>
+				  <div class="col-md-3">
+					<select class="form-control" name="usuario_alvo">
+						<option value=Academico>Acadêmico</option>
+						<option value=Freelancer>Freelancer</option>
+						<option value=Ambos>Ambos</option>
+					</select>				  
+				  </div>
+				</div>
+				<div class="form-group">
+				  <div class="col-sm-offset-8 col-sm-12">
+					<button type="submit" class="btn btn-success btn-lg">Salvar</button>
+				  </div>
+				</div>
+			  </form>
+			</div>
+		  </div>
 		</div>
         <!-- /#page-content-wrapper -->
 
@@ -119,3 +120,16 @@ require_once $root.'/connection.php'; ?>
     <script src="/public/js/cidades-estados-v0.2.js"></script>
   </body>
 </html>
+<?php
+/*
+ * caso haja o preencimento dos dados e a submissão do formulário, o
+ * controlador, será chamado para interpretar a ação
+ */
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  $root = $_SERVER['DOCUMENT_ROOT'];
+  require_once $root.'/Controller/VagaController.php';
+
+  $vaga = new VagaController();
+  $vaga->editar();
+}
+?>

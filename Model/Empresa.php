@@ -28,6 +28,8 @@ class Empresa
 	//Exclui uma Empresa
 	public static function drop()
 	{
+		$query = "DELETE FROM vagas WHERE empresa_id = '" . $_SESSION['idEmpresa'] . "'";
+		mysql_query($query);
 		$query = "DELETE FROM empresas WHERE id = '" . $_SESSION['idEmpresa'] . "'";
 		mysql_query($query);
 	}

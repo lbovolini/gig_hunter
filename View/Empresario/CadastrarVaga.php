@@ -117,9 +117,9 @@ require $root.'/Controller/Auth.php'; ?>
  */
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require_once $root.'/Controller/EmpresaController.php';
+  require_once $root.'/Controller/VagaController.php';
 
-  $empresa = new EmpresaController();
-  $empresa->criar();
+  $vaga = new VagaController();
+  $vaga->criar();
 }
 ?>
