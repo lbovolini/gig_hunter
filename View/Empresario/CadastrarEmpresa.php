@@ -140,8 +140,18 @@ require $root.'/Controller/Auth.php'; ?>
         <!-- /#page-content-wrapper -->
 
     </div>
+    <!-- Footer, jQuery, Bootstrap -->
+    <?php
+    $root = $_SERVER['DOCUMENT_ROOT']; 
+    require $root.'/View/Templates/Footer.php'; ?>
     <!-- Lista de cidades e estados -->
     <script src="/public/js/cidades-estados-v0.2.js"></script>
+    <!-- jQuery validate -->
+    <script src="/public/js/jquery.validate.min.js"></script>
+    <!-- Valida cadastro -->
+    <script src="/public/js/validate/empresa.validate.js"></script>
+    <!-- masked input -->
+    <script src="/public/js/jquery.maskedinput.min.js"></script>
   </body>
 </html>
 <?php
