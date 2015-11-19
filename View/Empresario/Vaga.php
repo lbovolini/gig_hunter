@@ -13,7 +13,7 @@ require $root.'/Controller/Auth.php'; ?>
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Administrador</title>
+    <title>Empresario</title>
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/public/img/favicon-suitcase.ico" type="image/x-icon">
@@ -40,41 +40,41 @@ require $root.'/Controller/Auth.php'; ?>
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="/View/Admin/Home.php">
-                        Administrador
+                    <a href="/View/Empresario/Home.php">
+                        Empresário
                     </a>
                 </li>
                 <li>
-                    <a href="#">Publicar Avaliações</a>
+                    <a href="/View/Empresario/Conta.php">Conta</a>
                 </li>
                 <li>
-                    <a href="#">Bloquear Usuários</a>
+                    <a href="/View/Empresario/Empresa.php">Empresa</a>
                 </li>
                 <li>
-                    <a href="/View/Admin/Empresa.php">Editar/Excluir Empresas</a>
+                    <a href="/View/Empresario/Vaga.php">Vaga</a>
                 </li>
-				<li>
-                    <a href="/View/Admin/Requisito.php">Área de interesse</a>
+                <li>
+                    <a href="#">Oferecer Vaga</a>
+                </li>
+                <li>
+                    <a href="#">Confirmar Vaga</a>
                 </li>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1>OH GRANDE ADMIN</h1>
-                        <p>Bem vindo de volta grande senhor supremo do universo!</p>
-                        <p>Estávamos esperando seu retorno para restaurar a ordem!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+		<div class="container">
+		  <div class="matshead">
+			<h2 class="text-muted">Vaga
+			</h2>
+		  </div>
+		  <hr class="featurette-divider">
+		</div>
         <!-- /#page-content-wrapper -->
 
     </div>
-
+    <!-- Lista de cidades e estados -->
+    <script src="/public/js/cidades-estados-v0.2.js"></script>
   </body>
 </html>
