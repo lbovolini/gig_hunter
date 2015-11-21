@@ -94,7 +94,7 @@ require_once $root.'/connection.php'; ?>
 												<td>" . $row['usuario_alvo'] . "</td>
 												<td>" . $row2['nome'] . "</td>
 												<td>
-													<a href='/View/Academico/AplicarVaga.php?idVaga=$idVaga' title='Aplicar-se a Vaga'><u>Aplicar-se a Vaga</u></a>
+													<a href='/View/Academico/CandidatarVaga.php?idVaga=$idVaga' title='Candidatar-se à Vaga'><u>Candidatar-se à Vaga</u></a>
 												</td>										
 											  </tr>";
 									}

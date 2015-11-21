@@ -64,7 +64,8 @@ require_once $root.'/connection.php'; ?>
         <!-- Page Content -->
 		<div class="container">
 		  <div class="matshead">
-			<h2 class="text-muted">Empresa</h2>
+			<h2 class="text-muted">Oferecer Vaga
+			</h2>
 		  </div>
 		  <hr class="featurette-divider">
 		  <div class="container">
@@ -74,28 +75,36 @@ require_once $root.'/connection.php'; ?>
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Empresa</th>
-								<th>CNPJ</th>
-                                <th>Email</th>
-                                <th>Telefone</th>
+                                <th>Descrição</th>
+								<th>Cargo</th>
+                                <th>Usuário Alvo</th>
+								<th>Empresa</th>
                             </tr>
                         </thead>
                         <tbody>
 						<?php
 							DB::connect();
-							$result = mysql_query("SELECT * FROM empresas WHERE empresario_id = '" . $_SESSION['id'] . "'");
+							if ((isset($_GET['idVaga'])) & (isset($_GET['alvoVaga']))) {
+								$idVaga = $_GET['idVaga'];
+								$alvoVaga = $_GET['alvoVaga'];
+								$_SESSION['idVaga'] = $idVaga;
+							}
+							if ($alvoVaga == 'Ambos')
+								$result = mysql_query("SELECT * FROM usuarios");
+							else
+								$result = mysql_query("SELECT * FROM usuarios WHERE tipo = '" . $alvoVaga . "'");
 							if ($result) {
 								while ($row = mysql_fetch_array($result)) {
-									$idEmpresa = $row['id'];
+									$result2 = mysql_query("SELECT * FROM enderecos WHERE id = '" . $row["endereco_id"] . "'");
+									$row2 = mysql_fetch_array($result2);
 									echo "<tr>
 											<td>" . $row['id'] . "</td>
-											<td><a href='/View/Empresario/Vaga.php?idEmpresa=$idEmpresa'>". $row['nome'] ."</a></td>
-											<td>" . $row['cnpj'] . "</td>
+											<td>" . $row['nome'] . "</td>
 											<td>" . $row['email'] . "</td>
-											<td>" . $row['telefone'] . "</td>
+											<td>" . $row['data_nascimento'] . "</td>
+											<td>" . $row2['cidade'] . "</td>
 											<td>
-												<a href='/View/Empresario/EditarEmpresa.php?idEmpresa=$idEmpresa' title='Editar Empresa'><u>Editar</u></a>&nbsp&nbsp&nbsp&nbsp
-											    <a href='/View/Empresario/ExcluirEmpresa.php?idEmpresa=$idEmpresa' title='Excluir Empresa'><u>Excluir</u></a>
+												<a href='/View/Empresario/OferecerVagaUsuarioFinal.php' title='Oferecer Vaga'><u>Oferecer Vaga</u></a>
 											</td>										
 										  </tr>";
 								}
@@ -103,7 +112,6 @@ require_once $root.'/connection.php'; ?>
 						?>
                         </tbody>
                     </table>
-				<input type="button" class="btn btn-primary pull-center" value="Cadastrar Nova" onclick="javascript: location.href='/View/Empresario/CadastrarEmpresa.php';" />
 				</div>
             </div>
           </div>

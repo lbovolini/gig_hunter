@@ -51,10 +51,7 @@ require $root.'/View/Templates/DefaultNav.php'; ?>
                 <a href="/View/Empresario/Empresa.php">Empresa</a>
             </li>
             <li>
-                <a href="/View/Empresario/Vaga.php">Vaga</a>
-            </li>
-            <li>
-                <a href="#">Oferecer Vaga</a>
+                <a href="/View/Empresario/OferecerVaga.php">Oferecer Vaga</a>
             </li>
             <li>
                 <a href="#">Confirmar Vaga</a>
