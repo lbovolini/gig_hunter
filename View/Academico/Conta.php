@@ -49,7 +49,7 @@ require_once $root.'/connection.php'; ?>
                     <a href="/View/Academico/Conta.php">Conta</a>
                 </li>
                 <li>
-                    <a href="#">Vaga</a>
+                    <a href="/View/Academico/Vaga.php">Vaga</a>
                 </li>
             </ul>
         </div>
