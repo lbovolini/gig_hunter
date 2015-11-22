@@ -52,10 +52,7 @@ require_once $root.'/connection.php'; ?>
                     <a href="/View/Empresario/Empresa.php">Empresa</a>
                 </li>
                 <li>
-                    <a href="/View/Empresario/Vaga.php">Vaga</a>
-                </li>
-                <li>
-                    <a href="#">Oferecer Vaga</a>
+                    <a href="/View/Empresario/OferecerVaga.php">Oferecer Vaga</a>
                 </li>
                 <li>
                     <a href="#">Confirmar Vaga</a>
@@ -87,21 +84,25 @@ require_once $root.'/connection.php'; ?>
                         <tbody>
 						<?php
 							DB::connect();
-							$result = mysql_query("SELECT * FROM vagas");
-							if ($result) {
-								while ($row = mysql_fetch_array($result)) {
-									$idVaga = $row['id'];
-									echo "<tr>
-											<td>" . $row['id'] . "</td>
-											<td>" . $row['descricao'] . "</td>
-											<td>" . $row['cargo'] . "</td>
-											<td>" . $row['usuario_alvo'] . "</td>
-											<td>" . $row['status'] . "</td>
-											<td>
-												<a href='/View/Empresario/EditarVaga.php?idVaga=$idVaga' title='Editar Vaga'><u>Editar</u></a>&nbsp&nbsp&nbsp&nbsp
-											    <a href='/View/Empresario/ExcluirVaga.php?idVaga=$idVaga' title='Excluir Vaga'><u>Excluir</u></a>
-											</td>										
-										  </tr>";
+							if (isset($_GET['idEmpresa'])) {
+								$idEmpresa = $_GET['idEmpresa'];
+								$_SESSION['idEmpresa'] = $idEmpresa;
+								$result = mysql_query("SELECT * FROM vagas WHERE empresa_id = '" . $_SESSION['idEmpresa'] . "'");
+								if ($result) {
+									while ($row = mysql_fetch_array($result)) {
+										$idVaga = $row['id'];
+										echo "<tr>
+												<td>" . $row['id'] . "</td>
+												<td>" . $row['descricao'] . "</td>
+												<td>" . $row['cargo'] . "</td>
+												<td>" . $row['usuario_alvo'] . "</td>
+												<td>" . $row['status'] . "</td>
+												<td>
+													<a href='/View/Empresario/EditarVaga.php?idVaga=$idVaga' title='Editar Vaga'><u>Editar</u></a>&nbsp&nbsp&nbsp&nbsp
+													<a href='/View/Empresario/ExcluirVaga.php?idVaga=$idVaga' title='Excluir Vaga'><u>Excluir</u></a>
+												</td>										
+											  </tr>";
+									}
 								}
 							}
 						?>

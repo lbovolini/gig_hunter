@@ -51,7 +51,7 @@ require_once $root.'/Model/Vaga.php';?>
                     <a href="/View/Freelancer/Conta.php">Conta</a>
                 </li>
                 <li>
-                    <a href="#">Vaga</a>
+                    <a href="/View/Freelancer/Vaga.php">Vaga</a>
                 </li>
             </ul>
         </div>

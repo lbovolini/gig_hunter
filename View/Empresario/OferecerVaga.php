@@ -1,6 +1,7 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root.'/Controller/Auth.php'; ?>
+require $root.'/Controller/Auth.php'; 
+require_once $root.'/connection.php'; ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -33,6 +34,7 @@ require $root.'/Controller/Auth.php'; ?>
     $root = $_SERVER['DOCUMENT_ROOT'];
     require $root.'/View/Templates/DefaultNav.php'; ?>
 
+
     <div id="wrapper">
 
         <!-- Sidebar -->
@@ -60,21 +62,58 @@ require $root.'/Controller/Auth.php'; ?>
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1>Simple Sidebar</h1>
-                        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
-                    </div>
-                </div>
+		<div class="container">
+		  <div class="matshead">
+			<h2 class="text-muted">Oferecer Vaga
+			</h2>
+		  </div>
+		  <hr class="featurette-divider">
+		  <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Descrição</th>
+								<th>Cargo</th>
+                                <th>Usuário Alvo</th>
+								<th>Empresa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+						<?php
+							DB::connect();
+							$result = mysql_query("SELECT * FROM vagas v, empresas e WHERE v.status = 'Aberta' AND v.empresa_id = e.id AND e.empresario_id = '" . $_SESSION["id"] . "'");
+							if ($result) {
+								while ($row = mysql_fetch_array($result)) {
+									$idVaga = $row['id'];
+									$alvoVaga = $row['usuario_alvo'];
+									$result2 = mysql_query("SELECT * FROM empresas WHERE id = '" . $row["empresa_id"] . "'");
+									$row2 = mysql_fetch_array($result2);
+									echo "<tr>
+											<td>" . $row['id'] . "</td>
+											<td>" . $row['descricao'] . "</td>
+											<td>" . $row['cargo'] . "</td>
+											<td>" . $row['usuario_alvo'] . "</td>
+											<td>" . $row2['nome'] . "</td>
+											<td>
+												<a href='/View/Empresario/OferecerVagaUsuario.php?idVaga=$idVaga&alvoVaga=$alvoVaga' title='Oferecer Vaga'><u>Oferecer Vaga</u></a>
+											</td>										
+										  </tr>";
+								}
+							}
+						?>
+                        </tbody>
+                    </table>
+				</div>
             </div>
-        </div>
+          </div>
+		</div>
         <!-- /#page-content-wrapper -->
 
     </div>
-
+    <!-- Lista de cidades e estados -->
+    <script src="/public/js/cidades-estados-v0.2.js"></script>
   </body>
 </html>

@@ -14,7 +14,7 @@ require_once $root.'/connection.php'; ?>
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Empresario</title>
+    <title>Freelancer</title>
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/public/img/favicon-suitcase.ico" type="image/x-icon">
@@ -41,21 +41,15 @@ require_once $root.'/connection.php'; ?>
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="/View/Empresario/Home.php">
-                        Empresário
+                    <a href="/View/Freelancer/Home.php">
+                        Freelancer
                     </a>
                 </li>
                 <li>
-                    <a href="/View/Empresario/Conta.php">Conta</a>
+                    <a href="/View/Freelancer/Conta.php">Conta</a>
                 </li>
                 <li>
-                    <a href="/View/Empresario/Empresa.php">Empresa</a>
-                </li>
-                <li>
-                    <a href="/View/Empresario/OferecerVaga.php">Oferecer Vaga</a>
-                </li>
-                <li>
-                    <a href="#">Confirmar Vaga</a>
+                    <a href="/View/Freelancer/Vaga.php">Vaga</a>
                 </li>
             </ul>
         </div>
@@ -64,7 +58,8 @@ require_once $root.'/connection.php'; ?>
         <!-- Page Content -->
 		<div class="container">
 		  <div class="matshead">
-			<h2 class="text-muted">Empresa</h2>
+			<h2 class="text-muted">Vaga
+			</h2>
 		  </div>
 		  <hr class="featurette-divider">
 		  <div class="container">
@@ -74,36 +69,40 @@ require_once $root.'/connection.php'; ?>
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Empresa</th>
-								<th>CNPJ</th>
-                                <th>Email</th>
-                                <th>Telefone</th>
+                                <th>Descrição</th>
+								<th>Cargo</th>
+                                <th>Usuário Alvo</th>
+								<th>Empresa</th>
                             </tr>
                         </thead>
                         <tbody>
 						<?php
 							DB::connect();
-							$result = mysql_query("SELECT * FROM empresas WHERE empresario_id = '" . $_SESSION['id'] . "'");
+							$result = mysql_query("SELECT * FROM vagas WHERE usuario_alvo != 'Academico' AND status = 'Aberta'");
 							if ($result) {
 								while ($row = mysql_fetch_array($result)) {
-									$idEmpresa = $row['id'];
-									echo "<tr>
-											<td>" . $row['id'] . "</td>
-											<td><a href='/View/Empresario/Vaga.php?idEmpresa=$idEmpresa'>". $row['nome'] ."</a></td>
-											<td>" . $row['cnpj'] . "</td>
-											<td>" . $row['email'] . "</td>
-											<td>" . $row['telefone'] . "</td>
-											<td>
-												<a href='/View/Empresario/EditarEmpresa.php?idEmpresa=$idEmpresa' title='Editar Empresa'><u>Editar</u></a>&nbsp&nbsp&nbsp&nbsp
-											    <a href='/View/Empresario/ExcluirEmpresa.php?idEmpresa=$idEmpresa' title='Excluir Empresa'><u>Excluir</u></a>
-											</td>										
-										  </tr>";
+									$idVaga = $row['id'];
+									$busca = "SELECT 1 FROM candidatos WHERE usuario_id = '" . $_SESSION['id'] . "' AND vaga_id = '" . $idVaga . "'";
+									$resultado = mysql_query($busca);
+									if(mysql_fetch_array($resultado) == 0) {
+										$result2 = mysql_query("SELECT * FROM empresas WHERE id = '" . $row["empresa_id"] . "'");
+										$row2 = mysql_fetch_array($result2);
+										echo "<tr>
+												<td>" . $row['id'] . "</td>
+												<td>" . $row['descricao'] . "</td>
+												<td>" . $row['cargo'] . "</td>
+												<td>" . $row['usuario_alvo'] . "</td>
+												<td>" . $row2['nome'] . "</td>
+												<td>
+													<a href='/View/Freelancer/CandidatarVaga.php?idVaga=$idVaga' title='Candidatar-se à Vaga'><u>Candidatar-se à Vaga</u></a>
+												</td>										
+											  </tr>";
+									}
 								}
 							}
 						?>
                         </tbody>
                     </table>
-				<input type="button" class="btn btn-primary pull-center" value="Cadastrar Nova" onclick="javascript: location.href='/View/Empresario/CadastrarEmpresa.php';" />
 				</div>
             </div>
           </div>
