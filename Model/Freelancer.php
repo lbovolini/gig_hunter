@@ -87,5 +87,15 @@ class Freelancer
 		$query = "UPDATE usuarios SET nome = '" . $nome . "', email = '" . $email . "', username = '" . $username . "', senha = '" . $senha . "', data_nascimento = '" . $data_nascimento . "', telefone = '" . $telefone . "', rg = '" . $rg . "', cpf = '" . $cpf . "', lattes = '" . $lattes . "', linkedin = '" . $linkedin . "' WHERE id = '" . $_SESSION['id'] . "'";
 		mysql_query($query);
 	}
+
+	// Retorna Estado
+	public static function getEstado($id)
+	{
+		$query = "SELECT estado FROM usuarios AS User JOIN enderecos AS End ON (User.endereco_id = End.id) WHERE User.id = '{$id}' LIMIT 1;";
+		$resultado = mysql_query($query);
+		$resultado = mysql_fetch_array($resultado);
+
+		return($resultado['estado']);
+	}
 }
 ?>

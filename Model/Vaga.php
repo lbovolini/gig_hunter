@@ -30,5 +30,21 @@ class Vaga
 		$query = "DELETE FROM vagas WHERE id = '" . $_SESSION['idVaga'] . "'";
 		mysql_query($query);
 	}
+
+	// Retorna vagas de empresas do estado
+	public static function getVagasRecomendadas($estado, $usuario_alvo)
+	{
+		$query = "SELECT Vag.id, descricao, cargo, Emp.id, nome, cidade, estado 
+				  FROM empresas AS Emp 
+				  JOIN enderecos AS End 
+				  ON (Emp.endereco_id = End.id) 
+				  JOIN vagas as Vag 
+				  ON (Emp.id = Vag.empresa_id)
+				  WHERE estado = '{$estado}'
+				  AND usuario_alvo = '{$usuario_alvo}'
+				  LIMIT 10;";
+
+		return(mysql_query($query));
+	}
 }
 ?>

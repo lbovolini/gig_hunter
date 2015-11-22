@@ -1,6 +1,9 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root.'/Controller/Auth.php'; ?>
+require $root.'/Controller/Auth.php'; 
+require_once $root.'/connection.php'; 
+require_once $root.'/Model/Freelancer.php';
+require_once $root.'/Model/Vaga.php';?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -67,7 +70,54 @@ require $root.'/Controller/Auth.php'; ?>
                 </div>
             </div>
         </div>
-        <!-- /#page-content-wrapper -->
+
+        <!-- Page Content -->
+        <div class="container">
+          <div class="matshead">
+            <h2 class="text-muted">Vagas Recomendadas</h2>
+          </div>
+          <hr class="featurette-divider">
+          <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Descricao</th>
+                                <th>Cargo</th>
+                                <th>Empresa</th>
+                                <th>Cidade</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                            DB::connect();
+
+                            $estado = Freelancer::getEstado($_SESSION['id']);
+
+                            $vagas = Vaga::getVagasRecomendadas($estado, $usuario_alvo);
+
+                            if ($vagas) {
+                                while ($row = mysql_fetch_array($vagas)) {
+                                    $idEmpresa = $row['Vag.id'];
+                                    echo "<tr>
+                                            <td>" . $row['descricao'] . "</td>
+                                            <td>" . $row['cargo'] . "</td>
+                                            <td>" . $row['nome'] . "</td>
+                                            <td>" . $row['cidade'] . "</td>
+                                            <td>" . $row['estado'] . "</td>                                    
+                                          </tr>";
+                                }
+                            }
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+          </div>
+        </div>
 
     </div>
 
