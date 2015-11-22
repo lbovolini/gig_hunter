@@ -34,7 +34,7 @@ class Vaga
 	}
 
 	// Retorna vagas de empresas do estado
-	public static function getVagasRecomendadas($estado, $usuario_alvo)
+	public static function getVagasRecomendadas($estado, $usuario)
 	{
 		$query = "SELECT Vag.id, descricao, cargo, Emp.id, nome, cidade, estado 
 				  FROM empresas AS Emp 
@@ -43,7 +43,8 @@ class Vaga
 				  JOIN vagas as Vag 
 				  ON (Emp.id = Vag.empresa_id)
 				  WHERE estado = '{$estado}'
-				  AND usuario_alvo = '{$usuario_alvo}'
+				  AND usuario_alvo != '{$usuario}'
+				  AND status = 'Aberta'
 				  LIMIT 10;";
 
 		return(mysql_query($query));

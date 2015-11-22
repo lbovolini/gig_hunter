@@ -1,6 +1,9 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root.'/Controller/Auth.php'; ?>
+require $root.'/Controller/Auth.php';
+require_once $root.'/connection.php'; 
+require_once $root.'/Model/Freelancer.php';
+require_once $root.'/Model/Vaga.php'; ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -54,20 +57,59 @@ require $root.'/Controller/Auth.php'; ?>
         </div>
         <!-- /#sidebar-wrapper -->
 
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1>Acadêmico</h1>
-                        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
-                    </div>
+        <div class="container">
+          <div class="matshead">
+            <h2 class="text-muted">Vagas Recomendadas</h2>
+          </div>
+          <hr class="featurette-divider">
+          <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Descricao</th>
+                                <th>Cargo</th>
+                                <th>Empresa</th>
+                                <th>Cidade</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                            DB::connect();
+
+                            $estado = Freelancer::getEstado($_SESSION['id']);
+
+                            if($_SESSION['tipo'] == 'Freelancer')
+                                $usuario = 'Academico';
+                            else
+                                $usuario = 'Freelancer';
+
+                            $vagas = Vaga::getVagasRecomendadas($estado, $usuario);
+
+                            if ($vagas) {
+                                $i = 1;
+                                while ($row = mysql_fetch_array($vagas)) {
+                                    $idEmpresa = $row['Vag.id'];
+                                    echo "<tr>
+                                            <td>" . $i++ . "</td>
+                                            <td>" . $row['descricao'] . "</td>
+                                            <td>" . $row['cargo'] . "</td>
+                                            <td>" . $row['nome'] . "</td>
+                                            <td>" . $row['cidade'] . "</td>
+                                            <td>" . $row['estado'] . "</td>                                    
+                                          </tr>";
+                                }
+                            }
+                        ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
+          </div>
         </div>
-        <!-- /#page-content-wrapper -->
 
     </div>
 
