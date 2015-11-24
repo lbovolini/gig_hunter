@@ -85,10 +85,11 @@ require_once $root.'/connection.php'; ?>
 							DB::connect();
 							$result = mysql_query("SELECT * FROM empresas WHERE empresario_id = '" . $_SESSION['id'] . "'");
 							if ($result) {
+								$i=1;
 								while ($row = mysql_fetch_array($result)) {
 									$idEmpresa = $row['id'];
 									echo "<tr>
-											<td>" . $row['id'] . "</td>
+											<td>" . $i++ . "</td>
 											<td><a href='/View/Empresario/Vaga.php?idEmpresa=$idEmpresa'>". $row['nome'] ."</a></td>
 											<td>" . $row['cnpj'] . "</td>
 											<td>" . $row['email'] . "</td>

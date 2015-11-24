@@ -84,15 +84,16 @@ require_once $root.'/connection.php'; ?>
                         <tbody>
 						<?php
 							DB::connect();
-							$result = mysql_query("SELECT * FROM vagas v, empresas e WHERE v.status = 'Aberta' AND v.empresa_id = e.id AND e.empresario_id = '" . $_SESSION["id"] . "'");
+							$result = mysql_query("SELECT * FROM empresas e, vagas v WHERE v.status = 'Aberta' AND v.empresa_id = e.id AND e.empresario_id = '" . $_SESSION["id"] . "'");
 							if ($result) {
+								$i=1;
 								while ($row = mysql_fetch_array($result)) {
 									$idVaga = $row['id'];
 									$alvoVaga = $row['usuario_alvo'];
 									$result2 = mysql_query("SELECT * FROM empresas WHERE id = '" . $row["empresa_id"] . "'");
 									$row2 = mysql_fetch_array($result2);
 									echo "<tr>
-											<td>" . $row['id'] . "</td>
+											<td>" . $i++ . "</td>
 											<td>" . $row['descricao'] . "</td>
 											<td>" . $row['cargo'] . "</td>
 											<td>" . $row['usuario_alvo'] . "</td>
