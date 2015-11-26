@@ -94,19 +94,25 @@ require_once $root.'/connection.php'; ?>
 							else
 								$result = mysql_query("SELECT * FROM usuarios WHERE tipo = '" . $alvoVaga . "'");
 							if ($result) {
+								$i=1;
 								while ($row = mysql_fetch_array($result)) {
-									$result2 = mysql_query("SELECT * FROM enderecos WHERE id = '" . $row["endereco_id"] . "'");
-									$row2 = mysql_fetch_array($result2);
-									echo "<tr>
-											<td>" . $row['id'] . "</td>
-											<td>" . $row['nome'] . "</td>
-											<td>" . $row['email'] . "</td>
-											<td>" . $row['data_nascimento'] . "</td>
-											<td>" . $row2['cidade'] . "</td>
-											<td>
-												<a href='/View/Empresario/OferecerVagaUsuarioFinal.php' title='Oferecer Vaga'><u>Oferecer Vaga</u></a>
-											</td>										
-										  </tr>";
+									$idUsuario = $row['id'];
+									$busca = "SELECT 1 FROM oferecidas WHERE usuario_id = '" . $idUsuario . "' AND vaga_id = '" . $idVaga . "'";
+									$resultado = mysql_query($busca);
+									if(mysql_fetch_array($resultado) == 0) {
+										$result2 = mysql_query("SELECT * FROM enderecos WHERE id = '" . $row["endereco_id"] . "'");
+										$row2 = mysql_fetch_array($result2);
+										echo "<tr>
+												<td>" . $i++ . "</td>
+												<td>" . $row['nome'] . "</td>
+												<td>" . $row['email'] . "</td>
+												<td>" . $row['data_nascimento'] . "</td>
+												<td>" . $row2['cidade'] . "</td>
+												<td>
+													<a href='/Model/OferecerVaga.php?idVaga=$idVaga&idUsuario=$idUsuario' title='Oferecer Vaga'><u>Oferecer Vaga</u></a>
+												</td>										
+											  </tr>";
+									}
 								}
 							}
 						?>

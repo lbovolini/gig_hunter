@@ -117,13 +117,13 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-2 control-label">Currículo</label>
+              <label class="col-sm-2 control-label">Lattes</label>
               <div class="col-md-8">
                 <input class="form-control" type="text" id="lattes" name="lattes" placeholder="Ex. ">
               </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-2 control-label">Portfólio</label>
+              <label class="col-sm-2 control-label">Linkedin</label>
               <div class="col-md-8">
                 <input class="form-control" type="text" id="linkedin" name="linkedin" placeholder="Ex. ">
               </div>
