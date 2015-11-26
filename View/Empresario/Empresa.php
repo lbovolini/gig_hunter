@@ -55,7 +55,7 @@ require_once $root.'/connection.php'; ?>
                     <a href="/View/Empresario/OferecerVaga.php">Oferecer Vaga</a>
                 </li>
                 <li>
-                    <a href="#">Confirmar Vaga</a>
+                    <a href="/View/Empresario/ConfirmarVaga.php">Confirmar Vaga</a>
                 </li>
             </ul>
         </div>

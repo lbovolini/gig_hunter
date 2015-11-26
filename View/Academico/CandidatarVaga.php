@@ -1,7 +1,7 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root.'/Controller/AuthAcademico.php';
-require_once $root.'/connection.php'; 
+require_once $root.'/connection.php'; ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">

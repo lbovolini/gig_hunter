@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root.'/Controller/AuthEmpresario.php';
+require $root.'/Controller/AuthEmpresario.php'; 
 require_once $root.'/connection.php'; ?>
 
 <!DOCTYPE html>
@@ -62,53 +62,57 @@ require_once $root.'/connection.php'; ?>
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
-		<?php
-			DB::connect();
-			if (isset($_GET['idVaga'])) {
-				$idVaga = $_GET['idVaga'];
-				$_SESSION['idVaga'] = $idVaga;
-			}
-			$result = mysql_query("SELECT * FROM vagas WHERE id = '" . $_SESSION['idVaga'] . "'");
-			$row = mysql_fetch_array($result);
-		?>
 		<div class="container">
 		  <div class="matshead">
-			<h2 class="text-muted">Editar Vaga</h2>
+			<h2 class="text-muted">Confirmar Vaga
+			</h2>
 		  </div>
 		  <hr class="featurette-divider">
-		  <div class="row">
-			<div class="col-xs-12 col-md-8">
-			  <form class="form-horizontal" id="register-form" action="" method="POST">
-				<div class="form-group">
-				  <label class="col-sm-2 control-label">Descrição</label>
-				  <div class="col-md-8">
-					<textarea class="form-control" type="text" id="descricao" name="descricao" cols=8 rows=3 placeholder="Ex. "><?php echo $row["descricao"] ?></textarea>
-				  </div>
+		  <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Descrição</th>
+								<th>Cargo</th>
+                                <th>Usuário Alvo</th>
+								<th>Empresa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+						<?php
+							DB::connect();
+							if (isset($_GET['idVaga'])) {
+								$idVaga = $_GET['idVaga'];
+								$_SESSION['idVaga'] = $idVaga;
+							}
+							$result = mysql_query("SELECT * FROM usuarios u, candidatos c WHERE c.usuario_id = '" . $_SESSION['id'] . "' AND c.vaga_id = '" . $idVaga . "'");
+							if ($result) {
+								$i=1;
+								while ($row = mysql_fetch_array($result)) {
+									$idUsuario = $row['id'];
+									$result2 = mysql_query("SELECT * FROM enderecos WHERE id = '" . $row["endereco_id"] . "'");
+									$row2 = mysql_fetch_array($result2);
+									echo "<tr>
+											<td>" . $i++ . "</td>
+											<td>" . $row['nome'] . "</td>
+											<td>" . $row['email'] . "</td>
+											<td>" . $row['data_nascimento'] . "</td>
+											<td>" . $row2['cidade'] . "</td>
+											<td>
+												<a href='/Model/ConfirmarVaga.php?idVaga=$idVaga&idUsuario=$idUsuario' title='Confirmar Vaga'><u>Confirmar Vaga</u></a>
+											</td>										
+										  </tr>";
+								}
+							}
+					?>
+                        </tbody>
+                    </table>
 				</div>
-				<div class="form-group">
-				  <label class="col-sm-2 control-label">Cargo</label>
-				  <div class="col-md-8">
-					<input class="form-control" type="text" id="cargo" name="cargo" placeholder="Ex. " value="<?php echo $row["cargo"] ?>">
-				  </div>
-				</div>
-				<div class="form-group">
-				  <label class="col-sm-2 control-label">Usuário Alvo</label>
-				  <div class="col-md-3">
-					<select class="form-control" name="usuario_alvo">
-						<option value=Academico>Acadêmico</option>
-						<option value=Freelancer>Freelancer</option>
-						<option value=Ambos>Ambos</option>
-					</select>				  
-				  </div>
-				</div>
-				<div class="form-group">
-				  <div class="col-sm-offset-8 col-sm-12">
-					<button type="submit" class="btn btn-success btn-lg">Salvar</button>
-				  </div>
-				</div>
-			  </form>
-			</div>
-		  </div>
+            </div>
+          </div>
 		</div>
         <!-- /#page-content-wrapper -->
 
@@ -117,16 +121,3 @@ require_once $root.'/connection.php'; ?>
     <script src="/public/js/cidades-estados-v0.2.js"></script>
   </body>
 </html>
-<?php
-/*
- * caso haja o preencimento dos dados e a submissão do formulário, o
- * controlador, será chamado para interpretar a ação
- */
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $root = $_SERVER['DOCUMENT_ROOT'];
-  require_once $root.'/Controller/VagaController.php';
-
-  $vaga = new VagaController();
-  $vaga->editar();
-}
-?>
