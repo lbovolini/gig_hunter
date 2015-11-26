@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root.'/Controller/Auth.php'; ?>
+require $root.'/Controller/AuthAdmin.php'; ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">

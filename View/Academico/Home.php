@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root.'/Controller/Auth.php';
+require $root.'/Controller/AuthAcademico.php';
 require_once $root.'/connection.php'; 
 require_once $root.'/Model/Freelancer.php';
 require_once $root.'/Model/Vaga.php'; ?>
@@ -87,7 +87,7 @@ require_once $root.'/Model/Vaga.php'; ?>
                             else
                                 $usuario = 'Freelancer';
 
-                            $vagas = Vaga::getVagasRecomendadas($estado, $usuario);
+                            $vagas = Vaga::getVagasRecomendadas($estado, $usuario, $_SESSION['id']);
 
                             if ($vagas) {
                                 $i = 1;

@@ -55,12 +55,15 @@ $(function() {
                   }
                 }*/
 			},
+			senha_atual: {
+				required: true
+			},
 			senha: {
-				required: true,
+				//required: true,
 				minlength: 8
 			},
 			confirmacao_senha: {
-				required: true,
+				//required: true,
 				equalTo: "#senha"
 			},
 			data_nascimento: {

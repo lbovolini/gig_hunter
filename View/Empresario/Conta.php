@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root.'/Controller/Auth.php';
+require $root.'/Controller/AuthEmpresario.php';
 require_once $root.'/connection.php'; ?>
 
 <!DOCTYPE html>
@@ -98,8 +98,16 @@ require $root.'/View/Templates/DefaultNav.php'; ?>
             <input class="form-control" type="text" id="username" name="username" placeholder="Ex. jsilva" value="<?php echo $row["username"] ?>">
             </div>
           </div>
+
           <div class="form-group">
-            <label class="col-sm-2 control-label">Senha</label>
+            <label class="col-sm-2 control-label">Senha Atual</label>
+            <div class="col-md-8">
+            <input class="form-control" type="password" id="senha_atual" name="senha_atual" placeholder="Min. 8 Caracteres">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Nova Senha</label>
             <div class="col-md-8">
             <input class="form-control" type="password" id="senha" name="senha" placeholder="Min. 8 Caracteres">
             </div>
@@ -148,16 +156,17 @@ require $root.'/View/Templates/DefaultNav.php'; ?>
             <input class="form-control" type="text" id="bairro" name="bairro" placeholder="Ex. Jardim São Paulo" value="<?php echo $row2["bairro"] ?>">
             </div>
           </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">Estado</label>
-                  <div class="col-md-3">
-                    <select type="text" class="form-control" id="estado" name="estado"></select>
-                  </div>
-                  <label class="col-sm-2 control-label">Cidade</label>
-                  <div class="col-md-3">
-                    <select type="text" class="form-control" id="cidade" name="cidade"></select>
-                  </div>
-                </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Estado</label>
+            <div class="col-md-3">
+              <select class="form-control" id="estado" name="estado" value="<?php echo $row2["estado"] ?>"></select>
+            </div>
+            <label class="col-sm-2 control-label">Cidade</label>
+            <div class="col-md-3">
+              <select class="form-control" id="cidade" name="cidade" value="<?php echo $row2["cidade"] ?>"></select>
+            </div>
+          </div>
+
           <div class="form-group">
             <div class="col-sm-offset-8 col-sm-12">
             <button type="submit" class="btn btn-success btn-lg">Salvar</button>
@@ -173,7 +182,15 @@ require $root.'/View/Templates/DefaultNav.php'; ?>
     $root = $_SERVER['DOCUMENT_ROOT']; 
     require $root.'/View/Templates/Footer.php'; ?>
     <!-- Lista de cidades e estados -->
-    <script src="/public/js/cidades-estados-v0.2.js"></script>
+    <!--<script src="/public/js/cidades-estados-v0.2.js"></script>-->
+    <script language="JavaScript" type="text/javascript" src="/public/js/cidades-estados-utf8.js"></script>
+
+    <script language="JavaScript" type="text/javascript" charset="utf-8">
+      new dgCidadesEstados({
+        cidade: document.getElementById('cidade'),
+        estado: document.getElementById('estado')
+      })
+    </script>
     <!-- jQuery validate -->
     <script src="/public/js/jquery.validate.min.js"></script>
     <!-- Valida cadastro -->

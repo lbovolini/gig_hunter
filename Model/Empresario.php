@@ -68,6 +68,19 @@ class Empresario
 	    }
         return true; //registrado
 	}
+
+	// Valida senha
+	public static function senhaValida($id, $senha)
+	{
+		$query = "SELECT id FROM empresarios WHERE id = '{$id}' AND senha = '{$senha}';";
+		$resultado = mysql_query($query);
+
+	    if(mysql_fetch_array($resultado) == 0)
+	    {
+	        return false; // invalida
+	    }
+        return true; // valida
+	}
 	
 	//Insere um Empresario
 	public static function create($nome, $email, $username, $senha, $data_nascimento, $telefone, $rg, $cpf, $idEndereco) 

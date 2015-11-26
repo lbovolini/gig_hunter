@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root.'/Controller/Auth.php';
+require $root.'/Controller/AuthEmpresario.php';
 require_once $root.'/connection.php'; ?>
 
 <!DOCTYPE html>
@@ -130,11 +130,11 @@ require_once $root.'/connection.php'; ?>
 				<div class="form-group">
 				  <label class="col-sm-2 control-label">Estado</label>
 				  <div class="col-md-3">
-					<input class="form-control" type="text" id="estado" name="estado" value="<?php echo $row2["estado"] ?>">
+					<select type="text" class="form-control" id="estado" name="estado" value="<?php echo $row2["estado"] ?>"></select>
 				  </div>
 				  <label class="col-sm-2 control-label">Cidade</label>
 				  <div class="col-md-3">
-					<input class="form-control" type="text" id="cidade" name="cidade" value="<?php echo $row2["cidade"] ?>">
+					<select type="text" class="form-control" id="cidade" name="cidade" value="<?php echo $row2["cidade"] ?>"></select>
 				  </div>
 				</div>
 				<div class="form-group">
@@ -149,8 +149,26 @@ require_once $root.'/connection.php'; ?>
         <!-- /#page-content-wrapper -->
 
     </div>
+    <!-- Footer, jQuery, Bootstrap -->
+    <?php
+    $root = $_SERVER['DOCUMENT_ROOT']; 
+    require $root.'/View/Templates/Footer.php'; ?>
     <!-- Lista de cidades e estados -->
-    <script src="/public/js/cidades-estados-v0.2.js"></script>
+    <!--<script src="/public/js/cidades-estados-v0.2.js"></script>-->
+    <script language="JavaScript" type="text/javascript" src="/public/js/cidades-estados-utf8.js"></script>
+
+    <script language="JavaScript" type="text/javascript" charset="utf-8">
+      new dgCidadesEstados({
+        cidade: document.getElementById('cidade'),
+        estado: document.getElementById('estado')
+      })
+    </script>
+    <!-- jQuery validate -->
+    <script src="/public/js/jquery.validate.min.js"></script>
+    <!-- Valida cadastro -->
+    <script src="/public/js/validate/empresa.validate.js"></script>
+    <!-- masked input -->
+    <script src="/public/js/jquery.maskedinput.min.js"></script>
   </body>
 </html>
 <?php
