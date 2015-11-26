@@ -1,6 +1,7 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root.'/Controller/Auth.php'; ?>
+require $root.'/Controller/Auth.php'; 
+require_once $root.'/connection.php'; ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -59,22 +60,33 @@ require $root.'/Controller/Auth.php'; ?>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
-
+		
         <!-- Page Content -->
-        <div id="page-content-wrapper">
-			<div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1>OH GRANDE ADMIN</h1>
-                        <p>Bem vindo de volta grande senhor supremo do universo!</p>
-                        <p>Estávamos esperando seu retorno para restaurar a ordem!</p>
-                    </div>
-                </div>
+		<div class="container">
+		  <div class="matshead">
+			<h2 class="text-muted">Avaliações</h2>
+		  </div>
+		  <hr class="featurette-divider">
+		  <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+				</div>
             </div>
-        </div>
+          </div>
+		</div>
         <!-- /#page-content-wrapper -->
 
     </div>
-
+    <!-- Lista de cidades e estados -->
+    <script src="/public/js/cidades-estados-v0.2.js"></script>
   </body>
 </html>

@@ -64,7 +64,7 @@ require_once $root.'/connection.php'; ?>
         <!-- Page Content -->
 		<div class="container">
 		  <div class="matshead">
-			<h2 class="text-muted">Empresa</h2>
+			<h2 class="text-muted">Usuários</h2>
 		  </div>
 		  <hr class="featurette-divider">
 		  <div class="container">
@@ -74,8 +74,9 @@ require_once $root.'/connection.php'; ?>
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Empresa</th>
-								<th>CNPJ</th>
+								<th>Tipo</th>
+                                <th>Usuário</th>
+								<th>CPF</th>
                                 <th>Email</th>
                                 <th>Telefone</th>
                             </tr>
@@ -83,20 +84,40 @@ require_once $root.'/connection.php'; ?>
                         <tbody>
 						<?php
 							DB::connect();
-							$result = mysql_query("SELECT * FROM empresas");
+							$result = mysql_query("SELECT * FROM empresarios");
 							if ($result) {
 								while ($row = mysql_fetch_array($result)) {
-									$idEmpresa = $row['id'];
+									$idEmpresario = $row['id'];
 									echo "<tr>
 											<td>" . $row['id'] . "</td>
+											<td>" . "Empresário"  ."</td>
 											<td>" . $row['nome'] . "</td>
-											<td>" . $row['cnpj'] . "</td>
+											<td>" . $row['cpf'] . "</td>
 											<td>" . $row['email'] . "</td>
 											<td>" . $row['telefone'] . "</td>
 											<td>
-												<a href='/View/Admin/EditarEmpresa.php?idEmpresa=$idEmpresa' title='Editar Empresa'><u>Editar</u></a>&nbsp&nbsp&nbsp&nbsp
-											    <a href='/View/Admin/ExcluirEmpresa.php?idEmpresa=$idEmpresa' title='Excluir Empresa'><u>Excluir</u></a>
+												<a href='/View/Admin/BloquearEmpresario.php?idEmpresario=$idEmpresario' title='Bloquear Usuario'><u>Bloquear</u></a>&nbsp&nbsp&nbsp&nbsp
 											</td>										
+										  </tr>";
+								}
+							}
+						?>
+						<?php
+							DB::connect();
+							$result = mysql_query("SELECT * FROM usuarios");
+							if ($result) {
+								while ($row = mysql_fetch_array($result)) {
+									$idUsuario = $row['id'];
+									echo "<tr>
+											<td>" . $row['id'] . "</td>
+											<td>" . $row['tipo'] . "</td>
+											<td>" . $row['nome'] . "</td>
+											<td>" . $row['cpf'] . "</td>
+											<td>" . $row['email'] . "</td>
+											<td>" . $row['telefone'] . "</td>
+											<td>
+												<a href='/View/Admin/BloquearUsuario.php?idUsuario=$idUsuario' title='Bloquear Usuario'><u>Bloquear</u></a>&nbsp&nbsp&nbsp&nbsp
+											</td>																			
 										  </tr>";
 								}
 							}
