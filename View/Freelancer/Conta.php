@@ -65,7 +65,7 @@ require_once $root.'/connection.php'; ?>
 		?>
     <div class="container">
       <div class="matshead">
-        <h2 class="text-muted">Conta Freelancer</h2>
+        <h2 class="text-muted">Conta</h2>
       </div>
       <hr class="featurette-divider">
       <div class="row">
