@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root.'/Controller/Auth.php'; 
+require $root.'/Controller/AuthFreelancer.php'; 
 require_once $root.'/connection.php'; 
 require_once $root.'/Model/Freelancer.php';
 require_once $root.'/Model/Vaga.php';?>
@@ -59,6 +59,54 @@ require_once $root.'/Model/Vaga.php';?>
         <!-- Page Content -->
         <div class="container">
           <div class="matshead">
+            <h2 class="text-muted">Vagas Oferecidas</h2>
+          </div>
+          <hr class="featurette-divider">
+          <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Descricao</th>
+                                <th>Cargo</th>
+                                <th>Usuário Alvo</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                            DB::connect();
+							$result = mysql_query("SELECT * FROM oferecidas WHERE usuario_id = '" . $_SESSION['id'] . "'");
+							if ($result) {
+								$i=1;
+								while ($row = mysql_fetch_array($result)) {
+									$idVaga = $row['vaga_id'];
+									$busca = "SELECT 1 FROM candidatos WHERE usuario_id = '" . $_SESSION['id'] . "' AND vaga_id = '" . $row['vaga_id'] . "'";
+									$resultado = mysql_query($busca);
+									if(mysql_fetch_array($resultado) == 0) {
+										$result2 = mysql_query("SELECT * FROM vagas WHERE id = '" . $row['vaga_id'] . "'");
+										$row2 = mysql_fetch_array($result2);
+										echo "<tr>
+												<td>" . $i++ . "</td>
+												<td>" . $row2['descricao'] . "</a></td>
+												<td>" . $row2['cargo'] . "</td>
+												<td>" . $row2['usuario_alvo'] . "</td>
+												<td>" . $row2['status'] . "</td>
+												<td>
+													<a href='/View/Freelancer/AplicarVaga.php?idVaga=$idVaga' title='Aplicar-se à Vaga'><u>Aplicar-se à Vaga</u></a>
+												</td>													
+											  </tr>";
+									}
+								}
+							}
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+          <div class="matshead">
             <h2 class="text-muted">Vagas Recomendadas</h2>
           </div>
           <hr class="featurette-divider">
@@ -87,7 +135,7 @@ require_once $root.'/Model/Vaga.php';?>
                             else
                                 $usuario = 'Freelancer';
 
-                            $vagas = Vaga::getVagasRecomendadas($estado, $usuario);
+                            $vagas = Vaga::getVagasRecomendadas($estado, $usuario, $_SESSION['id']);
 
                             if ($vagas) {
                                 $i = 1;

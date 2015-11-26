@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root.'/Controller/Auth.php'; ?>
+require $root.'/Controller/AuthEmpresario.php'; ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -142,7 +142,15 @@ require $root.'/Controller/Auth.php'; ?>
     $root = $_SERVER['DOCUMENT_ROOT']; 
     require $root.'/View/Templates/Footer.php'; ?>
     <!-- Lista de cidades e estados -->
-    <script src="/public/js/cidades-estados-v0.2.js"></script>
+    <!--<script src="/public/js/cidades-estados-v0.2.js"></script>-->
+    <script language="JavaScript" type="text/javascript" src="/public/js/cidades-estados-utf8.js"></script>
+
+    <script language="JavaScript" type="text/javascript" charset="utf-8">
+      new dgCidadesEstados({
+        cidade: document.getElementById('cidade'),
+        estado: document.getElementById('estado')
+      })
+    </script>
     <!-- jQuery validate -->
     <script src="/public/js/jquery.validate.min.js"></script>
     <!-- Valida cadastro -->

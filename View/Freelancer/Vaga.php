@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root.'/Controller/Auth.php'; 
+require $root.'/Controller/AuthFreelancer.php'; 
 require_once $root.'/connection.php'; ?>
 
 <!DOCTYPE html>
@@ -80,6 +80,7 @@ require_once $root.'/connection.php'; ?>
 							DB::connect();
 							$result = mysql_query("SELECT * FROM vagas WHERE usuario_alvo != 'Academico' AND status = 'Aberta'");
 							if ($result) {
+								$i=1;
 								while ($row = mysql_fetch_array($result)) {
 									$idVaga = $row['id'];
 									$busca = "SELECT 1 FROM candidatos WHERE usuario_id = '" . $_SESSION['id'] . "' AND vaga_id = '" . $idVaga . "'";
@@ -88,13 +89,13 @@ require_once $root.'/connection.php'; ?>
 										$result2 = mysql_query("SELECT * FROM empresas WHERE id = '" . $row["empresa_id"] . "'");
 										$row2 = mysql_fetch_array($result2);
 										echo "<tr>
-												<td>" . $row['id'] . "</td>
+												<td>" . $i++ . "</td>
 												<td>" . $row['descricao'] . "</td>
 												<td>" . $row['cargo'] . "</td>
 												<td>" . $row['usuario_alvo'] . "</td>
 												<td>" . $row2['nome'] . "</td>
 												<td>
-													<a href='/View/Freelancer/CandidatarVaga.php?idVaga=$idVaga' title='Visualizar Vaga'><u>Visualizar Vaga</u></a>
+													<a href='/View/Freelancer/CandidatarVaga.php?idVaga=$idVaga' title='Candidatar-se à Vaga'><u>Candidatar-se à Vaga</u></a>
 												</td>										
 											  </tr>";
 									}

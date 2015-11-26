@@ -11,9 +11,11 @@ require_once $root.'/connection.php';
 
 	$query = "INSERT INTO candidatos(vaga_id, usuario_id) VALUES ('" . $_SESSION['idVaga'] . "', '" . $_SESSION['id'] . "')";
 	mysql_query($query);
+	$query2 = "DELETE FROM oferecidas WHERE vaga_id = '" . $_SESSION['idVaga'] . "' AND usuario_id = '" . $_SESSION['id'] . "'";
+	mysql_query($query2);
 
 	if ($_SESSION['tipo'] == 'Academico')
-		header("Location: /View/Academico/Vaga.php");
+		header("Location: /View/Academico/Home.php");
 	if ($_SESSION['tipo'] == 'Freelancer')
-		header("Location: /View/Freelancer/Vaga.php");		
+		header("Location: /View/Freelancer/Home.php");		
 ?>

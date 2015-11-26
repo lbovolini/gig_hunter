@@ -29,12 +29,16 @@ class Vaga
 	//Exclui uma Empresa
 	public static function drop()
 	{
+		$queryO = "DELETE FROM oferecidas WHERE vaga_id = '" . $_SESSION['idVaga'] . "'";
+		mysql_query($queryO);
+		$queryC = "DELETE FROM candidatos WHERE vaga_id = '" . $_SESSION['idVaga'] . "'";
+		mysql_query($queryC);
 		$query = "DELETE FROM vagas WHERE id = '" . $_SESSION['idVaga'] . "'";
 		mysql_query($query);
 	}
 
 	// Retorna vagas de empresas do estado
-	public static function getVagasRecomendadas($estado, $usuario)
+	public static function getVagasRecomendadas($estado, $usuario, $id_user)
 	{
 		$query = "SELECT Vag.id, descricao, cargo, Emp.id, nome, cidade, estado 
 				  FROM empresas AS Emp 
@@ -45,6 +49,14 @@ class Vaga
 				  WHERE estado = '{$estado}'
 				  AND usuario_alvo != '{$usuario}'
 				  AND status = 'Aberta'
+				  AND Vag.usuario_id = 0
+				  AND Vag.id not in (
+				  	SELECT vaga_id FROM oferecidas
+				  	WHERE usuario_id = '{$id_user}'
+				  )
+				  AND '{$id_user}' not in (
+				  	SELECT usuario_id FROM candidatos
+				  )
 				  LIMIT 10;";
 
 		return(mysql_query($query));

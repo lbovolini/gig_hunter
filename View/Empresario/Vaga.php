@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root.'/Controller/Auth.php'; 
+require $root.'/Controller/AuthEmpresario.php'; 
 require_once $root.'/connection.php'; ?>
 
 <!DOCTYPE html>
@@ -89,10 +89,11 @@ require_once $root.'/connection.php'; ?>
 								$_SESSION['idEmpresa'] = $idEmpresa;
 								$result = mysql_query("SELECT * FROM vagas WHERE empresa_id = '" . $_SESSION['idEmpresa'] . "'");
 								if ($result) {
+									$i=1;
 									while ($row = mysql_fetch_array($result)) {
 										$idVaga = $row['id'];
 										echo "<tr>
-												<td>" . $row['id'] . "</td>
+												<td>" . $i++ . "</td>
 												<td>" . $row['descricao'] . "</td>
 												<td>" . $row['cargo'] . "</td>
 												<td>" . $row['usuario_alvo'] . "</td>

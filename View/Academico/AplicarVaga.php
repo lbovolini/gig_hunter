@@ -1,7 +1,7 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root.'/Controller/AuthAcademico.php';
-require_once $root.'/connection.php'; 
+require $root.'/Controller/Auth.php'; 
+require_once $root.'/connection.php'; ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -138,14 +138,14 @@ require_once $root.'/connection.php';
                     <div class="alert alert-success alert-dismissible" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
-                        </button><?php echo "<a href='/Model/CandidatarVaga.php?idVaga=$idVaga' title='Confirmar'><u>Candidatar-se à Vaga</u></a>" ?>
+                        </button><?php echo "<a href='/Model/CandidatarVaga.php?idVaga=$idVaga' title='Confirmar'><u>Aplicar-se à Vaga</u></a>" ?>
                     </div>
 				</div>
 				<div class="col-md-3">
                     <div class="alert alert-danger alert-dismissible" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
-                        </button><?php echo "<a href='/View/Academico/Vaga.php' title='Voltar'><u>Outras Vagas Disponíveis</u></a>" ?>
+                        </button><?php echo "<a href='/View/Academico/Home.php' title='Voltar'><u>Outras Vagas Oferecidas</u></a>" ?>
                     </div>
                 </div>                
             </div>
