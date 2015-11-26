@@ -113,13 +113,16 @@ require_once $root.'/connection.php'; ?>
 						?>
                         </tbody>
                     </table>
-					<label class="col-sm-2 control-label">Data de Bloqueio</label>
-					<div class="col-md-3">
-						<input class="form-control" type="text" id="data_bloqueio" name="data_bloqueio" value="" >
-					</div>	
-					<div class="col-sm-offset-10">
-						<button type="submit" class="btn btn-success btn-lg">Bloquear</button>
-					</div>
+					<form id="data_block" action="" method="POST">
+						<label class="col-sm-2 control-label">Data de Bloqueio</label>
+						<div class="col-md-3">
+							<input class="form-control" type="text" id="data_bloqueio" name="data_bloqueio" value="<?php echo $row["tempo_bloqueada"] ?>" >
+						</div>
+							
+						<div class="col-sm-offset-10">
+							<button type="submit" class="btn btn-success btn-lg">Bloquear</button>
+						</div>
+					</form>
 				</div>
 				</div>
             </div>
@@ -127,11 +130,13 @@ require_once $root.'/connection.php'; ?>
 		</div><!-- /#page-content-wrapper -->
 
     </div>
+
     <!-- jQuery validate -->
     <script src="/public/js/jquery.validate.min.js"></script>	
     <!-- masked input -->
     <script src="/public/js/jquery.maskedinput.min.js"></script>
 	<script src="/public/js/validate/usuario.block.validate.js"></script>
+	<script src="/public/js/validate/masks.js"></script>
 	<script src="/public/js/validate/metodos.js"></script>
 		
   </body>

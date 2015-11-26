@@ -11,11 +11,11 @@ $.getScript("/public/js/validate/masks.js", function(){
 
 // valida campos
 $(function() {
-	$("#register-form").validate({
+	$("#data_block").validate({
 		rules: {
 			data_bloqueio: {
 				required: true,
-				date: true
+				datetime: true
 			}
 		});
 	},  	

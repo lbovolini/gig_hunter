@@ -131,7 +131,5 @@ require_once $root.'/connection.php'; ?>
         <!-- /#page-content-wrapper -->
 
     </div>
-    <!-- Lista de cidades e estados -->
-    <script src="/public/js/cidades-estados-v0.2.js"></script>
   </body>
 </html>
