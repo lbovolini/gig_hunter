@@ -29,6 +29,10 @@ class Vaga
 	//Exclui uma Empresa
 	public static function drop()
 	{
+		$queryO = "DELETE FROM oferecidas WHERE vaga_id = '" . $_SESSION['idVaga'] . "'";
+		mysql_query($queryO);
+		$queryC = "DELETE FROM candidatos WHERE vaga_id = '" . $_SESSION['idVaga'] . "'";
+		mysql_query($queryC);
 		$query = "DELETE FROM vagas WHERE id = '" . $_SESSION['idVaga'] . "'";
 		mysql_query($query);
 	}
