@@ -67,8 +67,7 @@ require_once $root.'/connection.php'; ?>
         <!-- Page Content -->
 		<div class="container">
 		  <div class="matshead">
-			<h2 class="text-muted">Oferecer Vaga
-			</h2>
+			<h2 class="text-muted">Avaliar</h2>
 		  </div>
 		  <hr class="featurette-divider">
 		  <div class="container">
@@ -78,49 +77,36 @@ require_once $root.'/connection.php'; ?>
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Usuário</th>
-								<th>E-mail</th>
-                                <th>Data de Nascimento</th>
-								<th>Cidade/Estado</th>
+                                <th>Nome</th>
+								<th>Email</th>
+                                <th>Username</th>
+                                <th>Telefone</th>
+                                <th>Tipo</th>
                             </tr>
                         </thead>
                         <tbody>
 						<?php
 							DB::connect();
-							if ((isset($_GET['idVaga'])) & (isset($_GET['alvoVaga']))) {
-								$idVaga = $_GET['idVaga'];
-								$alvoVaga = $_GET['alvoVaga'];
-								$_SESSION['idVaga'] = $idVaga;
-							}
-							if ($alvoVaga == 'Ambos')
-								$result = mysql_query("SELECT * FROM usuarios");
-							else
-								$result = mysql_query("SELECT * FROM usuarios WHERE tipo = '" . $alvoVaga . "'");
+							$result = mysql_query("SELECT id, nome, email, username, telefone, tipo FROM usuarios;");
+
 							if ($result) {
-								$i=1;
+								$i = 1;
 								while ($row = mysql_fetch_array($result)) {
-									$idUsuario = $row['id'];
-									$busca = "SELECT 1 FROM oferecidas WHERE usuario_id = '" . $idUsuario . "' AND vaga_id = '" . $idVaga . "'";
-									$resultado = mysql_query($busca);
-									if(mysql_fetch_array($resultado) == 0) {
-										$result2 = mysql_query("SELECT * FROM enderecos WHERE id = '" . $row["endereco_id"] . "'");
-										$row2 = mysql_fetch_array($result2);
-										echo "<tr>
-												<td>" . $i++ . "</td>
-												<td>" . $row['nome'] . "</td>
-												<td>" . $row['email'] . "</td>
-												<td>" . $row['data_nascimento'] . "</td>
-												<td>" . $row2['cidade'] . "/" . $row2['estado'] ."</td>
-												<td>
-													<a href='/Model/OferecerVaga.php?idVaga=$idVaga&idUsuario=$idUsuario' title='Oferecer Vaga'><u>Oferecer Vaga</u></a>
-												</td>										
-											  </tr>";
-									}
+									$id_usuario = $row['id'];
+									echo "<tr>
+											<td>" . $i++ . "</td>
+											<td><a href='/View/Empresario/AvaliarUsuario.php?id_usuario=$id_usuario'>". $row['nome'] ."</a></td>
+											<td>" . $row['email'] . "</td>
+											<td>" . $row['username'] . "</td>
+											<td>" . $row['telefone'] . "</td>
+                                            <td>" . $row['tipo'] . "</td>
+										  </tr>";
 								}
 							}
 						?>
                         </tbody>
                     </table>
+				<input type="button" class="btn btn-primary pull-center" value="Cadastrar Nova" onclick="javascript: location.href='/View/Empresario/CadastrarEmpresa.php';" />
 				</div>
             </div>
           </div>
