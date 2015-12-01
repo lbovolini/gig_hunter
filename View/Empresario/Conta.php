@@ -56,6 +56,9 @@ require $root.'/View/Templates/DefaultNav.php'; ?>
             <li>
                 <a href="/View/Empresario/ConfirmarVaga.php">Confirmar Vaga</a>
             </li>
+            <li>
+                    <a href="/View/Empresario/Avaliar.php">Avaliar Usuário</a>
+                </li>
         </ul>
     </div>
 

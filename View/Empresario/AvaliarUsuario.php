@@ -65,59 +65,102 @@ require_once $root.'/connection.php'; ?>
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
-		<?php
-			DB::connect();
-			if (isset($_GET['idVaga'])) {
-				$idVaga = $_GET['idVaga'];
-				$_SESSION['idVaga'] = $idVaga;
-			}
-			$result = mysql_query("SELECT * FROM vagas WHERE id = '" . $_SESSION['idVaga'] . "'");
-			$row = mysql_fetch_array($result);
-		?>
 		<div class="container">
 		  <div class="matshead">
-			<h2 class="text-muted">Editar Vaga</h2>
+			<h2 class="text-muted">Avaliar Usuario</h2>
 		  </div>
 		  <hr class="featurette-divider">
 		  <div class="row">
 			<div class="col-xs-12 col-md-8">
 			  <form class="form-horizontal" id="register-form" action="" method="POST">
+			  <?php
+				DB::connect();
+				if (isset($_GET['id_usuario'])) {
+					$id_usuario = $_GET['id_usuario'];
+				}
+
+				$result = mysql_query("SELECT nome, email, username, telefone, tipo FROM usuarios WHERE id = '{$id_usuario}';");
+
+				$row = mysql_fetch_array($result);
+				?>
+
 				<div class="form-group">
-				  <label class="col-sm-2 control-label">Descrição</label>
+				  <label class="col-sm-2 control-label">Nome</label>
 				  <div class="col-md-8">
-					<textarea class="form-control" type="text" id="descricao" name="descricao" cols=8 rows=3 placeholder="Ex. "><?php echo $row["descricao"] ?></textarea>
+					<input disabled="disabled" class="form-control" type="text" id="nome" name="nome" cols=8 rows=3 value="<?php echo $row['nome'] ?>"></input>
 				  </div>
 				</div>
 				<div class="form-group">
-				  <label class="col-sm-2 control-label">Cargo</label>
+				  <label class="col-sm-2 control-label">Email</label>
 				  <div class="col-md-8">
-					<input class="form-control" type="text" id="cargo" name="cargo" placeholder="Ex. " value="<?php echo $row["cargo"] ?>">
+					<input disabled="disabled" class="form-control" type="text" id="email" name="email" cols=8 rows=3 value="<?php echo $row['email'] ?>"></input>
 				  </div>
 				</div>
 				<div class="form-group">
-				  <label class="col-sm-2 control-label">Usuário Alvo</label>
-				  <div class="col-md-3">
-					<select class="form-control" name="usuario_alvo">
-						<option value=Academico>Acadêmico</option>
-						<option value=Freelancer>Freelancer</option>
-						<option value=Ambos>Ambos</option>
-					</select>				  
+				  <label class="col-sm-2 control-label">Username</label>
+				  <div class="col-md-8">
+					<input disabled="disabled" class="form-control" type="text" id="username" name="username" cols=8 rows=3 value="<?php echo $row['username'] ?>"></input>
 				  </div>
 				</div>
+				<div class="form-group">
+				  <label class="col-sm-2 control-label">Tipo</label>
+				  <div class="col-md-8">
+					<input disabled="disabled" class="form-control" type="text" id="tipo" name="tipo" cols=8 rows=3 value="<?php echo $row['tipo'] ?>"></input>
+				  </div>
+				</div>
+
+				<div class="form-group">
+				  <label class="col-sm-2 control-label">Nota</label>
+				  <div class="col-md-8">
+					<select class="form-control" name="nota" id="nota">
+
+						<?php
+						  	$i = 1;
+						  	while ($i <= 10) {
+						  		echo "<option value='{$i}'>$i</option>";
+								$i++;
+							}
+						?>
+					</select>
+				  </div>
+				</div>
+				<div class="form-group">
+				  <label class="col-sm-2 control-label">Comentario</label>
+				  <div class="col-md-8">
+					<textarea class="form-control" type="text" id="comentario" name="comentario" cols=8 rows=3 placeholder="Ex. "></textarea>
+				  </div>
+				</div>
+
+				<div class="form-group">
+				  <label class="col-sm-2 control-label">Empresa</label>
+				  <div class="col-md-8">
+					<select class="form-control" id="empresa" name="empresa" >
+						<?php
+							DB::connect();
+							$result = mysql_query("SELECT id, nome FROM empresas WHERE empresario_id = '{$_SESSION['id']}';");
+
+							if ($result) {
+								while ($row = mysql_fetch_array($result)) {
+									$id = $row['id'];
+									$nome = $row['nome'];
+									echo "<option value='{$id}'>$nome</option>";
+								}
+							}
+						?>				
+					</select>
+				  </div>
+				</div>
+
 				<div class="form-group">
 				  <div class="col-sm-offset-8 col-sm-12">
-					<button type="submit" class="btn btn-success btn-lg">Salvar</button>
+					<button type="submit" class="btn btn-success btn-lg">Avaliar</button>
 				  </div>
 				</div>
 			  </form>
 			</div>
 		  </div>
 		</div>
-        <!-- /#page-content-wrapper -->
-
     </div>
-    <!-- Lista de cidades e estados -->
-    <script src="/public/js/cidades-estados-v0.2.js"></script>
   </body>
 </html>
 <?php
@@ -127,9 +170,9 @@ require_once $root.'/connection.php'; ?>
  */
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require_once $root.'/Controller/VagaController.php';
+  require_once $root.'/Controller/AvaliacaoController.php';
 
-  $vaga = new VagaController();
-  $vaga->editar();
+  $avaliacao = new AvaliacaoController();
+  $avaliacao->criar();
 }
 ?>
