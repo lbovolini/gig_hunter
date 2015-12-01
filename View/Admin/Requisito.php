@@ -45,10 +45,10 @@ require $root.'/Controller/AuthAdmin.php'; ?>
                     </a>
                 </li>
                 <li>
-                    <a href="#">Publicar Avaliações</a>
+                    <a href="/View/Admin/Avaliar.php">Publicar Avaliações</a>
                 </li>
                 <li>
-                    <a href="#">Bloquear Usuários</a>
+                    <a href="/View/Admin/Bloqueio.php">Bloquear Usuários</a>
                 </li>
                 <li>
                     <a href="/View/Admin/Empresa.php">Editar/Excluir Empresas</a>

@@ -46,10 +46,10 @@ require_once $root.'/connection.php'; ?>
                     </a>
                 </li>
                 <li>
-                    <a href="#">Publicar Avaliações</a>
+                    <a href="/View/Admin/Avaliar.php">Publicar Avaliações</a>
                 </li>
                 <li>
-                    <a href="#">Bloquear Usuários</a>
+                    <a href="/View/Admin/Bloqueio.php">Bloquear Usuários</a>
                 </li>
                 <li>
                     <a href="/View/Admin/Empresa.php">Editar/Excluir Empresas</a>
@@ -161,7 +161,6 @@ require_once $root.'/connection.php'; ?>
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $root = $_SERVER['DOCUMENT_ROOT'];
   require_once $root.'/Controller/EmpresaController.php';
-
   $empresa = new EmpresaController();
   $empresa->editar();
 }

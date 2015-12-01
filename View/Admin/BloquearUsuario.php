@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root.'/Controller/AuthAdmin.php'; 
+require $root.'/Controller/AuthAdmin.php';
 require_once $root.'/connection.php'; ?>
 
 <!DOCTYPE html>
@@ -60,22 +60,35 @@ require_once $root.'/connection.php'; ?>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
-		
+
         <!-- Page Content -->
+		<?php
+			DB::connect();
+			if (isset($_GET['idUsuario'])) {
+				$idUsuario = $_GET['idUsuario'];
+				$_SESSION['idUsuario'] = $idUsuario;
+			}
+			$result = mysql_query("SELECT * FROM usuarios WHERE id = '" . $_SESSION['idUsuario'] . "'");
+			$row = mysql_fetch_array($result);
+			$result2 = mysql_query("SELECT * FROM enderecos WHERE id = '" . $row["endereco_id"] . "'");
+			$row2 = mysql_fetch_array($result2);
+		?>
 		<div class="container">
 		  <div class="matshead">
-			<h2 class="text-muted">Empresa</h2>
+			<h2 class="text-muted"> Bloquear Usuários</h2>
 		  </div>
 		  <hr class="featurette-divider">
 		  <div class="container">
             <div class="row">
-                <div class="col-md-10">
-                    <table class="table table-hover">
+                <div class="form-group">
+				<div class="col-md-10">
+				<table class="table table-hover">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Empresa</th>
-								<th>CNPJ</th>
+								<th>Tipo</th>
+                                <th>Usuário</th>
+								<th>CPF</th>
                                 <th>Email</th>
                                 <th>Telefone</th>
                             </tr>
@@ -83,34 +96,66 @@ require_once $root.'/connection.php'; ?>
                         <tbody>
 						<?php
 							DB::connect();
-							$result = mysql_query("SELECT * FROM empresas");
+							$result = mysql_query("SELECT * FROM usuarios");
 							if ($result) {
 								while ($row = mysql_fetch_array($result)) {
-									$idEmpresa = $row['id'];
+									$idUsuario = $row['id'];
 									echo "<tr>
 											<td>" . $row['id'] . "</td>
+											<td>" . $row['tipo'] . "</td>
 											<td>" . $row['nome'] . "</td>
-											<td>" . $row['cnpj'] . "</td>
+											<td>" . $row['cpf'] . "</td>
 											<td>" . $row['email'] . "</td>
-											<td>" . $row['telefone'] . "</td>
-											<td>
-												<a href='/View/Admin/EditarEmpresa.php?idEmpresa=$idEmpresa' title='Editar Empresa'><u>Editar</u></a>&nbsp&nbsp&nbsp&nbsp
-											    <a href='/View/Admin/ExcluirEmpresa.php?idEmpresa=$idEmpresa' title='Excluir Empresa'><u>Excluir</u></a>
-											</td>										
+											<td>" . $row['telefone'] . "</td>																		
 										  </tr>";
 								}
 							}
 						?>
                         </tbody>
                     </table>
+					<form id="data_block" action="" method="POST">
+						<label class="col-sm-2 control-label">Data de Bloqueio</label>
+						<div class="col-md-3">
+							<input class="form-control" type="text" id="data_bloqueio" name="data_bloqueio" value="<?php echo $row["tempo_bloqueada"] ?>" >
+						</div>
+							
+						<div class="col-sm-offset-10">
+							<button type="submit" class="btn btn-success btn-lg">Bloquear</button>
+						</div>
+					</form>
+				</div>
 				</div>
             </div>
           </div>
-		</div>
-        <!-- /#page-content-wrapper -->
+		</div><!-- /#page-content-wrapper -->
 
     </div>
-    <!-- Lista de cidades e estados -->
-    <script src="/public/js/cidades-estados-v0.2.js"></script>
+
+    <!-- jQuery validate -->
+    <script src="/public/js/jquery.validate.min.js"></script>	
+    <!-- masked input -->
+    <script src="/public/js/jquery.maskedinput.min.js"></script>
+	<script src="/public/js/validate/usuario.block.validate.js"></script>
+	<script src="/public/js/validate/masks.js"></script>
+	<script src="/public/js/validate/metodos.js"></script>
+		
   </body>
 </html>
+<?php
+/*
+ * caso haja o preencimento dos dados e a submissão do formulário, o
+ * controlador, será chamado para interpretar a ação
+ */
+ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $row['tipo'] == "Freelancer" ){
+  $root = $_SERVER['DOCUMENT_ROOT'];
+  require_once $root.'/Controller/FreelancerController.php';
+  $fl = new FreelancerController();
+  $fl->editar();
+}
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && $row['tipo'] == "Academico" ) {
+  $root = $_SERVER['DOCUMENT_ROOT'];
+  require_once $root.'/Controller/AcademicoController.php';
+  $academico = new AcademicoController();
+  $academico->editar();
+}
+?>

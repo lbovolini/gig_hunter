@@ -58,6 +58,15 @@ require_once $root.'/Model/Vaga.php';?>
 
         <!-- Page Content -->
         <div class="container">
+		  <div class="matshead">
+            <h1 class="text-muted">Bem-vindo Freelancer</h1>
+          </div>
+		  <hr class="featurette-divider">
+		  <div class="row">
+                <div class="col-md-10">
+					<h4>Bem-vindo FreelancerBem-vindo FreelancerBem-vindo FreelancerBem-vindo FreelancerBem-vindo Freelancer</h4>
+				</div>
+		  </div><br/>
           <div class="matshead">
             <h2 class="text-muted">Vagas Oferecidas</h2>
           </div>
