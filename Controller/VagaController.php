@@ -56,5 +56,19 @@ class VagaController
 		/* Fecha a conexao com o banco de dados */
 		DB::close();
 	}
+
+	/* Candidatar se a uma vaga */
+	public function candidatar()
+	{
+		/* Abre a conexao com o banco de dados */
+		DB::connect();		
+
+		$idVaga = $_GET['idVaga'];
+
+		Vaga::candidatar($idVaga, $_SESSION['id']);
+
+		/* Fecha a conexao com o banco de dados */
+		DB::close();
+	}
 }
 ?>

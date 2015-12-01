@@ -64,5 +64,19 @@ class Vaga
 
 		return(mysql_query($query));
 	}
+
+	// candidatar se a uma vaga
+	public static function candidatar($id_vaga, $id_user) 
+	{
+		$query = "INSERT INTO candidatos(vaga_id, usuario_id) 
+			VALUES ('{$id_vaga}' , '{$id_user}')";
+
+		mysql_query($query);
+		$query2 = "DELETE FROM oferecidas 
+			WHERE vaga_id = '{$id_vaga}' 
+			AND usuario_id = '{$id_user}'";
+
+		mysql_query($query2);
+	}
 }
 ?>
