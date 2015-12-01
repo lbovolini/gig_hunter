@@ -75,10 +75,10 @@ require_once $root.'/connection.php'; ?>
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Descrição</th>
-								<th>Cargo</th>
-                                <th>Usuário Alvo</th>
-								<th>Empresa</th>
+                                <th>Usuário</th>
+								<th>E-mail</th>
+                                <th>Data de Nascimento</th>
+								<th>Cidade/Estado</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -107,7 +107,7 @@ require_once $root.'/connection.php'; ?>
 												<td>" . $row['nome'] . "</td>
 												<td>" . $row['email'] . "</td>
 												<td>" . $row['data_nascimento'] . "</td>
-												<td>" . $row2['cidade'] . "</td>
+												<td>" . $row2['cidade'] . "/" . $row2['estado'] ."</td>
 												<td>
 													<a href='/Model/OferecerVaga.php?idVaga=$idVaga&idUsuario=$idUsuario' title='Oferecer Vaga'><u>Oferecer Vaga</u></a>
 												</td>										

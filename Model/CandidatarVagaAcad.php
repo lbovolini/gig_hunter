@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root.'/Controller/Auth.php';
+require $root.'/Controller/AuthAcademico.php';
 require_once $root.'/connection.php'; 
 
 	DB::connect();
@@ -14,8 +14,5 @@ require_once $root.'/connection.php';
 	$query2 = "DELETE FROM oferecidas WHERE vaga_id = '" . $_SESSION['idVaga'] . "' AND usuario_id = '" . $_SESSION['id'] . "'";
 	mysql_query($query2);
 
-	if ($_SESSION['tipo'] == 'Academico')
-		header("Location: /View/Academico/Home.php");
-	if ($_SESSION['tipo'] == 'Freelancer')
-		header("Location: /View/Freelancer/Home.php");		
+	header("Location: /View/Academico/Home.php");	
 ?>

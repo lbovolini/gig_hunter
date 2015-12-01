@@ -59,12 +59,24 @@ require_once $root.'/Model/Vaga.php';?>
         <!-- Page Content -->
         <div class="container">
 		  <div class="matshead">
-            <h1 class="text-muted">Bem-vindo Freelancer</h1>
+            <h1 class="text-muted">Freelancer</h1>
           </div>
 		  <hr class="featurette-divider">
 		  <div class="row">
                 <div class="col-md-10">
-					<h4>Bem-vindo FreelancerBem-vindo FreelancerBem-vindo FreelancerBem-vindo FreelancerBem-vindo Freelancer</h4>
+					<h4>Bem-vindo FreelancerBem-vindo FreelancerBem-vindo FreelancerBem-vindo FreelancerBem-vindo Freelancer</h4><br/>
+					<div class="matshead">
+						<h2 class="text-muted">Requisitos<?php echo str_repeat("&nbsp;", 10); ?><input type="button" class="btn btn-primary pull-center" value="Editar Requisitos" onclick="javascript: location.href='/View/Freelancer/Requisito.php';" /></h2>
+					</div>
+					<hr class="featurette-divider">
+					<div class="col-md-8">
+					<?php 
+					    DB::connect();
+						$result = mysql_query("SELECT * FROM requisitos");
+						while ($row = mysql_fetch_array($result))
+							echo "<p>" . $row['nome'] . "</p>";
+					?>
+					</div>
 				</div>
 		  </div><br/>
           <div class="matshead">

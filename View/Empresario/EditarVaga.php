@@ -93,12 +93,29 @@ require_once $root.'/connection.php'; ?>
 				</div>
 				<div class="form-group">
 				  <label class="col-sm-2 control-label">Usuário Alvo</label>
-				  <div class="col-md-3">
+				  <div class="col-md-4">
 					<select class="form-control" name="usuario_alvo">
 						<option value=Academico>Acadêmico</option>
 						<option value=Freelancer>Freelancer</option>
 						<option value=Ambos>Ambos</option>
 					</select>				  
+				  </div>
+				</div>
+				<div class="form-group">
+				  <label class="col-sm-2 control-label">Requisitos</label>
+				  <div class="col-md-3">
+					<?php
+						DB::connect();
+						$result5 = mysql_query("SELECT * FROM requisitos");
+						while ($row5 = mysql_fetch_array($result5)) {
+							echo $row5['nome'] ?>
+								<select class="form-control" name="selectArray[ ]">
+									<option value=Não>Não</option>
+									<option value=Sim>Sim</option>
+								</select><br/>		
+							<?php 
+						}
+					?>			  
 				  </div>
 				</div>
 				<div class="form-group">

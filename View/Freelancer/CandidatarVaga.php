@@ -133,12 +133,22 @@ require_once $root.'/connection.php'; ?>
                 <?php echo $row2["telefone"] ?>
               </div>
             </div>
+			<div class="form-group">
+              <label class="col-sm-2 control-label">Requisitos:</label>
+              <div class="col-md-8">
+                <?php 
+					$result3 = mysql_query("SELECT * FROM requisitos r, vaga_requisitos vr WHERE r.id = vr.requisito_id AND vr.vaga_id = '" . $_SESSION['idVaga'] . "'");
+					while ($row3 = mysql_fetch_array($result3))
+						echo $row3['nome'] . "<br/>";
+				?>
+              </div>
+            </div>
 			<div class="container">
                 <div class="col-md-3">
                     <div class="alert alert-success alert-dismissible" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
-                        </button><?php echo "<a href='/Model/CandidatarVaga.php?idVaga=$idVaga' title='Confirmar'><u>Candidatar-se à Vaga</u></a>" ?>
+                        </button><?php echo "<a href='/Model/CandidatarVagaFree.php?idVaga=$idVaga' title='Confirmar'><u>Candidatar-se à Vaga</u></a>" ?>
                     </div>
 				</div>
 				<div class="col-md-3">

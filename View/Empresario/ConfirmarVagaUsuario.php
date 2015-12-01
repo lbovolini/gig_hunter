@@ -75,10 +75,10 @@ require_once $root.'/connection.php'; ?>
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Descrição</th>
-								<th>Cargo</th>
-                                <th>Usuário Alvo</th>
-								<th>Empresa</th>
+                                <th>Usuário</th>
+								<th>E-mail</th>
+                                <th>Data de Nascimento</th>
+								<th>Cidade/Estado</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -88,7 +88,7 @@ require_once $root.'/connection.php'; ?>
 								$idVaga = $_GET['idVaga'];
 								$_SESSION['idVaga'] = $idVaga;
 							}
-							$result = mysql_query("SELECT * FROM usuarios u, candidatos c WHERE c.usuario_id = '" . $_SESSION['id'] . "' AND c.vaga_id = '" . $idVaga . "'");
+							$result = mysql_query("SELECT * FROM usuarios u, candidatos c WHERE c.usuario_id = u.id AND c.vaga_id = '" . $idVaga . "'");
 							if ($result) {
 								$i=1;
 								while ($row = mysql_fetch_array($result)) {
@@ -100,7 +100,7 @@ require_once $root.'/connection.php'; ?>
 											<td>" . $row['nome'] . "</td>
 											<td>" . $row['email'] . "</td>
 											<td>" . $row['data_nascimento'] . "</td>
-											<td>" . $row2['cidade'] . "</td>
+											<td>" . $row2['cidade'] . "/" . $row2['estado'] ."</td>
 											<td>
 												<a href='/Model/ConfirmarVaga.php?idVaga=$idVaga&idUsuario=$idUsuario' title='Confirmar Vaga'><u>Confirmar Vaga</u></a>
 											</td>										

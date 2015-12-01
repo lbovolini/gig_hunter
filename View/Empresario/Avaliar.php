@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root.'/Controller/AuthEmpresario.php';
+require $root.'/Controller/AuthEmpresario.php'; 
 require_once $root.'/connection.php'; ?>
 
 <!DOCTYPE html>
@@ -42,7 +42,7 @@ require_once $root.'/connection.php'; ?>
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="/View/Empresario/Home.php">
-                        Empresario
+                        Empresário
                     </a>
                 </li>
                 <li>
@@ -57,6 +57,9 @@ require_once $root.'/connection.php'; ?>
                 <li>
                     <a href="/View/Empresario/ConfirmarVaga.php">Confirmar Vaga</a>
                 </li>
+                <li>
+                    <a href="/View/Empresario/Avaliar.php">Avaliar Usuário</a>
+                </li>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -64,59 +67,49 @@ require_once $root.'/connection.php'; ?>
         <!-- Page Content -->
 		<div class="container">
 		  <div class="matshead">
-			<h2 class="text-muted">Cadastrar Vaga</h2>
+			<h2 class="text-muted">Avaliar</h2>
 		  </div>
 		  <hr class="featurette-divider">
-		  <div class="row">
-			<div class="col-xs-12 col-md-8">
-			  <form class="form-horizontal" id="register-form" action="" method="POST">
-				<div class="form-group">
-				  <label class="col-sm-2 control-label">Descrição</label>
-				  <div class="col-md-8">
-					<textarea class="form-control" type="text" id="descricao" name="descricao" cols=8 rows=3 placeholder="Ex. "></textarea>
-				  </div>
+		  <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nome</th>
+								<th>Email</th>
+                                <th>Username</th>
+                                <th>Telefone</th>
+                                <th>Tipo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+						<?php
+							DB::connect();
+							$result = mysql_query("SELECT id, nome, email, username, telefone, tipo FROM usuarios;");
+
+							if ($result) {
+								$i = 1;
+								while ($row = mysql_fetch_array($result)) {
+									$id_usuario = $row['id'];
+									echo "<tr>
+											<td>" . $i++ . "</td>
+											<td><a href='/View/Empresario/AvaliarUsuario.php?id_usuario=$id_usuario'>". $row['nome'] ."</a></td>
+											<td>" . $row['email'] . "</td>
+											<td>" . $row['username'] . "</td>
+											<td>" . $row['telefone'] . "</td>
+                                            <td>" . $row['tipo'] . "</td>
+										  </tr>";
+								}
+							}
+						?>
+                        </tbody>
+                    </table>
+				<input type="button" class="btn btn-primary pull-center" value="Cadastrar Nova" onclick="javascript: location.href='/View/Empresario/CadastrarEmpresa.php';" />
 				</div>
-				<div class="form-group">
-				  <label class="col-sm-2 control-label">Cargo</label>
-				  <div class="col-md-8">
-					<input class="form-control" type="text" id="cargo" name="cargo" placeholder="Ex. ">
-				  </div>
-				</div>
-				<div class="form-group">
-				  <label class="col-sm-2 control-label">Usuário Alvo</label>
-				  <div class="col-md-4">
-					<select class="form-control" name="usuario_alvo">
-						<option value=Academico>Acadêmico</option>
-						<option value=Freelancer>Freelancer</option>
-						<option value=Ambos>Ambos</option>
-					</select>				  
-				  </div>
-				</div>
-				<div class="form-group">
-				  <label class="col-sm-2 control-label">Requisitos</label>
-				  <div class="col-md-3">
-					<?php
-						DB::connect();
-						$result5 = mysql_query("SELECT * FROM requisitos");
-						while ($row5 = mysql_fetch_array($result5)) {
-							echo $row5['nome'] ?>
-								<select class="form-control" name="selectArray[ ]">
-									<option value=Não>Não</option>
-									<option value=Sim>Sim</option>
-								</select><br/>		
-							<?php 
-						}
-					?>			  
-				  </div>
-				</div>
-				<div class="form-group">
-				  <div class="col-sm-offset-8 col-sm-12">
-					<button type="submit" class="btn btn-success btn-lg">Cadastrar</button>
-				  </div>
-				</div>
-			  </form>
-			</div>
-		  </div>
+            </div>
+          </div>
 		</div>
         <!-- /#page-content-wrapper -->
 
@@ -125,16 +118,3 @@ require_once $root.'/connection.php'; ?>
     <script src="/public/js/cidades-estados-v0.2.js"></script>
   </body>
 </html>
-<?php
-/*
- * caso haja o preencimento dos dados e a submissão do formulário, o
- * controlador, será chamado para interpretar a ação
- */
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $root = $_SERVER['DOCUMENT_ROOT'];
-  require_once $root.'/Controller/VagaController.php';
-
-  $vaga = new VagaController();
-  $vaga->criar();
-}
-?>

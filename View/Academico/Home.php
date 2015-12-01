@@ -59,12 +59,24 @@ require_once $root.'/Model/Vaga.php'; ?>
 
         <div class="container">
 		  <div class="matshead">
-            <h1 class="text-muted">Bem-vindo Acadêmico</h1>
+            <h1 class="text-muted">Acadêmico</h1>
           </div>
 		  <hr class="featurette-divider">
 		  <div class="row">
                 <div class="col-md-10">
-					<h4>Bem-vindo AcadêmicoBem-vindo AcadêmicoBem-vindo AcadêmicoBem-vindo AcadêmicoBem-vindo Acadêmico</h4>
+					<h4>Bem-vindo AcadêmicoBem-vindo AcadêmicoBem-vindo AcadêmicoBem-vindo AcadêmicoBem-vindo Acadêmico</h4><br/>
+					<div class="matshead">
+						<h2 class="text-muted">Requisitos<?php echo str_repeat("&nbsp;", 10); ?><input type="button" class="btn btn-primary pull-center" value="Editar Requisitos" onclick="javascript: location.href='/View/Academico/Requisito.php';" /></h2>
+					</div>
+					<hr class="featurette-divider">
+					<div class="col-md-8">
+					<?php 
+					    DB::connect();
+						$result = mysql_query("SELECT * FROM requisitos");
+						while ($row = mysql_fetch_array($result))
+							echo "<p>" . $row['nome'] . "</p>";
+					?>
+					</div>
 				</div>
 		  </div><br/>
           <div class="matshead">
@@ -86,7 +98,6 @@ require_once $root.'/Model/Vaga.php'; ?>
                         </thead>
                         <tbody>
                         <?php
-                            DB::connect();
 							$result = mysql_query("SELECT * FROM oferecidas WHERE usuario_id = '" . $_SESSION['id'] . "'");
 							if ($result) {
 								$i=1;
