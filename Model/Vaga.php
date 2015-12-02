@@ -33,6 +33,8 @@ class Vaga
 		mysql_query($queryO);
 		$queryC = "DELETE FROM candidatos WHERE vaga_id = '" . $_SESSION['idVaga'] . "'";
 		mysql_query($queryC);
+		$queryR = "DELETE FROM vaga_requisitos WHERE vaga_id = '" . $_SESSION['idVaga'] . "'";
+		mysql_query($queryR);
 		$query = "DELETE FROM vagas WHERE id = '" . $_SESSION['idVaga'] . "'";
 		mysql_query($query);
 	}
@@ -51,15 +53,32 @@ class Vaga
 				  AND status = 'Aberta'
 				  AND Vag.usuario_id = 0
 				  AND Vag.id not in (
-				  	SELECT vaga_id FROM oferecidas
+				  	SELECT vaga_id 
+				  	FROM oferecidas
 				  	WHERE usuario_id = '{$id_user}'
 				  )
-				  AND '{$id_user}' not in (
-				  	SELECT usuario_id FROM candidatos
+				  AND Vag.id not in (
+				  	SELECT vaga_id 
+				  	FROM candidatos
+				  	WHERE usuario_id = '{$id_user}'
 				  )
 				  LIMIT 10;";
 
 		return(mysql_query($query));
+	}
+
+	// candidatar se a uma vaga
+	public static function candidatar($id_vaga, $id_user) 
+	{
+		$query = "INSERT INTO candidatos(vaga_id, usuario_id) 
+			VALUES ('{$id_vaga}' , '{$id_user}')";
+
+		mysql_query($query);
+		$query2 = "DELETE FROM oferecidas 
+			WHERE vaga_id = '{$id_vaga}' 
+			AND usuario_id = '{$id_user}'";
+
+		mysql_query($query2);
 	}
 }
 ?>

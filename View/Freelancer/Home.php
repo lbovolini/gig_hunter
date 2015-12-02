@@ -72,7 +72,7 @@ require_once $root.'/Model/Vaga.php';?>
 					<div class="col-md-8">
 					<?php 
 					    DB::connect();
-						$result = mysql_query("SELECT * FROM requisitos");
+						$result = mysql_query("SELECT * FROM requisitos r, usuario_requisitos ur WHERE r.id = ur.requisito_id AND ur.usuario_id = '" . $_SESSION['id'] . "'");
 						while ($row = mysql_fetch_array($result))
 							echo "<p>" . $row['nome'] . "</p>";
 					?>

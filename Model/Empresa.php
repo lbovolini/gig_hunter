@@ -34,6 +34,8 @@ class Empresa
 		mysql_query($queryC);
 		$query = "DELETE FROM vagas WHERE empresa_id = '" . $_SESSION['idEmpresa'] . "'";
 		mysql_query($query);
+		$queryR = "DELETE FROM vaga_requisitos WHERE vaga_id = '" . $_SESSION['idVaga'] . "'";
+		mysql_query($queryR);
 		$query = "DELETE FROM empresas WHERE id = '" . $_SESSION['idEmpresa'] . "'";
 		mysql_query($query);
 	}

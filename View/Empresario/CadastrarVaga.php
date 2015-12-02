@@ -42,7 +42,7 @@ require_once $root.'/connection.php'; ?>
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="/View/Empresario/Home.php">
-                        Empresario
+                        Empresário
                     </a>
                 </li>
                 <li>
@@ -56,6 +56,9 @@ require_once $root.'/connection.php'; ?>
                 </li>
                 <li>
                     <a href="/View/Empresario/ConfirmarVaga.php">Confirmar Vaga</a>
+                </li>
+                <li>
+                    <a href="/View/Empresario/Avaliar.php">Avaliar Usuário</a>
                 </li>
             </ul>
         </div>
