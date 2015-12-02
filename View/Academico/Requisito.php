@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root.'/Controller/AuthEmpresario.php';
+require $root.'/Controller/AuthAcademico.php';
 require_once $root.'/connection.php'; ?>
 
 <!DOCTYPE html>
@@ -14,7 +14,7 @@ require_once $root.'/connection.php'; ?>
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Empresario</title>
+    <title>Acadêmico</title>
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/public/img/favicon-suitcase.ico" type="image/x-icon">
@@ -41,57 +41,34 @@ require_once $root.'/connection.php'; ?>
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="/View/Empresario/Home.php">
-                        Empresario
+                    <a href="/View/Academico/Home.php">
+                        Acadêmico
                     </a>
                 </li>
                 <li>
-                    <a href="/View/Empresario/Conta.php">Conta</a>
+                    <a href="/View/Academico/Conta.php">Conta</a>
                 </li>
                 <li>
-                    <a href="/View/Empresario/Empresa.php">Empresa</a>
-                </li>
-                <li>
-                    <a href="/View/Empresario/OferecerVaga.php">Oferecer Vaga</a>
-                </li>
-                <li>
-                    <a href="/View/Empresario/ConfirmarVaga.php">Confirmar Vaga</a>
+                    <a href="/View/Academico/Vaga.php">Vaga</a>
                 </li>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
+		<?php
+			DB::connect();
+			$result = mysql_query("SELECT * FROM vagas WHERE id = '" . $_SESSION['idVaga'] . "'");
+			$row = mysql_fetch_array($result);
+		?>
 		<div class="container">
 		  <div class="matshead">
-			<h2 class="text-muted">Cadastrar Vaga</h2>
+			<h2 class="text-muted">Editar Requisitos</h2>
 		  </div>
 		  <hr class="featurette-divider">
 		  <div class="row">
 			<div class="col-xs-12 col-md-8">
 			  <form class="form-horizontal" id="register-form" action="" method="POST">
-				<div class="form-group">
-				  <label class="col-sm-2 control-label">Descrição</label>
-				  <div class="col-md-8">
-					<textarea class="form-control" type="text" id="descricao" name="descricao" cols=8 rows=3 placeholder="Ex. "></textarea>
-				  </div>
-				</div>
-				<div class="form-group">
-				  <label class="col-sm-2 control-label">Cargo</label>
-				  <div class="col-md-8">
-					<input class="form-control" type="text" id="cargo" name="cargo" placeholder="Ex. ">
-				  </div>
-				</div>
-				<div class="form-group">
-				  <label class="col-sm-2 control-label">Usuário Alvo</label>
-				  <div class="col-md-4">
-					<select class="form-control" name="usuario_alvo">
-						<option value=Academico>Acadêmico</option>
-						<option value=Freelancer>Freelancer</option>
-						<option value=Ambos>Ambos</option>
-					</select>				  
-				  </div>
-				</div>
 				<div class="form-group">
 				  <label class="col-sm-2 control-label">Requisitos</label>
 				  <div class="col-md-3">
@@ -111,7 +88,7 @@ require_once $root.'/connection.php'; ?>
 				</div>
 				<div class="form-group">
 				  <div class="col-sm-offset-8 col-sm-12">
-					<button type="submit" class="btn btn-success btn-lg">Cadastrar</button>
+					<button type="submit" class="btn btn-success btn-lg">Salvar</button>
 				  </div>
 				</div>
 			  </form>
@@ -121,8 +98,6 @@ require_once $root.'/connection.php'; ?>
         <!-- /#page-content-wrapper -->
 
     </div>
-    <!-- Lista de cidades e estados -->
-    <script src="/public/js/cidades-estados-v0.2.js"></script>
   </body>
 </html>
 <?php
@@ -132,9 +107,9 @@ require_once $root.'/connection.php'; ?>
  */
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require_once $root.'/Controller/VagaController.php';
+  require_once $root.'/Controller/RequisitoController.php';
 
-  $vaga = new VagaController();
-  $vaga->criar();
+  $requisito = new RequisitoController();
+  $requisito->editar();
 }
 ?>
