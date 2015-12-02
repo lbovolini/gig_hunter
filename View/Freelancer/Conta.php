@@ -110,7 +110,7 @@ require_once $root.'/connection.php'; ?>
             <div class="form-group">
               <label class="col-sm-2 control-label">Data de Nascimento</label>
               <div class="col-md-3">
-                <input class="form-control" type="text" id="data_nascimento" name="data_nascimento" placeholder="Ex. 01/01/1999" value="<?php echo $row["data_nascimento"] ?>">
+                <input class="form-control" type="text" id="data_nascimento" name="data_nascimento" placeholder="Ex. 01/01/1999" value="<?php $data = implode("/",array_reverse(explode("-", $row["data_nascimento"]))); echo $data; ?>">
               </div>
               <label class="col-sm-2 control-label">Número de Telefone</label>
               <div class="col-md-3">
