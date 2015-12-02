@@ -96,5 +96,35 @@ class Empresario
 		$query = "UPDATE empresarios SET nome = '" . $nome . "', email = '" . $email . "', username = '" . $username . "', senha = '" . $senha . "', data_nascimento = '" . $data_nascimento . "', telefone = '" . $telefone . "', rg = '" . $rg . "', cpf = '" . $cpf . "' WHERE id = '" . $_SESSION['id'] . "'";
 		mysql_query($query);
 	}
+
+	// Retorna usuarios recomendados
+	public static function getUsuariosRecomendados()
+	{
+		$query = "SELECT id, nome, email, telefone, tipo, cidade, estado 
+				  FROM usuarios AS U 
+				  JOIN usuario_requisitos AS UR 
+				  ON (U.id = UR.usuario_id) 
+				  JOIN requisitos as R
+				  ON (R.id = UR.requisito_id)
+				  
+				  WHERE estado = '{$estado}'
+				  AND usuario_alvo != '{$usuario}'
+				  AND status = 'Aberta'
+				  AND Vag.usuario_id = 0
+				  AND Vag.id not in (
+				  	SELECT vaga_id 
+				  	FROM oferecidas
+				  	WHERE usuario_id = '{$id_user}'
+				  )
+				  AND Vag.id not in (
+				  	SELECT vaga_id 
+				  	FROM candidatos
+				  	WHERE usuario_id = '{$id_user}'
+				  )
+				  LIMIT 10;";
+
+		return(mysql_query($query));
+	}
+
 }
 ?>
