@@ -65,7 +65,7 @@ require $root.'/Controller/AuthEmpresario.php'; ?>
         <!-- Page Content -->
         <div class="container">
 		  <div class="matshead">
-            <h1 class="text-muted">Bem-vindo Empresário</h1>
+            <h1 class="text-muted">Empresário</h1>
           </div>
 		  <hr class="featurette-divider">
 		  <div class="row">

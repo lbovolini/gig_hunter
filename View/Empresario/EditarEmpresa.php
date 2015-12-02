@@ -185,5 +185,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   $empresa = new EmpresaController();
   $empresa->editar();
+  
+  echo "<script> location.href='Empresa.php'; </script>";
 }
 ?>

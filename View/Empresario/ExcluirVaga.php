@@ -15,5 +15,5 @@ require_once $root.'/connection.php';
 	$vaga = new VagaController();
 	$vaga->excluir();
 	
-	header("Location: /View/Empresario/Vaga.php");
+	header("Location: /View/Empresario/Empresa.php");
 ?>

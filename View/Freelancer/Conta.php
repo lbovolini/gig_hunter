@@ -209,5 +209,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   $freelancer = new FreelancerController();
   $freelancer->editar();
+  
+  echo "<script> location.href='Home.php'; </script>";
 }
 ?>

@@ -111,5 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   $requisito = new RequisitoController();
   $requisito->editar();
+  
+  echo "<script> location.href='Home.php'; </script>";
 }
 ?>

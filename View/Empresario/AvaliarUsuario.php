@@ -132,7 +132,7 @@ require_once $root.'/connection.php'; ?>
 				</div>
 
 				<div class="form-group">
-				  <label class="col-sm-2 control-label">Empresa</label>
+				  <label class="col-sm-2 control-label">Empresa Avaliadora</label>
 				  <div class="col-md-8">
 					<select class="form-control" id="empresa" name="empresa" >
 						<?php
@@ -174,5 +174,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   $avaliacao = new AvaliacaoController();
   $avaliacao->criar();
+  
+    echo "<script> location.href='Avaliar.php'; </script>";
 }
 ?>

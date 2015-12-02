@@ -139,5 +139,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   $vaga = new VagaController();
   $vaga->criar();
+  
+  echo "<script> location.href='Empresa.php'; </script>";
 }
 ?>

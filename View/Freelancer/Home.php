@@ -161,7 +161,6 @@ require_once $root.'/Model/Vaga.php';?>
                             if ($vagas) {
                                 $i = 1;
                                 while ($row = mysql_fetch_array($vagas)) {
-                                    $idEmpresa = $row['Vag.id'];
                                     echo "<tr>
                                             <td>" . $i++ . "</td>
                                             <td>" . $row['descricao'] . "</td>
