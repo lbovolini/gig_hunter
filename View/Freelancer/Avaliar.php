@@ -88,7 +88,7 @@ require_once $root.'/connection.php'; ?>
 									$id_empresa = $row['id'];
 									echo "<tr>
 											<td>" . $i++ . "</td>
-											<td><a href='/View/Academico/AvaliarEmpresa.php?id_empresa=$id_empresa'>". $row['nome'] ."</a></td>
+											<td><a href='/View/Freelancer/AvaliarEmpresa.php?id_empresa=$id_empresa'>". $row['nome'] ."</a></td>
 											<td>" . $row['razao_social'] . "</td>
 											<td>" . $row['email'] . "</td>
 											<td>" . $row['telefone'] . "</td>
