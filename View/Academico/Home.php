@@ -126,8 +126,9 @@ require_once $root.'/Model/Vaga.php'; ?>
                     </table>
                 </div>
             </div>
+          </div>
           <div class="matshead">
-            <h2 class="text-muted">Vagas Recomendadas</h2>
+            <h2 class="text-muted">Vagas Recomendadas No Estado</h2>
           </div>
           <hr class="featurette-divider">
           <div class="container">
@@ -180,8 +181,62 @@ require_once $root.'/Model/Vaga.php'; ?>
                 </div>
             </div>
           </div>
-        </div>
 
+
+          <div class="matshead">
+            <h2 class="text-muted">Outras Vagas Recomendadas</h2>
+          </div>
+          <hr class="featurette-divider">
+          <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Descricao</th>
+                                <th>Cargo</th>
+                                <th>Empresa</th>
+                                <th>Cidade</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                            DB::connect();
+
+                            $estado = Freelancer::getEstado($_SESSION['id']);
+
+                            if($_SESSION['tipo'] == 'Freelancer')
+                                $usuario = 'Academico';
+                            else
+                                $usuario = 'Freelancer';
+
+                            $vagas = Vaga::getOutrasVagasRecomendadas($estado, $usuario, $_SESSION['id']);
+
+                            if ($vagas) {
+                                $i = 1;
+                                while ($row = mysql_fetch_array($vagas)) {
+                                    $idVaga = $row['vaga_id'];
+                                    echo "<tr>
+                                            <td>" . $i++ . "</td>
+                                            <td>" . $row['descricao'] . "</td>
+                                            <td>" . $row['cargo'] . "</td>
+                                            <td>" . $row['nome'] . "</td>
+                                            <td>" . $row['cidade'] . "</td>
+                                            <td>" . $row['estado'] . "</td>                                    
+                                            <td>
+                                                <a href='/View/Academico/AplicarVaga.php?idVaga=$idVaga' title='Aplicar-se à Vaga'><u>Aplicar-se à Vaga</u></a>
+                                            </td>  
+                                          </tr>";
+                                }
+                            }
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+          </div>
     </div>
 
   </body>

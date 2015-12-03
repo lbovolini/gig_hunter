@@ -67,6 +67,35 @@ class Vaga
 		return(mysql_query($query));
 	}
 
+	// Retorna outras vagas de empresas
+	public static function getOutrasVagasRecomendadas($estado, $usuario, $id_user)
+	{
+		$query = "SELECT Vag.id as vaga_id, descricao, cargo, Emp.id, nome, cidade, estado 
+				  FROM empresas AS Emp 
+				  JOIN enderecos AS End 
+				  ON (Emp.endereco_id = End.id) 
+				  JOIN vagas as Vag 
+				  ON (Emp.id = Vag.empresa_id)
+				  WHERE estado != '{$estado}'
+				  AND usuario_alvo != '{$usuario}'
+				  AND status = 'Aberta'
+				  AND Vag.usuario_id = 0
+				  AND Vag.id not in (
+				  	SELECT vaga_id 
+				  	FROM oferecidas
+				  	WHERE usuario_id = '{$id_user}'
+				  )
+				  AND Vag.id not in (
+				  	SELECT vaga_id 
+				  	FROM candidatos
+				  	WHERE usuario_id = '{$id_user}'
+				  )
+				  LIMIT 10;";
+
+		return(mysql_query($query));
+	}
+
+
 	// candidatar se a uma vaga
 	public static function candidatar($id_vaga, $id_user) 
 	{
