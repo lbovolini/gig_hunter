@@ -1,7 +1,9 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root.'/Controller/AuthAcademico.php'; 
-require_once $root.'/connection.php'; ?>
+require $root.'/Controller/AuthAcademico.php';
+require_once $root.'/connection.php'; 
+require_once $root.'/Model/Freelancer.php';
+require_once $root.'/Model/Vaga.php'; ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -61,63 +63,51 @@ require_once $root.'/connection.php'; ?>
         </div>
         <!-- /#sidebar-wrapper -->
 
-        <!-- Page Content -->
-		<div class="container">
-		  <div class="matshead">
-			<h2 class="text-muted">Vaga
-			</h2>
-		  </div>
-		  <hr class="featurette-divider">
-		  <div class="container">
+        <div class="container">
+          <div class="matshead">
+            <h2 class="text-muted">Avaliações Recebidas</h2>
+          </div>
+          <hr class="featurette-divider">
+          <div class="container">
             <div class="row">
                 <div class="col-md-10">
                     <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Descrição</th>
-								<th>Cargo</th>
-                                <th>Usuário Alvo</th>
-								<th>Empresa</th>
+                                <th>Empresa</th>
+                                <th>Email</th>
+                                <th>Telefone</th>
+                                <th>Nota</th>
+                                <th>Comentario</th>
                             </tr>
                         </thead>
                         <tbody>
-						<?php
-							DB::connect();
-							$result = mysql_query("SELECT * FROM vagas WHERE usuario_alvo != 'Freelancer' AND status = 'Aberta'");
-							if ($result) {
-								$i=1;
-								while ($row = mysql_fetch_array($result)) {
-									$idVaga = $row['id'];
-									$busca = "SELECT 1 FROM candidatos WHERE usuario_id = '" . $_SESSION['id'] . "' AND vaga_id = '" . $idVaga . "'";
-									$resultado = mysql_query($busca);
-									if(mysql_fetch_array($resultado) == 0) {
-										$result2 = mysql_query("SELECT * FROM empresas WHERE id = '" . $row["empresa_id"] . "'");
-										$row2 = mysql_fetch_array($result2);
-										echo "<tr>
-												<td>" . $i++ . "</td>
-												<td>" . $row['descricao'] . "</td>
-												<td>" . $row['cargo'] . "</td>
-												<td>" . $row['usuario_alvo'] . "</td>
-												<td>" . $row2['nome'] . "</td>
-												<td>
-													<a href='/View/Academico/CandidatarVaga.php?idVaga=$idVaga' title='Candidatar-se à Vaga'><u>Candidatar-se à Vaga</u></a>
-												</td>										
-											  </tr>";
-									}
-								}
-							}
-						?>
+                        <?php
+                            DB::connect();
+
+                            $avalicaoes = Freelancer::getAvaliacaoRecebidas($_SESSION['id']);
+
+                            if ($avalicaoes) {
+                                $i = 1;
+                                while ($row = mysql_fetch_array($avalicaoes)) {
+                                    echo "<tr>
+                                            <td>" . $i++ . "</td>
+                                            <td>" . $row['nome_empresa'] . "</td>
+                                            <td>" . $row['email_empresa'] . "</td>
+                                            <td>" . $row['telefone_empresa'] . "</td>
+                                            <td>" . $row['nota'] . "</td>
+                                            <td>" . $row['comentario'] . "</td>
+                                          </tr>";
+                                }
+                            }
+                        ?>
                         </tbody>
                     </table>
-				</div>
+                </div>
             </div>
           </div>
-		</div>
-        <!-- /#page-content-wrapper -->
-
     </div>
-    <!-- Lista de cidades e estados -->
-    <script src="/public/js/cidades-estados-v0.2.js"></script>
+
   </body>
 </html>

@@ -126,5 +126,19 @@ class Empresario
 		return(mysql_query($query));
 	}
 
+	// Retorna avaliacoes das empresa
+	public static function getAvaliacaoRecebidasEmpresas($id_usuario)
+	{
+		$query = "SELECT U.id as id_usuario, U.nome as nome_usuario, U.email as email_usuario, U.telefone as telefone_usuario, 
+				  A.id as id_avalicao, A.nota as nota, A.comentario as comentario, A.status as status, 
+				  E.id as id_empresa, E.nome as nome_empresa, E.email email_empresa, E.telefone telefone_empresa
+				  FROM usuarios AS U JOIN avaliacoes AS A ON (U.id = A.usuario_id)
+				  JOIN empresas AS E ON (E.id = A.empresa_id)
+				  WHERE E.empresario_id = '{$id_usuario}'
+				  AND A.status = 'Por Usuario, Publicada';";
+		$resultado = mysql_query($query);
+		return($resultado);		
+	}
+
 }
 ?>

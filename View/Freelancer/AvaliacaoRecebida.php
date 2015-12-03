@@ -1,7 +1,10 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root.'/Controller/AuthFreelancer.php'; 
-require_once $root.'/connection.php'; ?>
+require_once $root.'/connection.php';
+require_once $root.'/Model/Freelancer.php';
+require_once $root.'/Model/Vaga.php'; ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -59,53 +62,53 @@ require_once $root.'/connection.php'; ?>
                 </li>
             </ul>
         </div>
+        <!-- /#sidebar-wrapper -->
 
-        <!-- Page Content -->
-		<div class="container">
-		  <div class="matshead">
-			<h2 class="text-muted">Avaliar</h2>
-		  </div>
-		  <hr class="featurette-divider">
-		  <div class="container">
+        <div class="container">
+          <div class="matshead">
+            <h2 class="text-muted">Avaliações Recebidas</h2>
+          </div>
+          <hr class="featurette-divider">
+          <div class="container">
             <div class="row">
                 <div class="col-md-10">
                     <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Nome</th>
-								<th>Razão Social</th>
+                                <th>Empresa</th>
                                 <th>Email</th>
                                 <th>Telefone</th>
-                                <th>CNPJ</th>
+                                <th>Nota</th>
+                                <th>Comentario</th>
                             </tr>
                         </thead>
                         <tbody>
-						<?php
-							DB::connect();
-							$result = mysql_query("SELECT id, nome, razao_social, email, telefone, cnpj FROM empresas;");
+                        <?php
+                            DB::connect();
 
-							if ($result) {
-								$i = 1;
-								while ($row = mysql_fetch_array($result)) {
-									$id_empresa = $row['id'];
-									echo "<tr>
-											<td>" . $i++ . "</td>
-											<td><a href='/View/Freelancer/AvaliarEmpresa.php?id_empresa=$id_empresa'>". $row['nome'] ."</a></td>
-											<td>" . $row['razao_social'] . "</td>
-											<td>" . $row['email'] . "</td>
-											<td>" . $row['telefone'] . "</td>
-                                            <td>" . $row['cnpj'] . "</td>
-										  </tr>";
-								}
-							}
-						?>
+                            $avalicaoes = Freelancer::getAvaliacaoRecebidas($_SESSION['id']);
+
+                            if ($avalicaoes) {
+                                $i = 1;
+                                while ($row = mysql_fetch_array($avalicaoes)) {
+                                    echo "<tr>
+                                            <td>" . $i++ . "</td>
+                                            <td>" . $row['nome_empresa'] . "</td>
+                                            <td>" . $row['email_empresa'] . "</td>
+                                            <td>" . $row['telefone_empresa'] . "</td>
+                                            <td>" . $row['nota'] . "</td>
+                                            <td>" . $row['comentario'] . "</td>
+                                          </tr>";
+                                }
+                            }
+                        ?>
                         </tbody>
                     </table>
-				</div>
+                </div>
             </div>
           </div>
-		</div>
     </div>
+
   </body>
 </html>

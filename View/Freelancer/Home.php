@@ -56,6 +56,9 @@ require_once $root.'/Model/Vaga.php';?>
                 <li>
                     <a href="/View/Freelancer/Avaliar.php">Avaliar</a>
                 </li>
+                <li>
+                    <a href="/View/Freelancer/AvaliacaoRecebida.php">Avaliações Recebidas</a>
+                </li>
             </ul>
         </div>
 

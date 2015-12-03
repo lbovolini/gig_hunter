@@ -54,6 +54,9 @@ require_once $root.'/connection.php'; ?>
                 <li>
                     <a href="/View/Academico/Avaliar.php">Avaliar</a>
                 </li>
+                <li>
+                    <a href="/View/Academico/AvaliacaoRecebida.php">Avaliações Recebidas</a>
+                </li>
             </ul>
         </div>
 

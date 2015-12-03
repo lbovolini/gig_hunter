@@ -60,6 +60,9 @@ require_once $root.'/connection.php'; ?>
                 <li>
                     <a href="/View/Empresario/Avaliar.php">Avaliar Usuário</a>
                 </li>
+                <li>
+                    <a href="/View/Empresario/AvaliacaoRecebida.php">Avaliações Recebidas</a>
+                </li>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->

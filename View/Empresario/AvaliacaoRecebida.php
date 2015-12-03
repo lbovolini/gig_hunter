@@ -1,7 +1,9 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root.'/Controller/AuthEmpresario.php'; 
-require_once $root.'/connection.php'; ?>
+require $root.'/Controller/AuthEmpresario.php';
+require_once $root.'/connection.php';
+require_once $root.'/Model/Empresario.php';
+require_once $root.'/Model/Vaga.php'; ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -16,15 +18,15 @@ require_once $root.'/connection.php'; ?>
 
     <title>Empresario</title>
 
-	<!-- Favicon -->
-	<link rel="shortcut icon" href="/public/img/favicon-suitcase.ico" type="image/x-icon">
-	<!-- Bootstrap Core CSS -->
-	<link href="/public/css/bootstrap.min.css" rel="stylesheet">
-	<!-- Custom CSS -->
-	<link href="/public/css/simple-sidebar.css" rel="stylesheet">
-	<!-- Custom Fonts -->
-	<link href="/public/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/public/img/favicon-suitcase.ico" type="image/x-icon">
+    <!-- Bootstrap Core CSS -->
+    <link href="/public/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/public/css/simple-sidebar.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="/public/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
 </head>
   
@@ -67,58 +69,51 @@ require_once $root.'/connection.php'; ?>
         </div>
         <!-- /#sidebar-wrapper -->
 
-        <!-- Page Content -->
-		<div class="container">
-		  <div class="matshead">
-			<h2 class="text-muted">Empresa</h2>
-		  </div>
-		  <hr class="featurette-divider">
-		  <div class="container">
+        <div class="container">
+          <div class="matshead">
+            <h2 class="text-muted">Avaliações Recebidas</h2>
+          </div>
+          <hr class="featurette-divider">
+          <div class="container">
             <div class="row">
                 <div class="col-md-10">
                     <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Empresa</th>
-								<th>CNPJ</th>
+                                <th>Usuario</th>
                                 <th>Email</th>
                                 <th>Telefone</th>
+                                <th>Nota</th>
+                                <th>Comentario</th>
                             </tr>
                         </thead>
                         <tbody>
-						<?php
-							DB::connect();
-							$result = mysql_query("SELECT * FROM empresas WHERE empresario_id = '" . $_SESSION['id'] . "'");
-							if ($result) {
-								$i=1;
-								while ($row = mysql_fetch_array($result)) {
-									$idEmpresa = $row['id'];
-									echo "<tr>
-											<td>" . $i++ . "</td>
-											<td><a href='/View/Empresario/Vaga.php?idEmpresa=$idEmpresa'>". $row['nome'] ."</a></td>
-											<td>" . $row['cnpj'] . "</td>
-											<td>" . $row['email'] . "</td>
-											<td>" . $row['telefone'] . "</td>
-											<td>
-												<a href='/View/Empresario/EditarEmpresa.php?idEmpresa=$idEmpresa' title='Editar Empresa'><u>Editar</u></a>&nbsp&nbsp&nbsp&nbsp
-											    <a href='/View/Empresario/ExcluirEmpresa.php?idEmpresa=$idEmpresa' title='Excluir Empresa'><u>Excluir</u></a>
-											</td>										
-										  </tr>";
-								}
-							}
-						?>
+                        <?php
+                            DB::connect();
+
+                            $avalicaoes = Empresario::getAvaliacaoRecebidasEmpresas($_SESSION['id']);
+
+                            if ($avalicaoes) {
+                                $i = 1;
+                                while ($row = mysql_fetch_array($avalicaoes)) {
+                                    echo "<tr>
+                                            <td>" . $i++ . "</td>
+                                            <td>" . $row['nome_usuario'] . "</td>
+                                            <td>" . $row['email_usuario'] . "</td>
+                                            <td>" . $row['telefone_usuario'] . "</td>
+                                            <td>" . $row['nota'] . "</td>
+                                            <td>" . $row['comentario'] . "</td>
+                                          </tr>";
+                                }
+                            }
+                        ?>
                         </tbody>
                     </table>
-				<input type="button" class="btn btn-primary pull-center" value="Cadastrar Nova" onclick="javascript: location.href='/View/Empresario/CadastrarEmpresa.php';" />
-				</div>
+                </div>
             </div>
           </div>
-		</div>
-        <!-- /#page-content-wrapper -->
-
     </div>
-    <!-- Lista de cidades e estados -->
-    <script src="/public/js/cidades-estados-v0.2.js"></script>
+
   </body>
 </html>
