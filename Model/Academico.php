@@ -50,5 +50,13 @@ class Academico
 	    }
         return true; // valida
 	}
+
+		
+	public static function edit_bloq($data_bloqueio) 
+	{
+		$query = "UPDATE usuarios SET tempo_bloqueada = '" . $data_bloqueio . "' WHERE id = '" . $_SESSION['id'] . "'";;
+		mysql_query($query);
+	}
+	
 }
 ?>

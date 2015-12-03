@@ -89,5 +89,19 @@ class FreelancerController
 		/* Fecha a conexao com o banco de dados */
 		DB::close();
 	}
+	
+		public function editar_bloq()
+	{
+		/* Abre a conexao com o banco de dados */
+		DB::connect();
+		$data_bloqueio = test_input($_POST['data_bloqueio']);
+		/* Converte data para o formato YYYY/DD/MM */
+		$data_bloqueio = implode("-",array_reverse(explode("/",$data_bloqueio)));
+		/* Altera Academico no banco de dados */
+		Freelancer::edit_bloq($data_bloqueio);
+		
+	/* Fecha a conexao com o banco de dados */
+	DB::close();
+	}
 }
 ?>

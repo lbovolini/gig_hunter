@@ -97,6 +97,13 @@ class Empresario
 		mysql_query($query);
 	}
 
+	//Edita um Empresario
+	public static function edit_bloq($data_bloqueio) 
+	{
+		$query = "UPDATE empresarios SET tempo_bloqueado = '" . $data_bloqueio . "'";
+		mysql_query($query);
+	}
+	
 	// Retorna usuarios recomendados
 	public static function getUsuariosRecomendados()
 	{

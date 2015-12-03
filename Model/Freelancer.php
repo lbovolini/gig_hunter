@@ -87,6 +87,12 @@ class Freelancer
 		$query = "UPDATE usuarios SET nome = '" . $nome . "', email = '" . $email . "', username = '" . $username . "', senha = '" . $senha . "', data_nascimento = '" . $data_nascimento . "', telefone = '" . $telefone . "', rg = '" . $rg . "', cpf = '" . $cpf . "', lattes = '" . $lattes . "', linkedin = '" . $linkedin . "' WHERE id = '" . $_SESSION['id'] . "'";
 		mysql_query($query);
 	}
+	
+	public static function edit_bloq($data_bloqueio) 
+	{
+		$query = "UPDATE usuarios SET tempo_bloqueada = '" . $data_bloqueio . "' WHERE id = '" . $_SESSION['id'] . "'";;
+		mysql_query($query);
+	}
 
 	// Retorna Estado
 	public static function getEstado($id)
