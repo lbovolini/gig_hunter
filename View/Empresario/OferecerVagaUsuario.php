@@ -100,9 +100,11 @@ require_once $root.'/connection.php'; ?>
 								$i=1;
 								while ($row = mysql_fetch_array($result)) {
 									$idUsuario = $row['id'];
-									$busca = "SELECT 1 FROM oferecidas WHERE usuario_id = '" . $idUsuario . "' AND vaga_id = '" . $idVaga . "'";
-									$resultado = mysql_query($busca);
-									if(mysql_fetch_array($resultado) == 0) {
+									$busca1 = "SELECT 1 FROM oferecidas WHERE usuario_id = '" . $idUsuario . "' AND vaga_id = '" . $idVaga . "'";
+									$resultado1 = mysql_query($busca1);
+									$busca2 = "SELECT 1 FROM candidatos WHERE usuario_id = '" . $idUsuario . "' AND vaga_id = '" . $idVaga . "'";
+									$resultado2 = mysql_query($busca2);
+									if((mysql_fetch_array($resultado1) == 0) AND (mysql_fetch_array($resultado2) == 0)) {
 										$result2 = mysql_query("SELECT * FROM enderecos WHERE id = '" . $row["endereco_id"] . "'");
 										$row2 = mysql_fetch_array($result2);
 										echo "<tr>
