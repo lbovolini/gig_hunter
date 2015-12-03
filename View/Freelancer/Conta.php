@@ -51,6 +51,9 @@ require_once $root.'/connection.php'; ?>
                 <li>
                     <a href="/View/Freelancer/Vaga.php">Vaga</a>
                 </li>
+                <li>
+                    <a href="/View/Freelancer/Avaliar.php">Avaliar</a>
+                </li>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
