@@ -97,5 +97,19 @@ class Freelancer
 
 		return($resultado['estado']);
 	}
+
+	// Valida senha
+	public static function senhaValida($id, $senha)
+	{
+		$query = "SELECT id FROM usuarios WHERE id = '{$id}' AND senha = '{$senha}';";
+		$resultado = mysql_query($query);
+
+	    if(mysql_fetch_array($resultado) == 0)
+	    {
+	        return false; // invalida
+	    }
+        return true; // valida
+	}
+
 }
 ?>

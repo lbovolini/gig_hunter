@@ -95,8 +95,16 @@ require_once $root.'/connection.php'; ?>
                 <input class="form-control" type="text" id="username" name="username" placeholder="Ex. jsilva" value="<?php echo $row["username"] ?>">
               </div>
             </div>
+
             <div class="form-group">
-              <label class="col-sm-2 control-label">Senha</label>
+              <label class="col-sm-2 control-label">Senha Atual</label>
+              <div class="col-md-8">
+              <input class="form-control" type="password" id="senha_atual" name="senha_atual" placeholder="Min. 8 Caracteres">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Nova Senha</label>
               <div class="col-md-8">
                 <input class="form-control" type="password" id="senha" name="senha" placeholder="Min. 8 Caracteres">
               </div>

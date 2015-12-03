@@ -37,5 +37,18 @@ class Academico
 		$query = "UPDATE usuarios SET nome = '" . $nome . "', email = '" . $email . "', username = '" . $username . "', senha = '" . $senha . "', data_nascimento = '" . $data_nascimento . "', telefone = '" . $telefone . "', rg = '" . $rg . "', cpf = '" . $cpf . "', instituicao = '" . $instituicao . "', matricula = '" . $matricula . "', lattes = '" . $lattes . "', linkedin = '" . $linkedin . "' WHERE id = '" . $_SESSION['id'] . "'";
 		mysql_query($query);
 	}
+
+	// Valida senha
+	public static function senhaValida($id, $senha)
+	{
+		$query = "SELECT id FROM usuarios WHERE id = '{$id}' AND senha = '{$senha}';";
+		$resultado = mysql_query($query);
+
+	    if(mysql_fetch_array($resultado) == 0)
+	    {
+	        return false; // invalida
+	    }
+        return true; // valida
+	}
 }
 ?>

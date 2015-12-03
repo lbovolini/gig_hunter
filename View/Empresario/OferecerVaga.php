@@ -93,7 +93,7 @@ require_once $root.'/connection.php'; ?>
 								while ($row = mysql_fetch_array($result)) {
 									$idVaga = $row['id'];
 									$alvoVaga = $row['usuario_alvo'];
-									$result2 = mysql_query("SELECT * FROM empresas WHERE id = '{$row["empresa_id"]}'");
+									$result2 = mysql_query("SELECT * FROM empresas WHERE id = '" . $row["empresa_id"] . "'");
 									$row2 = mysql_fetch_array($result2);
 									echo "<tr>
 											<td>" . $i++ . "</td>
@@ -114,6 +114,10 @@ require_once $root.'/connection.php'; ?>
             </div>
           </div>
 		</div>
+        <!-- /#page-content-wrapper -->
+
     </div>
+    <!-- Lista de cidades e estados -->
+    <script src="/public/js/cidades-estados-v0.2.js"></script>
   </body>
 </html>
