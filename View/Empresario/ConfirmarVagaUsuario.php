@@ -100,7 +100,7 @@ require_once $root.'/connection.php'; ?>
 									$row2 = mysql_fetch_array($result2);
 									echo "<tr>
 											<td>" . $i++ . "</td>
-											<td>" . $row['nome'] . "</td>
+											<td><a href='/View/Empresario/Usuario.php?idUsuario=$idUsuario'>" . $row['nome'] . "</td>
 											<td>" . $row['email'] . "</td>
 											<td>" . $row['data_nascimento'] . "</td>
 											<td>" . $row2['cidade'] . "/" . $row2['estado'] ."</td>
