@@ -144,8 +144,7 @@ require_once $root.'/Model/Vaga.php'; ?>
                                 <th>Descricao</th>
                                 <th>Cargo</th>
                                 <th>Empresa</th>
-                                <th>Cidade</th>
-                                <th>Estado</th>
+                                <th>Cidade/Estado</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -170,8 +169,7 @@ require_once $root.'/Model/Vaga.php'; ?>
                                             <td>" . $row['descricao'] . "</td>
                                             <td>" . $row['cargo'] . "</td>
                                             <td>" . $row['nome'] . "</td>
-                                            <td>" . $row['cidade'] . "</td>
-                                            <td>" . $row['estado'] . "</td>                                    
+                                            <td>" . $row['cidade'] . "/" . $row['estado'] . "</td>                                 
                                             <td>
                                                 <a href='/View/Academico/AplicarVaga.php?idVaga=$idVaga' title='Aplicar-se à Vaga'><u>Aplicar-se à Vaga</u></a>
                                             </td>   

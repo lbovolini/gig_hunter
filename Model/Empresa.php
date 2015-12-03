@@ -32,10 +32,12 @@ class Empresa
 		mysql_query($queryO);
 		$queryC = "DELETE FROM candidatos WHERE vaga_id = '" . $_SESSION['idVaga'] . "'";
 		mysql_query($queryC);
-		$query = "DELETE FROM vagas WHERE empresa_id = '" . $_SESSION['idEmpresa'] . "'";
-		mysql_query($query);
-		$queryR = "DELETE FROM vaga_requisitos WHERE vaga_id = '" . $_SESSION['idVaga'] . "'";
+		$queryR = "DELETE FROM vaga_requisitos USING vaga_requisitos JOIN vagas WHERE vaga_requisitos.vaga_id = vagas.id AND vagas.empresa_id = '" . $_SESSION['idEmpresa'] . "'";
 		mysql_query($queryR);
+		$queryV = "DELETE FROM vagas WHERE empresa_id = '" . $_SESSION['idEmpresa'] . "'";
+		mysql_query($queryV);
+		$queryA = "DELETE FROM avaliacoes WHERE empresa_id = '" . $_SESSION['idEmpresa'] . "'";
+		mysql_query($queryA);
 		$query = "DELETE FROM empresas WHERE id = '" . $_SESSION['idEmpresa'] . "'";
 		mysql_query($query);
 	}
