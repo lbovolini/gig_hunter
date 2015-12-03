@@ -42,7 +42,7 @@ class Vaga
 	// Retorna vagas de empresas do estado
 	public static function getVagasRecomendadas($estado, $usuario, $id_user)
 	{
-		$query = "SELECT Vag.id, descricao, cargo, Emp.id, nome, cidade, estado 
+		$query = "SELECT Vag.id as vaga_id, descricao, cargo, Emp.id, nome, cidade, estado 
 				  FROM empresas AS Emp 
 				  JOIN enderecos AS End 
 				  ON (Emp.endereco_id = End.id) 

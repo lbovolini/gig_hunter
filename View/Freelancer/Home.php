@@ -161,6 +161,7 @@ require_once $root.'/Model/Vaga.php';?>
                             if ($vagas) {
                                 $i = 1;
                                 while ($row = mysql_fetch_array($vagas)) {
+                                    $idVaga = $row['vaga_id'];
                                     echo "<tr>
                                             <td>" . $i++ . "</td>
                                             <td>" . $row['descricao'] . "</td>
@@ -168,6 +169,9 @@ require_once $root.'/Model/Vaga.php';?>
                                             <td>" . $row['nome'] . "</td>
                                             <td>" . $row['cidade'] . "</td>
                                             <td>" . $row['estado'] . "</td>                                    
+                                            <td>
+                                                <a href='/View/Freelancer/AplicarVaga.php?idVaga=$idVaga' title='Aplicar-se à Vaga'><u>Aplicar-se à Vaga</u></a>
+                                            </td>  
                                           </tr>";
                                 }
                             }
