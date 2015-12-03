@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root.'/Controller/AuthEmpresario.php'; 
+require $root.'/Controller/AuthFreelancer.php'; 
 require_once $root.'/connection.php'; ?>
 
 <!DOCTYPE html>
@@ -14,17 +14,17 @@ require_once $root.'/connection.php'; ?>
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Empresario</title>
+    <title>Freelancer</title>
 
-	<!-- Favicon -->
-	<link rel="shortcut icon" href="/public/img/favicon-suitcase.ico" type="image/x-icon">
-	<!-- Bootstrap Core CSS -->
-	<link href="/public/css/bootstrap.min.css" rel="stylesheet">
-	<!-- Custom CSS -->
-	<link href="/public/css/simple-sidebar.css" rel="stylesheet">
-	<!-- Custom Fonts -->
-	<link href="/public/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/public/img/favicon-suitcase.ico" type="image/x-icon">
+    <!-- Bootstrap Core CSS -->
+    <link href="/public/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/public/css/simple-sidebar.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="/public/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
 </head>
   
@@ -41,28 +41,21 @@ require_once $root.'/connection.php'; ?>
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="/View/Empresario/Home.php">
-                        Empresário
+                    <a href="/View/Freelancer/Home.php">
+                        Freelancer
                     </a>
                 </li>
                 <li>
-                    <a href="/View/Empresario/Conta.php">Conta</a>
+                    <a href="/View/Freelancer/Conta.php">Conta</a>
                 </li>
                 <li>
-                    <a href="/View/Empresario/Empresa.php">Empresa</a>
+                    <a href="/View/Freelancer/Vaga.php">Vaga</a>
                 </li>
                 <li>
-                    <a href="/View/Empresario/OferecerVaga.php">Oferecer Vaga</a>
-                </li>
-                <li>
-                    <a href="/View/Empresario/ConfirmarVaga.php">Confirmar Vaga</a>
-                </li>
-                <li>
-                    <a href="/View/Empresario/Avaliar.php">Avaliar Usuário</a>
+                    <a href="/View/Freelancer/Avaliar.php">Avaliar</a>
                 </li>
             </ul>
         </div>
-        <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
 		<div class="container">
@@ -78,28 +71,28 @@ require_once $root.'/connection.php'; ?>
                             <tr>
                                 <th>#</th>
                                 <th>Nome</th>
-								<th>Email</th>
-                                <th>Username</th>
+								<th>Razão Social</th>
+                                <th>Email</th>
                                 <th>Telefone</th>
-                                <th>Tipo</th>
+                                <th>CNPJ</th>
                             </tr>
                         </thead>
                         <tbody>
 						<?php
 							DB::connect();
-							$result = mysql_query("SELECT id, nome, email, username, telefone, tipo FROM usuarios;");
+							$result = mysql_query("SELECT id, nome, razao_social, email, telefone, cnpj FROM empresas;");
 
 							if ($result) {
 								$i = 1;
 								while ($row = mysql_fetch_array($result)) {
-									$id_usuario = $row['id'];
+									$id_empresa = $row['id'];
 									echo "<tr>
 											<td>" . $i++ . "</td>
-											<td><a href='/View/Empresario/AvaliarUsuario.php?id_usuario=$id_usuario'>". $row['nome'] ."</a></td>
+											<td><a href='/View/Academico/AvaliarEmpresa.php?id_empresa=$id_empresa'>". $row['nome'] ."</a></td>
+											<td>" . $row['razao_social'] . "</td>
 											<td>" . $row['email'] . "</td>
-											<td>" . $row['username'] . "</td>
 											<td>" . $row['telefone'] . "</td>
-                                            <td>" . $row['tipo'] . "</td>
+                                            <td>" . $row['cnpj'] . "</td>
 										  </tr>";
 								}
 							}

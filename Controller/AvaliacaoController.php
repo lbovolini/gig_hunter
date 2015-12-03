@@ -17,11 +17,20 @@ class AvaliacaoController
 		/* Remove caracteres especias */
 		$nota = test_input($_POST['nota']);
 		$comentario = test_input($_POST['comentario']);
-		$id_usuario = $_GET['id_usuario'];
-		$id_empresa = $_POST['empresa'];
+
+		if($_SESSION['tipo'] == 'Empresario') {
+			$status = 'Por Empresario, Em espera';
+			$id_empresa = $_POST['empresa'];
+			$id_usuario = $_GET['id_usuario'];
+		}
+		else {
+			$status = 'Por Usuario, Em espera';
+			$id_empresa = $_GET['id_empresa'];
+			$id_usuario = $_SESSION['id'];
+		}
 
 		/* Insere Avalicao no banco de dados */
-		Avaliacao::create($nota, $comentario, $id_usuario, $id_empresa);
+		Avaliacao::create($nota, $comentario, $id_usuario, $id_empresa, $status);
 
 		/* Fecha a conexao com o banco de dados */
 		DB::close();
