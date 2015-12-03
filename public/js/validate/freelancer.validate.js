@@ -105,7 +105,8 @@ $(function() {
 			bairro: "required",
 			estado: "required",
 			cidade: "required",
-			lattes: "required"
+			lattes: "required",
+			linkedin: "required"
 		},
 		messages: {
 			email: {
