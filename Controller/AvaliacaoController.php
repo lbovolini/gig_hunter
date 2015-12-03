@@ -54,14 +54,27 @@ class AvaliacaoController
 		DB::close();
 	}
 
-	/* Exclui Empresa */
+	/* Exclui Avaliacao */
 	public function excluir()
 	{
 		/* Abre a conexao com o banco de dados */
 		DB::connect();
 
-		/* Exclui Empresa no banco de dados */
-		Vaga::drop();
+		/* Exclui Avaliacao no banco de dados */
+		Avaliacao::drop();
+
+		/* Fecha a conexao com o banco de dados */
+		DB::close();
+	}
+	
+	/* Publicar Avaliacao */
+	public function publicar()
+	{
+		/* Abre a conexao com o banco de dados */
+		DB::connect();
+		
+		/* Publica Avaliacao no banco de dados */
+		Avaliacao::publica($status);
 
 		/* Fecha a conexao com o banco de dados */
 		DB::close();
