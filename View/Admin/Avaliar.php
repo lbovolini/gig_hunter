@@ -73,10 +73,39 @@ require_once $root.'/connection.php'; ?>
                     <table class="table table-hover">
                         <thead>
                             <tr>
-
+                                <th>#</th>
+                                <th>Nota</th>
+								<th>Avaliador</th>
+                                <th>Usuário</th>
+                                <th>Empresa</th>
                             </tr>
                         </thead>
                         <tbody>
+						<?php
+							DB::connect();
+							$result = mysql_query("SELECT * FROM avaliacoes WHERE status LIKE '%espera%'");
+							if ($result) {
+								$i=1;
+								while ($row = mysql_fetch_array($result)) {
+									$idAvaliacao = $row['id'];
+									$query1 = mysql_query("SELECT * FROM usuarios WHERE id = '" . $row['usuario_id'] . "'");
+									$row1 = mysql_fetch_array($query1);
+									$query2 = mysql_query("SELECT * FROM empresas WHERE id = '" . $row['empresa_id'] . "'");
+									$row2 = mysql_fetch_array($query2);
+									echo "<tr>
+											<td>" . $i++ . "</td>
+											<td>" . $row['nota'] . "</td>
+											<td>" . $row['status'] . "</td>
+											<td>" . $row1['nome'] . "</td>
+											<td>" . $row2['nome'] . "</td>
+											<td>
+												<a href='/View/Admin/PublicarAvaliacao.php?idAvaliacao=$idAvaliacao' title='Publicar'><u>Publicar</u></a>&nbsp&nbsp&nbsp&nbsp
+											    <a href='/View/Admin/ExcluirAvaliacao.php?idAvaliacao=$idAvaliacao' title='Excluir'><u>Excluir</u></a>
+											</td>										
+										  </tr>";
+								}
+							}
+						?>
                         </tbody>
                     </table>
 				</div>
