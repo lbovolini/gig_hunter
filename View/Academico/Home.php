@@ -64,7 +64,7 @@ require_once $root.'/Model/Vaga.php'; ?>
 		  <hr class="featurette-divider">
 		  <div class="row">
                 <div class="col-md-10">
-					<h4>Bem-vindo AcadêmicoBem-vindo AcadêmicoBem-vindo AcadêmicoBem-vindo AcadêmicoBem-vindo Acadêmico</h4><br/>
+					<h4>Acadêmico! É permitido que você edite seus dados pessoais, suas áreas de interesse, candidate-se e aplique-se às vagas.</h4><br/>
 					<div class="matshead">
 						<h2 class="text-muted">Requisitos<?php echo str_repeat("&nbsp;", 10); ?><input type="button" class="btn btn-primary pull-center" value="Editar Requisitos" onclick="javascript: location.href='/View/Academico/Requisito.php';" /></h2>
 					</div>
