@@ -74,6 +74,19 @@ require_once $root.'/connection.php'; ?>
 		  <div class="container">
             <div class="row">
                 <div class="col-md-10">
+				  <form class="form-horizontal" id="register-form" action="" method="POST">
+					<div class="form-group">
+					  <label class="col-sm-2 control-label">Buscar Usuário</label>
+					  <div class="col-md-6">
+						<input class="form-control" type="text" id="usuario" name="usuario">
+					  </div>
+					</div>
+					<div class="form-group">
+					  <div class="col-sm-offset-8 col-sm-12">
+						<button type="submit" class="btn btn-success btn-lg">Buscar</button>
+					  </div>
+					</div>
+				  </form>
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -87,15 +100,17 @@ require_once $root.'/connection.php'; ?>
                         <tbody>
 						<?php
 							DB::connect();
+							if ($_POST)
+								$usuario = $_POST['usuario'];
 							if ((isset($_GET['idVaga'])) & (isset($_GET['alvoVaga']))) {
 								$idVaga = $_GET['idVaga'];
 								$alvoVaga = $_GET['alvoVaga'];
 								$_SESSION['idVaga'] = $idVaga;
 							}
 							if ($alvoVaga == 'Ambos')
-								$result = mysql_query("SELECT * FROM usuarios");
+								$result = mysql_query("SELECT * FROM usuarios WHERE nome = '" . $usuario . "' OR email = '" . $usuario . "'");
 							else
-								$result = mysql_query("SELECT * FROM usuarios WHERE tipo = '" . $alvoVaga . "'");
+								$result = mysql_query("SELECT * FROM usuarios WHERE tipo = '" . $alvoVaga . "' AND nome = '" . $usuario . "' OR email = '" . $usuario . "'");
 							if ($result) {
 								$i=1;
 								while ($row = mysql_fetch_array($result)) {
