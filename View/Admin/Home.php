@@ -63,15 +63,17 @@ require $root.'/Controller/AuthAdmin.php'; ?>
         <!-- Page Content -->
         <div id="page-content-wrapper">
 			<div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1>OH GRANDE ADMIN</h1>
-                        <p>Bem vindo de volta grande senhor supremo do universo!</p>
-                        <p>Estávamos esperando seu retorno para restaurar a ordem!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+				<div class="matshead">
+					<h1 class="text-muted">Administrador</h1>
+				</div>
+				<hr class="featurette-divider">
+				<div class="row">
+					<div class="col-md-10">
+						<h4>Administrador! É permitido que você cadastre áreas de interesse, edite e exclua empresas, bloqueie usuários e publique avaliações.</h4><br/>
+					</div>
+				</div>
+			</div>
+		</div>
         <!-- /#page-content-wrapper -->
 
     </div>

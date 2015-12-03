@@ -70,7 +70,7 @@ require $root.'/Controller/AuthEmpresario.php'; ?>
 		  <hr class="featurette-divider">
 		  <div class="row">
                 <div class="col-md-10">
-					<h4>Bem-vindo EmpresárioBem-vindo EmpresárioBem-vindo EmpresárioBem-vindo EmpresárioBem-vindo Empresário</h4>
+					<h4>Empresário! É permitido que você edite seus dados pessoais, cadastre e edite suas empresas e vagas, ofereça vagas diretamente, confirme o preenchimento da vaga e avalie os usuários.</h4>
 				</div>
 		  </div><br/>
 		 </div>
