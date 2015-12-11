@@ -18,5 +18,5 @@ require_once $root.'/connection.php';
 	$queryC = "DELETE FROM candidatos WHERE vaga_id = '" . $_SESSION['idVaga'] . "'";
 	mysql_query($queryC);
 
-	header("Location: /View/Empresario/ConfirmarVaga.php");	
+	echo "<script> alert('Vaga confirmada!'); location.href='/View/Empresario/ConfirmarVaga.php'; </script>";
 ?>

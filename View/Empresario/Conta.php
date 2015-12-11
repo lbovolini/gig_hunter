@@ -217,6 +217,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $empresario = new EmpresarioController();
   $empresario->editar();
   
-  echo "<script> location.href='Home.php'; </script>";
+  echo "<script> alert('Conta atualizada com sucesso!'); location.href='Home.php'; </script>";
 }
 ?>

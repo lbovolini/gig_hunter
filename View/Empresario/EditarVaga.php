@@ -152,6 +152,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $vaga = new VagaController();
   $vaga->editar();
   
-  echo "<script> location.href='Empresa.php'; </script>";
+  echo "<script> alert('Vaga editada com sucesso!'); location.href='Empresa.php'; </script>";
 }
 ?>

@@ -28,9 +28,9 @@ class Empresa
 	//Exclui uma Empresa
 	public static function drop()
 	{
-		$queryO = "DELETE FROM oferecidas WHERE vaga_id = '" . $_SESSION['idVaga'] . "'";
+		$queryO = "DELETE FROM oferecidas USING oferecidas JOIN vagas WHERE oferecidas.vaga_id = vagas.id AND vagas.empresa_id = '" . $_SESSION['idEmpresa'] . "'";
 		mysql_query($queryO);
-		$queryC = "DELETE FROM candidatos WHERE vaga_id = '" . $_SESSION['idVaga'] . "'";
+		$queryC = "DELETE FROM candidatos USING candidatos JOIN vagas WHERE candidatos.vaga_id = vagas.id AND vagas.empresa_id = '" . $_SESSION['idEmpresa'] . "'";
 		mysql_query($queryC);
 		$queryR = "DELETE FROM vaga_requisitos USING vaga_requisitos JOIN vagas WHERE vaga_requisitos.vaga_id = vagas.id AND vagas.empresa_id = '" . $_SESSION['idEmpresa'] . "'";
 		mysql_query($queryR);

@@ -177,7 +177,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   $avaliacao = new AvaliacaoController();
   $avaliacao->criar();
-  
-    echo "<script> location.href='Avaliar.php'; </script>";
+
+  echo "<script> alert('Avaliação realizada com sucesso!'); location.href='Avaliar.php'; </script>";
 }
 ?>

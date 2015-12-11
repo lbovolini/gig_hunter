@@ -146,5 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   $empresario = new EmpresarioController();
   $empresario->criar();
+  
+  echo "<script> alert('Conta criada com sucesso!'); location.href='Create.php'; </script>";
 }
 ?>

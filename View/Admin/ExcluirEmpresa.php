@@ -12,5 +12,5 @@ require_once $root.'/connection.php';
 	$empresa = new EmpresaController();
 	$empresa->excluir();
 	
-	header("Location: /View/Admin/Empresa.php");
+	echo "<script> alert('Empresa excluída com sucesso!'); location.href='Empresa.php'; </script>";
 ?>

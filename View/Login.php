@@ -14,7 +14,7 @@
           <div class="modal-body">
             <div class="form-group">
               <div class="input-group">
-                <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                <input type="text" class="form-control" id="username" name="username" placeholder="Nome do Usuário">
                 <label for="username" class="input-group-addon glyphicon glyphicon-user"></label>
               </div>
             </div>

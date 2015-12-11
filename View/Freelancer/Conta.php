@@ -224,6 +224,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $freelancer = new FreelancerController();
   $freelancer->editar();
   
-  echo "<script> location.href='Home.php'; </script>";
+  echo "<script> alert('Conta atualizada com sucesso!'); location.href='Home.php'; </script>";
 }
 ?>

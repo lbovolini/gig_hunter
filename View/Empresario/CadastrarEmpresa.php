@@ -177,6 +177,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $empresa = new EmpresaController();
   $empresa->criar();
   
-  echo "<script> location.href='Empresa.php'; </script>";
+  echo "<script> alert('Empresa cadastrada com sucesso!'); location.href='Empresa.php'; </script>";
 }
 ?>

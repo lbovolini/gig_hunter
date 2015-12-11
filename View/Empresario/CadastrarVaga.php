@@ -143,6 +143,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $vaga = new VagaController();
   $vaga->criar();
   
-  echo "<script> location.href='Empresa.php'; </script>";
+  echo "<script> alert('Vaga cadastrada com sucesso!'); location.href='Empresa.php'; </script>";
 }
 ?>

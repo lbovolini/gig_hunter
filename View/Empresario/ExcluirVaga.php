@@ -15,5 +15,5 @@ require_once $root.'/connection.php';
 	$vaga = new VagaController();
 	$vaga->excluir();
 	
-	header("Location: /View/Empresario/Empresa.php");
+	echo "<script> alert('Vaga excluída com sucesso!'); location.href='Empresa.php'; </script>";
 ?>

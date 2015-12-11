@@ -158,5 +158,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   $freelancer = new FreelancerController();
   $freelancer->criar();
+  
+  echo "<script> alert('Conta criada com sucesso!'); location.href='Create.php'; </script>";
 }
 ?>

@@ -163,5 +163,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   require_once $root.'/Controller/EmpresaController.php';
   $empresa = new EmpresaController();
   $empresa->editar();
+  
+  echo "<script> alert('Empresa editada com sucesso!'); location.href='Empresa.php'; </script>";
 }
 ?>

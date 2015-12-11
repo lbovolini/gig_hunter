@@ -236,6 +236,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $academico = new AcademicoController();
   $academico->editar();
   
-  echo "<script> location.href='Home.php'; </script>";
+  echo "<script> alert('Conta atualizada com sucesso!'); location.href='Home.php'; </script>";
 }
 ?>

@@ -12,5 +12,5 @@ require_once $root.'/connection.php';
 	$avaliacao = new AvaliacaoController();
 	$avaliacao->excluir();
 	
-	header("Location: /View/Admin/Avaliar.php");
+	echo "<script> alert('Avaliação excluída com sucesso!'); location.href='Avaliar.php'; </script>";
 ?>

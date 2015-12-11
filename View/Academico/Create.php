@@ -170,5 +170,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   $academico = new AcademicoController();
   $academico->criar();
+  
+  echo "<script> alert('Conta criada com sucesso!'); location.href='Create.php'; </script>";
 }
 ?>
