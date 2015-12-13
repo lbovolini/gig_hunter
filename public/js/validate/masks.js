@@ -19,4 +19,4 @@ $(document).ready(function(){
     //$("#rg").mask("99.999.999-*");
     $("#cpf").mask("999.999.999-99", {reverse: true});
     $("#cep").mask("99999-999");
-})
+});

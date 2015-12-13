@@ -7,7 +7,10 @@ $.getScript("/public/js/validate/metodos.js", function(){
 $.getScript("/public/js/validate/masks.js", function(){
 
 });
-
+// mascaras
+$(document).ready(function(){
+	$("#cnpj").mask("99.999.999/9999-99"); 
+});
 
 // valida campos
 $(function() {
@@ -30,7 +33,7 @@ $(function() {
 			},
 			cnpj: {
 				required: true,
-				loginRegex: true
+				cnpj: true
 			},
 			telefone: {
 				required: true
@@ -68,5 +71,10 @@ $.getScript("/public/js/validate/validator.messages.js", function(){
 
 // carrega script que valida o CPF
 $.getScript("/public/js/validate/jquery.validate.cpf.js", function(){
+
+});
+
+// carrega script que valida o CNPJ
+$.getScript("/public/js/validate/jquery.validate.cnpj.js", function(){
 
 });
