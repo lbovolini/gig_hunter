@@ -129,13 +129,23 @@ require_once $root.'/connection.php'; ?>
             <div class="form-group">
               <label class="col-sm-2 control-label">Lattes:</label>
               <div class="col-md-8">
-                <?php echo $row["lattes"] ?>
+                <?php
+                if ((0 !== strpos($row["lattes"], 'http')) || (0 !== strpos($row["lattes"], 'https'))) {
+                  $row["lattes"] = "http://" . $row["lattes"];  
+                }
+                ?>  
+                <a href="<?php echo $row["lattes"];?>"> Lattes </a>
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-2 control-label">Linkedin:</label>
               <div class="col-md-8">
-                <?php echo $row["linkedin"] ?>
+                <?php
+                if ((0 !== strpos($row["linkedin"], 'http')) || (0 !== strpos($row["linkedin"], 'https'))) {
+                  $row["linkedin"] = "http://" . $row["linkedin"];  
+                }
+                ?>  
+                <a href="<?php echo $row["linkedin"];?>"> Linkedin </a>
               </div>
             </div>
 			<div class="form-group">
