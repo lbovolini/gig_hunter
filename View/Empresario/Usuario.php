@@ -126,11 +126,12 @@ require_once $root.'/connection.php'; ?>
                 <?php echo $row["tipo"] ?>
               </div>
             </div>
+  
             <div class="form-group">
               <label class="col-sm-2 control-label">Lattes:</label>
               <div class="col-md-8">
                 <?php
-                if ((0 !== strpos($row["lattes"], 'http')) || (0 !== strpos($row["lattes"], 'https'))) {
+                if ((0 !== strpos($row["lattes"], 'http://')) && (0 !== strpos($row["lattes"], 'https://'))) {
                   $row["lattes"] = "http://" . $row["lattes"];  
                 }
                 ?>  
@@ -141,7 +142,7 @@ require_once $root.'/connection.php'; ?>
               <label class="col-sm-2 control-label">Linkedin:</label>
               <div class="col-md-8">
                 <?php
-                if ((0 !== strpos($row["linkedin"], 'http')) || (0 !== strpos($row["linkedin"], 'https'))) {
+                if ((0 !== strpos($row["linkedin"], 'http')) && (0 !== strpos($row["linkedin"], 'https'))) {
                   $row["linkedin"] = "http://" . $row["linkedin"];  
                 }
                 ?>  
