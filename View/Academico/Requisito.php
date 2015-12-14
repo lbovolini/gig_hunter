@@ -66,6 +66,10 @@ require_once $root.'/connection.php'; ?>
 			DB::connect();
 			$result = mysql_query("SELECT * FROM vagas WHERE id = '" . $_SESSION['idVaga'] . "'");
 			$row = mysql_fetch_array($result);
+			
+			function selected($value, $selected) {
+				return $value==$selected ? ' selected="selected"' : '';
+			}
 		?>
 		<div class="container">
 		  <div class="matshead">
@@ -82,10 +86,17 @@ require_once $root.'/connection.php'; ?>
 						DB::connect();
 						$result5 = mysql_query("SELECT * FROM requisitos");
 						while ($row5 = mysql_fetch_array($result5)) {
+							$result6 = mysql_query("SELECT * FROM usuario_requisitos");
+							$requisito = "Não";
+							while ($row6 = mysql_fetch_array($result6)) {
+								if ($row5['id'] == $row6['requisito_id'] AND $row6['usuario_id'] == $_SESSION['id']) {
+									$requisito = "Sim";
+								}
+							}
 							echo $row5['nome'] ?>
 								<select class="form-control" name="selectArray[ ]">
-									<option value=Não>Não</option>
-									<option value=Sim>Sim</option>
+									<option value=Não <?php echo selected('Não', $requisito); ?>>Não</option>
+									<option value=Sim <?php echo selected('Sim', $requisito); ?>>Sim</option>
 								</select><br/>		
 							<?php 
 						}

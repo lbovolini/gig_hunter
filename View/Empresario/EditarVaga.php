@@ -76,6 +76,10 @@ require_once $root.'/connection.php'; ?>
 			}
 			$result = mysql_query("SELECT * FROM vagas WHERE id = '" . $_SESSION['idVaga'] . "'");
 			$row = mysql_fetch_array($result);
+			
+			function selected($value, $selected) {
+				return $value==$selected ? ' selected="selected"' : '';
+			}
 		?>
 		<div class="container">
 		  <div class="matshead">
@@ -101,9 +105,10 @@ require_once $root.'/connection.php'; ?>
 				  <label class="col-sm-2 control-label">Usuário Alvo</label>
 				  <div class="col-md-4">
 					<select class="form-control" name="usuario_alvo">
-						<option value=Academico>Acadêmico</option>
-						<option value=Freelancer>Freelancer</option>
-						<option value=Ambos>Ambos</option>
+						<?php $alvo = $row['usuario_alvo'] ?>
+						<option value=Academico <?php echo selected('Academico', $alvo); ?>>Acadêmico</option>
+						<option value=Freelancer <?php echo selected('Freelancer', $alvo); ?>>Freelancer</option>
+						<option value=Ambos <?php echo selected('Ambos', $alvo); ?>>Ambos</option>
 					</select>				  
 				  </div>
 				</div>
@@ -114,10 +119,17 @@ require_once $root.'/connection.php'; ?>
 						DB::connect();
 						$result5 = mysql_query("SELECT * FROM requisitos");
 						while ($row5 = mysql_fetch_array($result5)) {
+							$result6 = mysql_query("SELECT * FROM vaga_requisitos");
+							$requisito = "Não";
+							while ($row6 = mysql_fetch_array($result6)) {
+								if ($row5['id'] == $row6['requisito_id'] AND $row6['vaga_id'] == $_SESSION['idVaga']) {
+									$requisito = "Sim";
+								}
+							}
 							echo $row5['nome'] ?>
 								<select class="form-control" name="selectArray[ ]">
-									<option value=Não>Não</option>
-									<option value=Sim>Sim</option>
+									<option value=Não <?php echo selected('Não', $requisito); ?>>Não</option>
+									<option value=Sim <?php echo selected('Sim', $requisito); ?>>Sim</option>
 								</select><br/>		
 							<?php 
 						}
