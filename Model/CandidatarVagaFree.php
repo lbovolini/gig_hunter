@@ -14,5 +14,5 @@ require_once $root.'/connection.php';
 	$query2 = "DELETE FROM oferecidas WHERE vaga_id = '" . $_SESSION['idVaga'] . "' AND usuario_id = '" . $_SESSION['id'] . "'";
 	mysql_query($query2);
 
-	header("Location: /View/Freelancer/Home.php");		
+	echo "<script> alert('Você acaba de candidatar-se à vaga! Aguarde a resposta do Empresário!'); location.href='/View/Freelancer/Home.php'; </script>";
 ?>

@@ -105,7 +105,8 @@
               </div>
             </div>
             <div class="form-group">
-              <div class="col-sm-offset-8 col-sm-12">
+              <div class="col-sm-offset-7 col-sm-12">
+				<input type="button" value="Cancelar" class="btn btn-danger btn-lg" onclick="javascript: location.href='/index.php';" />&nbsp
                 <button type="submit" class="btn btn-success btn-lg">Cadastrar</button>
               </div>
             </div>
@@ -147,6 +148,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $empresario = new EmpresarioController();
   $empresario->criar();
   
-  echo "<script> alert('Conta criada com sucesso!'); location.href='Create.php'; </script>";
+  echo "<script> alert('Conta criada com sucesso!'); location.href='/index.php'; </script>";
 }
 ?>

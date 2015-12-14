@@ -138,7 +138,8 @@ require_once $root.'/connection.php'; ?>
 				  </div>
 				</div>
 				<div class="form-group">
-				  <div class="col-sm-offset-8 col-sm-12">
+				  <div class="col-sm-offset-7 col-sm-12">
+				  	<input type="button" value="Cancelar" class="btn btn-danger btn-lg" onclick="javascript: location.href='Empresa.php';" />&nbsp
 					<button type="submit" class="btn btn-success btn-lg">Salvar</button>
 				  </div>
 				</div>

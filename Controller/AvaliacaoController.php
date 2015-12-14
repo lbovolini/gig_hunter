@@ -74,7 +74,7 @@ class AvaliacaoController
 		DB::connect();
 		
 		/* Publica Avaliacao no banco de dados */
-		Avaliacao::publica($status);
+		Avaliacao::publica();
 
 		/* Fecha a conexao com o banco de dados */
 		DB::close();

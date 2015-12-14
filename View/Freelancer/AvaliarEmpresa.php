@@ -134,9 +134,10 @@ require_once $root.'/connection.php'; ?>
                 </div>
 
                 <div class="form-group">
-                  <div class="col-sm-offset-8 col-sm-12">
-                    <button type="submit" class="btn btn-success btn-lg">Avaliar</button>
-                  </div>
+				  <div class="col-sm-offset-7 col-sm-12">
+					<input type="button" value="Cancelar" class="btn btn-danger btn-lg" onclick="javascript: location.href='Avaliar.php';" />&nbsp
+					<button type="submit" class="btn btn-success btn-lg">Avaliar</button>
+				  </div>
                 </div>
               </form>
             </div>
@@ -157,6 +158,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $avaliacao = new AvaliacaoController();
   $avaliacao->criar();
   
-    echo "<script> location.href='Avaliar.php'; </script>";
+  echo "<script> alert('Avaliação realizada com sucesso!'); location.href='Avaliar.php'; </script>";
 }
 ?>

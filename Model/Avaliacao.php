@@ -16,7 +16,7 @@ class Avaliacao
 		mysql_query($query);
 	}
 	
-	public static function publica($status)
+	public static function publica()
 	{
 		$query = "UPDATE avaliacoes SET status = REPLACE(status, 'Em espera', 'Publicada') WHERE id = '" . $_SESSION['idAvaliacao'] . "'";
 		mysql_query($query);

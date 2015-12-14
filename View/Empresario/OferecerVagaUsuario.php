@@ -85,8 +85,9 @@ require_once $root.'/connection.php'; ?>
 					  </div>
 					</div>
 					<div class="form-group">
-					  <div class="col-sm-offset-8 col-sm-12">
-						<button type="submit" class="btn btn-success btn-lg">Buscar</button>
+					  <div class="col-sm-offset-7 col-sm-12">
+						<button type="submit" class="btn btn-success btn-lg">Buscar</button>&nbsp
+						<input type="button" value="Cancelar" class="btn btn-danger btn-lg" onclick="javascript: location.href='OferecerVaga.php';" />
 					  </div>
 					</div>
 				  </form>
