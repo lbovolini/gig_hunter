@@ -70,7 +70,7 @@ require_once $root.'/connection.php'; ?>
 			}
 			$result = mysql_query("SELECT * FROM usuarios WHERE id = '" . $_SESSION['idUsuario'] . "'");
 			$row = mysql_fetch_array($result);
-			$result2 = mysql_query("SELECT * FROM enderecos WHERE id = '" . $row["endereco_id"] . "'");
+			$result2 = mysql_query("SELECT * FROM enderecos WHERE id = '" . $row['endereco_id'] . "'");
 			$row2 = mysql_fetch_array($result2);
 		?>
 		<div class="container">
@@ -91,12 +91,14 @@ require_once $root.'/connection.php'; ?>
 								<th>CPF</th>
                                 <th>Email</th>
                                 <th>Telefone</th>
+								<th>Status</th>
+								<th>Data de Desbloqueio</th>
                             </tr>
                         </thead>
                         <tbody>
 						<?php
 							DB::connect();
-							$result = mysql_query("SELECT * FROM usuarios");
+							$result = mysql_query("SELECT * FROM usuarios WHERE id=$idUsuario");
 							if ($result) {
 								while ($row = mysql_fetch_array($result)) {
 									$idUsuario = $row['id'];
@@ -106,7 +108,9 @@ require_once $root.'/connection.php'; ?>
 											<td>" . $row['nome'] . "</td>
 											<td>" . $row['cpf'] . "</td>
 											<td>" . $row['email'] . "</td>
-											<td>" . $row['telefone'] . "</td>																		
+											<td>" . $row['telefone'] . "</td>
+											<td>" . $row['status'] . "</td>
+											<td>" . $row['tempo_bloqueada'] . "</td>
 										  </tr>";
 								}
 							}
@@ -115,7 +119,7 @@ require_once $root.'/connection.php'; ?>
                     </table>
 					<form id="data_block" action="" method="POST">
 						<label class="col-sm-2 control-label">Data de Bloqueio</label>
-						<div class="col-md-3">
+						<div class="col-md-3">	
 							<input class="form-control" type="text" id="data_bloqueio" name="data_bloqueio" value="<?php echo $row["tempo_bloqueada"] ?>" >
 						</div>
 							
@@ -146,21 +150,22 @@ require_once $root.'/connection.php'; ?>
  * caso haja o preencimento dos dados e a submissão do formulário, o
  * controlador, será chamado para interpretar a ação
  */
- if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-  
+ if ($_SERVER['REQUEST_METHOD'] == 'POST')
+ {
+	$id = $idUsuario;
 	if($row['tipo'] == "Freelancer" )
 	{
 		$root = $_SERVER['DOCUMENT_ROOT'];
 		require_once $root.'/Controller/FreelancerController.php';
 		$fl = new FreelancerController();
-		$fl->editar_bloq();
+		$fl->editar_bloq($_SESSION['idUsuario']);
 	}
 	else if($row['tipo'] == "Academico" )
 	{
 		$root = $_SERVER['DOCUMENT_ROOT'];
 		require_once $root.'/Controller/AcademicoController.php';
 		$fl = new AcademicoController();
-		$fl->editar_bloq();
+		$fl->editar_bloq($_SESSION['idUsuario']);
 	}
 }
 ?>

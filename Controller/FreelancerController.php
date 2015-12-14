@@ -97,6 +97,7 @@ class FreelancerController
 		$data_bloqueio = test_input($_POST['data_bloqueio']);
 		/* Converte data para o formato YYYY/DD/MM */
 		$data_bloqueio = implode("-",array_reverse(explode("/",$data_bloqueio)));
+		$data_bloqueio = "'". $data_bloqueio . " 00:00:01";
 		/* Altera Academico no banco de dados */
 		Freelancer::edit_bloq($data_bloqueio);
 		

@@ -84,26 +84,6 @@ require_once $root.'/connection.php'; ?>
                         <tbody>
 						<?php
 							DB::connect();
-							$result = mysql_query("SELECT * FROM empresarios");
-							if ($result) {
-								while ($row = mysql_fetch_array($result)) {
-									$idEmpresario = $row['id'];
-									echo "<tr>
-											<td>" . $row['id'] . "</td>
-											<td>" . "Empresário"  ."</td>
-											<td>" . $row['nome'] . "</td>
-											<td>" . $row['cpf'] . "</td>
-											<td>" . $row['email'] . "</td>
-											<td>" . $row['telefone'] . "</td>
-											<td>
-												<a href='/View/Admin/BloquearEmpresario.php?idEmpresario=$idEmpresario' title='Bloquear Usuario'><u>Bloquear</u></a>&nbsp&nbsp&nbsp&nbsp
-											</td>										
-										  </tr>";
-								}
-							}
-						?>
-						<?php
-							DB::connect();
 							$result = mysql_query("SELECT * FROM usuarios");
 							if ($result) {
 								while ($row = mysql_fetch_array($result)) {
