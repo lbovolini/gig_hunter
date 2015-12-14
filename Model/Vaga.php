@@ -62,6 +62,18 @@ class Vaga
 				  	FROM candidatos
 				  	WHERE usuario_id = '{$id_user}'
 				  )
+				  AND Vag.id IN (
+				  	SELECT V.id AS vaga_id
+				  	FROM vagas as V JOIN vaga_requisitos as VR 
+				  	ON (V.id=VR.vaga_id) JOIN requisitos AS R 
+				  	ON (VR.requisito_id=R.id)
+				  	WHERE requisito_id IN (
+				  		SELECT R.id AS requisito_id 
+				  		FROM usuarios AS U JOIN usuario_requisitos AS UR 
+				  		ON (U.id=UR.usuario_id) JOIN requisitos AS R 
+				  		ON (UR.requisito_id=R.id))
+				  		GROUP BY V.id
+				  )
 				  LIMIT 10;";
 
 		return(mysql_query($query));
@@ -89,6 +101,18 @@ class Vaga
 				  	SELECT vaga_id 
 				  	FROM candidatos
 				  	WHERE usuario_id = '{$id_user}'
+				  )
+				  AND Vag.id IN (
+				  	SELECT V.id AS vaga_id
+				  	FROM vagas as V JOIN vaga_requisitos as VR 
+				  	ON (V.id=VR.vaga_id) JOIN requisitos AS R 
+				  	ON (VR.requisito_id=R.id)
+				  	WHERE requisito_id IN (
+				  		SELECT R.id AS requisito_id 
+				  		FROM usuarios AS U JOIN usuario_requisitos AS UR 
+				  		ON (U.id=UR.usuario_id) JOIN requisitos AS R 
+				  		ON (UR.requisito_id=R.id))
+				  		GROUP BY V.id
 				  )
 				  LIMIT 10;";
 
