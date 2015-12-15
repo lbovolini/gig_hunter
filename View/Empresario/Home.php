@@ -1,6 +1,7 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root.'/Controller/AuthEmpresario.php'; ?>
+require $root.'/Controller/AuthEmpresario.php'; 
+require_once $root.'/connection.php'; ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -76,6 +77,56 @@ require $root.'/Controller/AuthEmpresario.php'; ?>
 					<h4>Empresário! É permitido que você edite seus dados pessoais, cadastre e edite suas empresas e vagas, ofereça vagas diretamente, confirme o preenchimento da vaga e avalie os usuários.</h4>
 				</div>
 		  </div><br/>
+		  <div class="matshead">
+            <h2 class="text-muted">Acadêmicos e Freelancers Recomendados</h2>
+          </div>
+          <hr class="featurette-divider">
+          <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nome</th>
+                                <th>Telefone</th>
+                                <th>Tipo</th>
+                                <th>Cidade/Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                            DB::connect();
+							$teste = mysql_query("SELECT * FROM enderecos end, empresarios emp WHERE end.id = emp.endereco_id");
+							$rows = mysql_fetch_array($teste);
+							$result = mysql_query("SELECT * FROM usuarios LIMIT 10");
+							if ($result) {
+								$i=1;
+								while ($row = mysql_fetch_array($result)) {
+									$result2 = mysql_query("SELECT * FROM enderecos WHERE id = '" . $row['endereco_id'] . "'");
+									$row2 = mysql_fetch_array($result2);
+									if ($rows['estado'] == $row2['estado']) {
+										$idUsuario = $row['id'];
+										$alvoVaga = $row['tipo'];
+										echo "<tr>
+											<td>" . $i++ . "</td>
+											<td><a href='/View/Empresario/Usuario.php?idUsuario=$idUsuario'>" . $row['nome'] . "</td>
+											<td>" . $row['telefone'] . "</td>
+											<td>" . $row['tipo'] . "</td>
+											<td>" . $row2['cidade'] . '/' . $row2['estado'] ."</td>
+											<td>
+												<a href='/View/Empresario/OferecerUsuarioVaga.php?idUsuario=$idUsuario&alvoVaga=$alvoVaga' title='Oferecer Vaga'><u>Oferecer Vaga</u></a>
+											</td>													
+											  </tr>";
+									}
+								}
+                            }
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+          </div>
 		 </div>
         <!-- /#page-content-wrapper -->
 

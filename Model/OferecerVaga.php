@@ -14,5 +14,5 @@ require_once $root.'/connection.php';
 	$query = "INSERT INTO oferecidas(vaga_id, usuario_id) VALUES ('" . $_SESSION['idVaga'] . "', '" . $_SESSION['idUsuario'] . "')";
 	mysql_query($query);
 
-	echo "<script> alert('Vaga oferecida!'); location.href='/View/Empresario/OferecerVaga.php'; </script>";
+	echo "<script> alert('Vaga oferecida!'); location.href='/View/Empresario/Home.php'; </script>";
 ?>
