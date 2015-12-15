@@ -128,7 +128,7 @@ require_once $root.'/connection.php'; ?>
 						</div>
 						
 					</form>
-					
+					</br>
 					<form id="data_block" action="" method="REPOST">
 						<div class="col-sm-offset-10">
 							<button type="submit" class="btn btn-success btn-lg">Desbloquear</button>

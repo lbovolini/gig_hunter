@@ -56,6 +56,8 @@ class Academico
 	{
 		$query = "UPDATE usuarios SET tempo_bloqueada = '" . $data_bloqueio . "', status = '" . $status . "' WHERE id = '" . $id . "'";
 		mysql_query($query);
+		
+		echo "<script> alert('Usuário bloqueado!'); location.href='Bloqueio.php'; </script>";
 	}
 	
 }

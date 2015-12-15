@@ -48,7 +48,8 @@ class LoginController
         else {
             # envia o usuário de volta para 
             # o form de login
-            header('location: index.php');
+			echo "<script> alert('Login e Senha não conferem!'); location.href='index.php'; </script>";
+            //header('location: index.php');
         }
 
 		/* Fecha a conexao com o banco de dados */

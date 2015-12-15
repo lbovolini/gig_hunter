@@ -65,10 +65,11 @@ class AutenticadorDB extends Autenticador {
         }
 
         // procura login de freelancer e academico
-        $query = "SELECT id, nome, username, tipo 
+        $query = "SELECT id, nome, username, tipo, status 
                   FROM usuarios 
                   WHERE `username` = '{$username}' 
-                  AND `senha` = '{$senha}' 
+                  AND `senha` = '{$senha}'
+				  AND `status` = 'Ativo'
                   LIMIT 1";
 
         $row = mysql_query($query);

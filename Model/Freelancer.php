@@ -92,6 +92,8 @@ class Freelancer
 	{
 		$query = "UPDATE usuarios SET tempo_bloqueada = '" . $data_bloqueio . "' WHERE id = '" . $_SESSION['id'] . "'";;
 		mysql_query($query);
+		
+		echo "<script> alert('Usuário bloqueado!'); location.href='Bloqueio.php'; </script>";
 	}
 
 	// Retorna Estado
