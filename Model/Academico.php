@@ -55,7 +55,6 @@ class Academico
 	public static function edit_bloq($data_bloqueio, $status, $id) 
 	{
 		$query = "UPDATE usuarios SET tempo_bloqueada = '" . $data_bloqueio . "', status = '" . $status . "' WHERE id = '" . $id . "'";
-		//$query = "UPDATE usuarios SET status = '" . $status . "' WHERE id = '" . $id . "'";
 		mysql_query($query);
 	}
 	

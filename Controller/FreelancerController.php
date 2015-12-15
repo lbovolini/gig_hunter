@@ -90,19 +90,32 @@ class FreelancerController
 		DB::close();
 	}
 	
-		public function editar_bloq()
+	public function editar_bloq($id)
 	{
 		/* Abre a conexao com o banco de dados */
 		DB::connect();
 		$data_bloqueio = test_input($_POST['data_bloqueio']);
 		/* Converte data para o formato YYYY/DD/MM */
 		$data_bloqueio = implode("-",array_reverse(explode("/",$data_bloqueio)));
-		$data_bloqueio = "'". $data_bloqueio . " 00:00:01";
 		/* Altera Academico no banco de dados */
-		Freelancer::edit_bloq($data_bloqueio);
+		$status = "Bloqueado";
+		Academico::edit_bloq($data_bloqueio, $status, $id);
 		
-	/* Fecha a conexao com o banco de dados */
-	DB::close();
+		/* Fecha a conexao com o banco de dados */
+		DB::close();
 	}
+
+	public function desbloq($id)
+	{
+		/* Abre a conexao com o banco de dados */
+		DB::connect();
+		$data_bloqueio = "0000/00/00";
+		/* Altera Academico no banco de dados */
+		$status = "Ativo";
+		Academico::edit_bloq($data_bloqueio, $status, $id);
+		
+		/* Fecha a conexao com o banco de dados */
+		DB::close();
+	}	
 }
 ?>

@@ -96,7 +96,7 @@ require_once $root.'/connection.php'; ?>
 											<td>" . $row['email'] . "</td>
 											<td>" . $row['telefone'] . "</td>
 											<td>
-												<a href='/View/Admin/BloquearUsuario.php?idUsuario=$idUsuario' title='Bloquear Usuario'><u>Bloquear</u></a>&nbsp&nbsp&nbsp&nbsp
+												<a href='/View/Admin/BloquearAcademico.php?idUsuario=$idUsuario' title='Bloquear Usuario'><u>Bloquear</u></a>
 											</td>																			
 										  </tr>";
 								}

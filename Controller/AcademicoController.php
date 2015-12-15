@@ -105,8 +105,21 @@ class AcademicoController
 		$status = "Bloqueado";
 		Academico::edit_bloq($data_bloqueio, $status, $id);
 		
-	/* Fecha a conexao com o banco de dados */
-	DB::close();
+		/* Fecha a conexao com o banco de dados */
+		DB::close();
 	}
+
+	public function desbloq($id)
+	{
+		/* Abre a conexao com o banco de dados */
+		DB::connect();
+		$data_bloqueio = "0000/00/00";
+		/* Altera Academico no banco de dados */
+		$status = "Ativo";
+		Academico::edit_bloq($data_bloqueio, $status, $id);
+		
+		/* Fecha a conexao com o banco de dados */
+		DB::close();
+	}		
 }
 ?>

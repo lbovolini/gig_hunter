@@ -100,19 +100,19 @@ require_once $root.'/connection.php'; ?>
 							DB::connect();
 							$result = mysql_query("SELECT * FROM usuarios WHERE id=$idUsuario");
 							if ($result) {
-								while ($row = mysql_fetch_array($result)) {
-									$idUsuario = $row['id'];
-									echo "<tr>
-											<td>" . $row['id'] . "</td>
-											<td>" . $row['tipo'] . "</td>
-											<td>" . $row['nome'] . "</td>
-											<td>" . $row['cpf'] . "</td>
-											<td>" . $row['email'] . "</td>
-											<td>" . $row['telefone'] . "</td>
-											<td>" . $row['status'] . "</td>
-											<td>" . $row['tempo_bloqueada'] . "</td>
-										  </tr>";
-								}
+								$row = mysql_fetch_array($result);
+								$idUsuario = $row['id'];
+								echo "<tr>
+										<td>" . $row['id'] . "</td>
+										<td>" . $row['tipo'] . "</td>
+										<td>" . $row['nome'] . "</td>
+										<td>" . $row['cpf'] . "</td>
+										<td>" . $row['email'] . "</td>
+										<td>" . $row['telefone'] . "</td>
+										<td>" . $row['status'] . "</td>
+										<td>" . $row['tempo_bloqueada'] . "</td>
+									  </tr>";
+								
 							}
 						?>
                         </tbody>
@@ -121,11 +121,18 @@ require_once $root.'/connection.php'; ?>
 						<label class="col-sm-2 control-label">Data de Bloqueio</label>
 						<div class="col-md-3">	
 							<input class="form-control" type="text" id="data_bloqueio" name="data_bloqueio" value="<?php echo $row["tempo_bloqueada"] ?>" >
-						</div>
+						</div>					
 							
 						<div class="col-sm-offset-10">
 							<button type="submit" class="btn btn-success btn-lg">Bloquear</button>
 						</div>
+						
+					</form>
+					
+					<form id="data_block" action="" method="REPOST">
+						<div class="col-sm-offset-10">
+							<button type="submit" class="btn btn-success btn-lg">Desbloquear</button>
+						</div>							
 					</form>
 				</div>
 				</div>
@@ -153,19 +160,17 @@ require_once $root.'/connection.php'; ?>
  if ($_SERVER['REQUEST_METHOD'] == 'POST')
  {
 	$id = $idUsuario;
-	if($row['tipo'] == "Freelancer" )
-	{
-		$root = $_SERVER['DOCUMENT_ROOT'];
-		require_once $root.'/Controller/FreelancerController.php';
-		$fl = new FreelancerController();
-		$fl->editar_bloq($_SESSION['idUsuario']);
-	}
-	else if($row['tipo'] == "Academico" )
-	{
 		$root = $_SERVER['DOCUMENT_ROOT'];
 		require_once $root.'/Controller/AcademicoController.php';
 		$fl = new AcademicoController();
-		$fl->editar_bloq($_SESSION['idUsuario']);
-	}
+		$fl->editar_bloq($_SESSION['idUsuario']);	
+}
+if ($_SERVER['REQUEST_METHOD'] == 'REPOST')
+{
+	$id = $idUsuario;
+		$root = $_SERVER['DOCUMENT_ROOT'];
+		require_once $root.'/Controller/AcademicoController.php';
+		$fl = new AcademicoController();
+		$fl->desbloq($_SESSION['idUsuario']);	
 }
 ?>
